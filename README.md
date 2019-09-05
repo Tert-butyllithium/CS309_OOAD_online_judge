@@ -4,7 +4,7 @@
 
 https://github.com/QingdaoU/OnlineJudge 青岛大学oj
 
-Demo:  https://qduoj.com/ ,  http://10.20.47.211:8080/
+Demo:  https://qduoj.com/ ,  http://10.20.47.211:8080/, http://10.20.97.68
 
 ## 特色功能：
 
