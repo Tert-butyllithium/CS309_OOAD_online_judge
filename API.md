@@ -115,15 +115,75 @@ error:
 * return response:
 
   ```
-  成功了 ? "success" : 
-  {
-  	"err": "SPJCompileError", 
-      "data": "error resson"
-  }
+  if 成功: 
+  	"success" : 
+  else:
+  	{
+  		"err": "SPJCompileError", 
+      	"data": "error resson"
+	}
   ```
-
+  
   
 
 ### 评判
 
 * `/judge`
+
+* 所需参数：
+
+  `src`
+
+  `language_config`
+
+  `max_cpu_time`
+
+  `max_memory`
+
+  `spj_version`
+
+  `spj_config`： refer to `client/Python/languages.py`,
+
+  `spj_compile_config`
+
+  `spj_src`
+
+  `output`
+
+* return response:
+
+  ```
+  if 编译失败:
+  	{
+      	"err": "CompileError", 
+      	"data": "error reason"
+  	}
+  else :
+  	[
+          {
+              "cpu_time": 1,
+              "result": 0,
+              "memory": 12836864,
+              "real_time": 2,
+              "signal": 0,
+              "error": 0,
+              "exit_code": 0,
+              "output_md5": null,
+              "test_case": 1
+          },
+          {
+              "cpu_time": 1,
+              "result": 0,
+              "memory": 12849152,
+              "real_time": 1,
+              "signal": 0,
+              "error": 0,
+              "exit_code": 0,
+              "output_md5": null,
+              "test_case": 2
+          }
+  ]
+  ```
+
+  如果SPJ crash了，`result = SYSTEM_ERROR` && `ERROR = SPJ_ERROR`
+
