@@ -46,13 +46,23 @@ class TaskThread(threading.Thread):
 def connect_DB():
     return True
     # 连接数据库
-    connection = pymysql.connect(
+    db = pymysql.connect(
         host='localhost',
         user='root',
         password='xxx',
         db='mysql'
     )
+    cursor = db.cursor()
+    data = search_submission(cursor)
 
+def search_submission(cursor):
+    while True:
+        cursor.execute("select * from solution where result is 0")
+        data = cursor.fetchchone()
+        if data is None:
+            time.sleep(5)
+        else:
+            return data
 
 def main():
     if connect_DB():
