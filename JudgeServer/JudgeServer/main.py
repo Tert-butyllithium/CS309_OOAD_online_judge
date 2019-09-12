@@ -2,6 +2,7 @@ import pymysql
 import docker
 import threading
 import time
+import queue
 
 
 class TimeoutThread(threading.Thread):
@@ -43,41 +44,50 @@ class TaskThread(threading.Thread):
         except InterruptedError:
             print("interrupted")
 
-def connect_DB():
-    return True
-    # 连接数据库
-    db = pymysql.connect(
-        host='localhost',
-        user='root',
-        password='xxx',
-        db='mysql'
-    )
-    cursor = db.cursor()
-    data = search_submission(cursor)
 
-def search_submission(cursor):
-    while True:
-        cursor.execute("select * from solution where result is 0")
-        data = cursor.fetchchone()
-        if data is None:
-            time.sleep(5)
-        else:
-            return data
+class DBThread(threading.Thread):
+    def __init__(self, host, user, pwd, db):
+        super(DBThread, self).__init__()
+        self.host = host
+        self.user = user
+        self.pwd = pwd
+        self.db = db
+        self.task_list = queue.Queue()
+
+    def search_submission(self):
+        database = pymysql.connect(
+            host=self.host,
+            user=self.user,
+            password=self.pwd,
+            db=self.db
+        )
+        cursor = database.cursor()
+        cursor.execute(
+            "select * from solution s join source_code sc on s.solution_id = sc.solution_id join problem p on s.problem_id = p.problem_id where s.result = 0")
+        data = cursor.fetchall()
+        for task in data and self.task_list.qsize() < 21:
+            self.task_list.put((task[7], task[18], task[26], task[30], task[31]))
+
+    # def run(self):
+    #     while True:
+    #         if self.task_list.empty():
+    #             self.search_submission()
+    #         else:
+    #             for task in self.task_list:
+
+
+class JudgeServerClient(object):
+    def judge(self, src, language_config, max_cpu_time, max_memory, test_case_id=None, test_case=None, spj_version=None,
+              spj_config=None, spj_compile_config=None, spj_src=None, output=False):
+        if not (test_case or test_case_id) or (test_case and test_case_id):
+            raise ValueError("invalid parameter")
+
+        data = {
+
+        }
+
 
 def main():
-    if connect_DB():
-        try:
-            # 这里的3是limit，超过3s就失效
-            tt = TimeoutThread(3)
-            thread = TaskThread(tt)
-            thread.start()
-            thread.join()
-        except:
-            print("Error: The thread cannot be start")
+    OJ_DB = DBThread('localhost', 'root', 'yaojing01040075', 'db_test')
 
-
-if __name__ == '__main__':
-    main()
-
-# client = docker.from_env()
-# client.containers.run('registry.cn-hangzhou.aliyuncs.com/onlinejudge/judge_server')
+# main()
