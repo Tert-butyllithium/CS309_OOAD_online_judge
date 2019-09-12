@@ -4,8 +4,6 @@
     <list default="true" id="4e4630eb-d24d-4660-a763-08e070bad425" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/venv/lib64" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/venv/lib64" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker_doc.md" beforeDir="false" afterPath="$PROJECT_DIR$/docker_doc.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,12 +34,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1429" />
+          <entry key="py" value="1471" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1429" />
+          <entry key="Python" value="1471" />
         </counts>
       </usages-collector>
     </session>
@@ -51,12 +49,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/JudgeServer/JudgeServer/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="47" column="14" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="14" />
+            <state relative-caret-position="342">
+              <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-                <marker date="1568222201940" expanded="true" signature="2254:2618" ph="..." />
-                <marker date="1568222201940" expanded="true" signature="2629:2702" ph="..." />
+                <marker date="1568271989285" expanded="true" signature="2280:3085" ph="..." />
+                <marker date="1568271989285" expanded="true" signature="3096:3169" ph="..." />
               </folding>
             </state>
           </provider>
@@ -80,11 +78,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="976" />
-    <option name="height" value="1096" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="856" />
+    <option name="width" value="500" />
+    <option name="height" value="560" />
   </component>
   <component name="ProjectId" id="1QVzBpv6pUTl6qswpLkKK3FrLUo" />
   <component name="ProjectView">
@@ -182,7 +179,7 @@
     <option name="totallyTimeSpent" value="44000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1040" height="784" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.15174672" />
@@ -190,7 +187,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.48844376" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3298647" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -199,7 +196,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.42550334" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -242,12 +239,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/JudgeServer/JudgeServer/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="47" column="14" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="14" />
+        <state relative-caret-position="342">
+          <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <marker date="1568222201940" expanded="true" signature="2254:2618" ph="..." />
-            <marker date="1568222201940" expanded="true" signature="2629:2702" ph="..." />
+            <marker date="1568271989285" expanded="true" signature="2280:3085" ph="..." />
+            <marker date="1568271989285" expanded="true" signature="3096:3169" ph="..." />
           </folding>
         </state>
       </provider>

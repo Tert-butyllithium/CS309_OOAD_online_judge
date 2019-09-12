@@ -65,15 +65,17 @@ class DBThread(threading.Thread):
         cursor.execute(
             "select * from solution s join source_code sc on s.solution_id = sc.solution_id join problem p on s.problem_id = p.problem_id where s.result = 0")
         data = cursor.fetchall()
-        for task in data and self.task_list.qsize() < 21:
+        for task in data:
             self.task_list.put((task[7], task[18], task[26], task[30], task[31]))
+        database.close()
 
-    # def run(self):
-    #     while True:
-    #         if self.task_list.empty():
-    #             self.search_submission()
-    #         else:
-    #             for task in self.task_list:
+    def run(self):
+        if self.task_list.empty():
+            self.search_submission()
+        else:
+            for task in self.task_list:
+                # 执行操作
+                pass
 
 
 class JudgeServerClient(object):
@@ -82,9 +84,17 @@ class JudgeServerClient(object):
         if not (test_case or test_case_id) or (test_case and test_case_id):
             raise ValueError("invalid parameter")
 
-        data = {
-
-        }
+        data = {"language_config": language_config,
+                "src": src,
+                "max_cpu_time": max_cpu_time,
+                "max_memory": max_memory,
+                "test_case_id": test_case_id,
+                "test_case": test_case,
+                "spj_version": spj_version,
+                "spj_config": spj_config,
+                "spj_compile_config": spj_compile_config,
+                "spj_src": spj_src,
+                "output": output}
 
 
 def main():
