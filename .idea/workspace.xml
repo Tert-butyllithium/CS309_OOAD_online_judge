@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4e4630eb-d24d-4660-a763-08e070bad425" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +17,7 @@
     <session id="-749762778">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -34,12 +34,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1471" />
+          <entry key="py" value="1545" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1471" />
+          <entry key="Python" value="1545" />
         </counts>
       </usages-collector>
     </session>
@@ -49,12 +49,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/JudgeServer/JudgeServer/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+            <state relative-caret-position="309">
+              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-                <marker date="1568271989285" expanded="true" signature="2280:3085" ph="..." />
-                <marker date="1568271989285" expanded="true" signature="3096:3169" ph="..." />
+                <marker date="1568272209676" expanded="true" signature="2243:3047" ph="..." />
+                <marker date="1568272209676" expanded="true" signature="3058:3131" ph="..." />
               </folding>
             </state>
           </provider>
@@ -78,10 +78,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="856" />
-    <option name="width" value="500" />
-    <option name="height" value="560" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectId" id="1QVzBpv6pUTl6qswpLkKK3FrLUo" />
   <component name="ProjectView">
@@ -179,8 +180,7 @@
     <option name="totallyTimeSpent" value="44000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.15174672" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -196,7 +196,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.42550334" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.42471445" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -239,12 +239,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/JudgeServer/JudgeServer/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+        <state relative-caret-position="309">
+          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <marker date="1568271989285" expanded="true" signature="2280:3085" ph="..." />
-            <marker date="1568271989285" expanded="true" signature="3096:3169" ph="..." />
+            <marker date="1568272209676" expanded="true" signature="2243:3047" ph="..." />
+            <marker date="1568272209676" expanded="true" signature="3058:3131" ph="..." />
           </folding>
         </state>
       </provider>

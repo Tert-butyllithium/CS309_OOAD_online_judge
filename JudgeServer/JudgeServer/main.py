@@ -34,12 +34,14 @@ class TaskThread(threading.Thread):
         self.timeout_thread.start()
 
     def run(self):
+        print("helll")
         try:
             # 这里的2是假设我的代码会在两秒内完成，用来替代真实步骤
             time.sleep(2)
             client = docker.from_env()
             # 新建一个container，参数是镜像，这里是随便的一个
-            client.containers.create("registry.cn-hangzhou.aliyuncs.com/onlinejudge/judge_server")
+            # client.containers.create("judger:v2")
+            print(client.containers.list())
             self.timeout_thread.setCancel()
         except InterruptedError:
             print("interrupted")
@@ -98,6 +100,10 @@ class JudgeServerClient(object):
 
 
 def main():
-    OJ_DB = DBThread('localhost', 'root', 'yaojing01040075', 'db_test')
+    # OJ_DB = DBThread('localhost', 'root', 'yaojing01040075', 'db_test')
+    tot = TimeoutThread(3)
+    tt = TaskThread(tot)
+    tt.run()
 
-# main()
+
+main()
