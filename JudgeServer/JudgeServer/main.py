@@ -3,6 +3,7 @@ import docker
 import threading
 import time
 import queue
+import os
 
 
 class TimeoutThread(threading.Thread):
@@ -20,7 +21,8 @@ class TimeoutThread(threading.Thread):
             time.sleep(self.timeout)
             if not self.isCancel:
                 # 超时，需要杀死，这里代码还没有实现
-                raise NameError('TLE')
+                # raise NameError('TLE')
+                pass
             else:
                 print(self.isCancel)
         except InterruptedError:
@@ -34,14 +36,13 @@ class TaskThread(threading.Thread):
         self.timeout_thread.start()
 
     def run(self):
-        print("helll")
         try:
             # 这里的2是假设我的代码会在两秒内完成，用来替代真实步骤
-            time.sleep(2)
+            time.sleep(1)
             client = docker.from_env()
             # 新建一个container，参数是镜像，这里是随便的一个
-            # client.containers.create("judger:v2")
-            print(client.containers.list())
+            print(os.system(
+                "docker run --mount type=bind,source=/home/data/Code/2019fall/OJ_template/Judger/demo/,target=/Judger/mount judge:v2 python3 Judger/mount/demo.py main"))
             self.timeout_thread.setCancel()
         except InterruptedError:
             print("interrupted")
