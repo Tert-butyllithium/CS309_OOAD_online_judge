@@ -5,7 +5,6 @@ import time
 import queue
 import os
 
-
 class TimeoutThread(threading.Thread):
     def __init__(self, timeout):
         super().__init__()
@@ -69,42 +68,30 @@ class DBThread(threading.Thread):
             "select * from solution s join source_code sc on s.solution_id = sc.solution_id join problem p on s.problem_id = p.problem_id where s.result = 0")
         data = cursor.fetchall()
         for task in data:
-            self.task_list.put((task[7], task[18], task[26], task[30], task[31]))
+            # print(task)
+            # language, code, spj, time, memory, SID
+            self.task_list.put((task[7], task[18], task[26], task[30], task[31], task[2]))
         database.close()
 
     def run(self):
         if self.task_list.empty():
             self.search_submission()
-        else:
-            for task in self.task_list:
-                # 执行操作
-                pass
-
-
-class JudgeServerClient(object):
-    def judge(self, src, language_config, max_cpu_time, max_memory, test_case_id=None, test_case=None, spj_version=None,
-              spj_config=None, spj_compile_config=None, spj_src=None, output=False):
-        if not (test_case or test_case_id) or (test_case and test_case_id):
-            raise ValueError("invalid parameter")
-
-        data = {"language_config": language_config,
-                "src": src,
-                "max_cpu_time": max_cpu_time,
-                "max_memory": max_memory,
-                "test_case_id": test_case_id,
-                "test_case": test_case,
-                "spj_version": spj_version,
-                "spj_config": spj_config,
-                "spj_compile_config": spj_compile_config,
-                "spj_src": spj_src,
-                "output": output}
+        # else:
+        while not self.task_list.empty():
+            task = self.task_list.get()
+            language = task[0]
+            code = task[1]
+            spj = task[2]
+            time_limit = task[3]
+            memory_limit = task[4]
+            SID = task[5]
+#             judge
 
 
 def main():
-    # OJ_DB = DBThread('localhost', 'root', 'yaojing01040075', 'db_test')
-    tot = TimeoutThread(3)
-    tt = TaskThread(tot)
-    tt.run()
+    OJ_DB = DBThread('localhost', 'root', 'yaojing01040075', 'db_test')
+    OJ_DB.run()
+
 
 
 main()
