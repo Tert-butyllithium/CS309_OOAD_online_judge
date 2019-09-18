@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4630eb-d24d-4660-a763-08e070bad425" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/1001/1.out" beforeDir="false" afterPath="$PROJECT_DIR$/data/1001/1.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userCodes/11712225/1.out" beforeDir="false" afterPath="$PROJECT_DIR$/userCodes/11712225/1.out" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +101,8 @@
       <updated>1567870418428</updated>
       <workItem from="1567870419589" duration="7000" />
       <workItem from="1568184072953" duration="44000" />
-      <workItem from="1568725531942" duration="14446000" />
+      <workItem from="1568725531942" duration="15359000" />
+      <workItem from="1568784561900" duration="842000" />
     </task>
     <servers />
   </component>
@@ -128,11 +130,16 @@
           <line>80</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py</url>
+          <line>105</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CS309_OOAD_online_judge$main.coverage" NAME="main Coverage Results" MODIFIED="1568741529571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/JudgeServer/JudgeServer" />
-    <SUITE FILE_PATH="coverage/CS309_OOAD_online_judge$Judger.coverage" NAME="Judger Coverage Results" MODIFIED="1568744399167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/JudgeServer/JudgeServer" />
+    <SUITE FILE_PATH="coverage/CS309_OOAD_online_judge$Judger.coverage" NAME="Judger Coverage Results" MODIFIED="1568784220742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/JudgeServer/JudgeServer" />
   </component>
 </project>

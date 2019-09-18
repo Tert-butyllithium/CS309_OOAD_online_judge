@@ -84,18 +84,24 @@ class Judger(object):
         self.run_code(SID, language_config, problem_id)
         output_folder = USER_CODES + str(SID) + '/'
         standard_output_folder = Project_PATH + '/data/' + str(problem_id) + '/'
+        print(output_folder)
+        print(standard_output_folder)
         pass_rate = self.compare_output(output_folder, standard_output_folder)
+        print(pass_rate)
 
     '''return the pass rate of this submission'''
 
     def compare_output(self, output_folder, standard_output_folder):
         success_count = 0
         fail_count = 0
+        file_count = 0
         user_output_list = os.listdir(output_folder)
-        for out_file_path in user_output_list:
-            if not out_file_path.endswith('.out'):
+        for out_file in user_output_list:
+            if not out_file.endswith('.out'):
                 continue
-            stan_file_path = standard_output_folder + out_file_path
+            file_count += 1
+            out_file_path = output_folder + out_file
+            stan_file_path = standard_output_folder + out_file
             outfile = open(out_file_path)
             stan_file = open(stan_file_path)
             # while outfile.newlines() :
@@ -114,7 +120,7 @@ class Judger(object):
                 if out.strip() != stan.strip():
                     fail_count += 1
                     break
-        return success_count / len(os.listdir(output_folder))
+        return success_count / file_count
 
 
 CPP_CODE = '#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n\tint a;\n\tcin >> a;\n\tfor(int i = 0; i < a; i++) {\n\t\tcout << i << endl;\n\t}\n}'
@@ -138,5 +144,5 @@ for i in range(0, int(a)):\
 PY2_CODE = 'a = input()\
 for i in range(0, int(a)):\
 	print(i)'
-# judger = Judger()
-# judger.run(11712225, CPP_CODE, 1, 1001)
+judger = Judger()
+judger.run(11712225, CPP_CODE, 1, 1001)
