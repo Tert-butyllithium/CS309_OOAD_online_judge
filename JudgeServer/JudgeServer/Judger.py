@@ -1,9 +1,8 @@
 import os
 import sys
-
-FILE_TYPE = ['.c', '.cpp', '.PAS', '.java', '.py', '.py', '.kt']
-Project_PATH = '/home/isc-/桌面/CS309_OOAD_online_judge/'
-USER_CODES = Project_PATH + 'userCodes/'
+from config import Project_PATH
+from config import FILE_TYPE
+from config import USER_CODES
 
 
 class Judger(object):
@@ -13,8 +12,9 @@ class Judger(object):
     def output_Code(self, SID, code, language_config):
         path = USER_CODES + str(SID)
         if not os.path.exists(path):
-            self.exec_cmd("mkdir /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/" + str(SID))
-        file_name = "/home/isc-/桌面/CS309_OOAD_online_judge/userCodes/" + str(SID) + "/Main" + FILE_TYPE[language_config]
+            self.exec_cmd("mkdir " + USER_CODES + str(SID))
+        # /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+        file_name = USER_CODES + str(SID) + "/Main" + FILE_TYPE[language_config]
         with open(file_name, 'w+') as file:
             saved_stdout = sys.stdout
             sys.stdout = file
@@ -120,6 +120,8 @@ class Judger(object):
                 if out.strip() != stan.strip():
                     fail_count += 1
                     break
+            outfile.close()
+            stan_file.close()
         return success_count / file_count
 
 
