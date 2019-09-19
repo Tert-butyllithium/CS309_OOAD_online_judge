@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4630eb-d24d-4660-a763-08e070bad425" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/1001/1.out" beforeDir="false" afterPath="$PROJECT_DIR$/data/1001/1.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userCodes/11712225/1.out" beforeDir="false" afterPath="$PROJECT_DIR$/userCodes/11712225/1.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/venv/bin/activate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/venv/bin/activate.csh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/venv/bin/activate.fish" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/venv/bin/python" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/venv/bin/python3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/venv/bin/python3.7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/venv/lib64" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/venv/pyvenv.cfg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +27,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/JudgeServer" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -103,6 +107,7 @@
       <workItem from="1568184072953" duration="44000" />
       <workItem from="1568725531942" duration="15359000" />
       <workItem from="1568784561900" duration="842000" />
+      <workItem from="1568805265670" duration="45000" />
     </task>
     <servers />
   </component>

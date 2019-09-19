@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/data/Code/2019fall/CS309_OOAD_online_judge/JudgeServer/venv"
+set -gx VIRTUAL_ENV "/home/isc-/桌面/CS309_OOAD_online_judge/JudgeServer/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

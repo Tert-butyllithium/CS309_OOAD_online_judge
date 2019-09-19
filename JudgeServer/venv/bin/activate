@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/data/Code/2019fall/CS309_OOAD_online_judge/JudgeServer/venv"
+VIRTUAL_ENV="/home/isc-/桌面/CS309_OOAD_online_judge/JudgeServer/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
