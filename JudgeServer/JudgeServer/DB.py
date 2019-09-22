@@ -3,9 +3,8 @@ import queue
 import pymysql
 
 
-class DBThread(threading.Thread):
+class DB(object):
     def __init__(self, host, user, pwd, db):
-        super(DBThread, self).__init__()
         self.host = host
         self.user = user
         self.pwd = pwd
@@ -25,21 +24,14 @@ class DBThread(threading.Thread):
         data = cursor.fetchall()
         for task in data:
             # print(task)
-            # language, code, spj, time, memory, SID
-            self.task_list.put((task[7], task[18], task[26], task[30], task[31], task[2]))
+            # language, code, spj, time, memory, SID, problem_id
+            self.task_list.put((task[7], task[18], task[26], task[30], task[31], task[2], task[19]))
         database.close()
 
     def run(self):
         if self.task_list.empty():
             self.search_submission()
         # else:
-        while not self.task_list.empty():
-            task = self.task_list.get()
-            language = task[0]
-            code = task[1]
-            spj = task[2]
-            time_limit = task[3]
-            memory_limit = task[4]
-            SID = task[5]
+
 #             judge
 

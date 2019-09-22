@@ -5,8 +5,8 @@ import logging
 import datetime
 
 FILE_TYPE = ['.c', '.cpp', '.PAS', '.java', '.py', '.py', '.kt']
-# Project_PATH = '/home/isc-/桌面/CS309_OOAD_online_judge/'
-Project_PATH = 'D:/Codes/CS309_OOAD_online_judge/'
+Project_PATH = '/home/isc-/桌面/CS309_OOAD_online_judge/'
+# Project_PATH = 'D:/Codes/CS309_OOAD_online_judge/'
 USER_CODES = Project_PATH + 'userCodes/'
 
 DATABASES_HOST = 'localhost'

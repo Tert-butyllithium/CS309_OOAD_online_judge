@@ -1,0 +1,460 @@
+[D 190922 23:18:35 main:16] (2, 'null', '0', 1000, 134217728, '11712225')
+[D 190922 23:18:35 main:16] (0, '#include "iostream"\n\nint main () {\n\tint a;\n\tscanf("%d", &a);\n\tint i = 0;\n\twhile (i < a) {\n\t\tprintf("%d\n", i++);\n\t}\n}', '0', 1000, 134217728, '11712225')
+[D 190922 23:18:35 main:16] (3, 'import java.util.*;\n\npublic class Main {\n\tpublic static void main(String[] args) {\n\t\tScanner input = new Scanner(System.in);\n\t\tint a = input.nextInt();\n\t\tfor(int i = 0; i < a; i++) {\n\t\t\tSystem.out.println(i);\n\t\t}\n\t}\n}', '0', 1000, 134217728, '11712225')
+[D 190922 23:18:35 main:16] (4, 'a = input()\nfor i in range(0, int(a)):\n\tprint(i)', '0', 1000, 134217728, '11712225')
+[D 190922 23:18:35 main:16] (5, 'a = input()\nfor i in range(0, int(a)):\n\tprint(i)', '0', 1000, 134217728, '11712225')
+[D 190922 23:18:35 main:16] (6, 'null', '0', 1000, 134217728, '11712225')
+[D 190922 23:18:35 main:16] (1, '#include <bits/stdc++.h>\n\nusing namespace bits;\n\nint main() {\n\tint a;\n\tcin >> a;\n\tfor(int i = 0; i < a; i++) {\n\t\tcout << i << endl;\n\t}\n}', '1', 1000, 134217728, '11712225')
+[D 190922 23:35:03 main:16] (0, '#include "iostream"\n\nint main () {\n\tint a;\n\tscanf("%d", &a);\n\tint i = 0;\n\twhile (i < a) {\n\t\tprintf("%d", i++);\n\t}', '0', 1000, 134217728, '11712225', 1001)
+[D 190922 23:35:03 main:16] (3, 'import java.util.*;\n\npublic class Main {\n\tpublic static void main(String[] args) {\n\t\tScanner input = new Scanner(System.in);\n\t\tint a = input.nextInt();\n\t\tfor(int i = 0; i < a; i++) {\n\t\t\tSystem.out.println(i);\n\t\t}\n\t}\n}', '0', 1000, 134217728, '11712225', 1001)
+[D 190922 23:35:03 main:16] (1, '#include <bits/stdc++.h>\n\nusing namespace bits;\n\nint main() {\n\tint a;\n\tcin >> a;\n\tfor(int i = 0; i < a; i++) {\n\t\tcout << i << endl;\n\t}\n}', '1', 1000, 134217728, '11712225', 1002)
+[D 190922 23:35:19 main:16] (0, '#include "iostream"\n\nint main () {\n\tint a;\n\tscanf("%d", &a);\n\tint i = 0;\n\twhile (i < a) {\n\t\tprintf("%d", i++);\n\t}', '0', 1000, 134217728, '11712225', 1001)
+[D 190922 23:35:19 main:16] (3, 'import java.util.*;\n\npublic class Main {\n\tpublic static void main(String[] args) {\n\t\tScanner input = new Scanner(System.in);\n\t\tint a = input.nextInt();\n\t\tfor(int i = 0; i < a; i++) {\n\t\t\tSystem.out.println(i);\n\t\t}\n\t}\n}', '0', 1000, 134217728, '11712225', 1001)
+[D 190922 23:35:19 main:16] (1, '#include <bits/stdc++.h>\n\nusing namespace bits;\n\nint main() {\n\tint a;\n\tcin >> a;\n\tfor(int i = 0; i < a; i++) {\n\t\tcout << i << endl;\n\t}\n}', '1', 1000, 134217728, '11712225', 1002)
+[D 190922 23:38:41 Judger:22] #include "iostream"
+    
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		printf("%d", i++);
+    	}
+    }
+[D 190922 23:38:41 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:38:41 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:38:41 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:38:41 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:38:41 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:38:41 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:38:41 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:38:41 Judger:91] 0.0
+[D 190922 23:38:41 Judger:22] import java.util.*;
+    
+    public class Main {
+    	public static void main(String[] args) {
+    		Scanner input = new Scanner(System.in);
+    		int a = input.nextInt();
+    		for(int i = 0; i < a; i++) {
+    			System.out.println(i);
+    		}
+    	}
+    }
+[D 190922 23:38:41 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.java
+[D 190922 23:38:42 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:38:42 Judger:68] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:38:42 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:38:42 Judger:68] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:38:42 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:38:42 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:38:42 Judger:91] 0.0
+[D 190922 23:38:42 Judger:22] #include <bits/stdc++.h>
+    
+    using namespace std;
+    
+    int main() {
+    	int a;
+    	cin >> a;
+    	for(int i = 0; i < a; i++) {
+    		cout << i << endl;
+    	}
+    }
+    
+[D 190922 23:38:42 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+[D 190922 23:38:42 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:38:42 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1002/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:38:42 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:38:42 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1002/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:38:42 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:38:42 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1002/
+[D 190922 23:40:15 Judger:22] #include "iostream"
+    
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		printf("%d", i++);
+    	}
+    }
+[D 190922 23:40:15 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:40:15 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:40:15 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:40:15 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:40:15 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:40:15 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:40:15 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:40:15 Judger:91] 0.0
+[D 190922 23:40:15 Judger:22] import java.util.*;
+    
+    public class Main {
+    	public static void main(String[] args) {
+    		Scanner input = new Scanner(System.in);
+    		int a = input.nextInt();
+    		for(int i = 0; i < a; i++) {
+    			System.out.println(i);
+    		}
+    	}
+    }
+[D 190922 23:40:15 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.java
+[D 190922 23:40:15 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:40:15 Judger:68] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/ Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:40:15 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:40:15 Judger:68] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/ Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:40:15 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:40:15 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:40:15 Judger:91] 0.0
+[D 190922 23:40:15 Judger:22] #include <bits/stdc++.h>
+    
+    using namespace std;
+    
+    int main() {
+    	int a;
+    	cin >> a;
+    	for(int i = 0; i < a; i++) {
+    		cout << i << endl;
+    	}
+    }
+    
+[D 190922 23:40:15 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+[D 190922 23:40:16 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:40:16 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1002/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:40:16 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:40:16 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1002/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:40:16 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:40:16 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1002/
+[D 190922 23:47:02 Judger:22] #include "iostream"
+    
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		printf("%d\n", i++);
+    	}
+    }
+[D 190922 23:47:02 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:47:02 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:47:02 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:47:02 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:47:02 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:47:02 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:47:02 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:47:02 Judger:91] 0.0
+[D 190922 23:47:02 Judger:22] import java.util.*;
+    
+    public class Main {
+    	public static void main(String[] args) {
+    		Scanner input = new Scanner(System.in);
+    		int a = input.nextInt();
+    		for(int i = 0; i < a; i++) {
+    			System.out.println(i);
+    		}
+    	}
+    }
+[D 190922 23:47:02 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.java
+[D 190922 23:47:03 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:47:03 Judger:68] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:47:03 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:47:03 Judger:68] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:47:03 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:47:03 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:47:03 Judger:91] 0.0
+[D 190922 23:47:03 Judger:22] #include <bits/stdc++.h>
+    
+    using namespace std;
+    
+    int main() {
+    	int a;
+    	cin >> a;
+    	for(int i = 0; i < a; i++) {
+    		cout << i << endl;
+    	}
+    }
+    
+[D 190922 23:47:03 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+[D 190922 23:47:03 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:47:03 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1002/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:47:03 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:47:03 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1002/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:47:03 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:47:03 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1002/
+[D 190922 23:50:19 Judger:22] #include <bits/stdc++.h>
+    
+    using namespace std;
+    
+    int main() {
+    	int a;
+    	cin >> a;
+    	for(int i = 0; i < a; i++) {
+    		cout << i << endl;
+    	}
+    }
+    
+[D 190922 23:50:19 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+[D 190922 23:50:19 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:50:19 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:50:19 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:50:19 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:50:19 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:50:19 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:50:19 Judger:91] 0.0
+[D 190922 23:50:19 Judger:22] #include "iostream"
+    
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		printf("%d\n", i++);
+    	}
+    }
+[D 190922 23:50:19 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:50:19 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:50:19 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:50:19 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:50:19 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:50:19 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:50:19 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:50:19 Judger:91] 0.0
+[D 190922 23:50:19 Judger:22] import java.util.*;
+    
+    public class Main {
+    	public static void main(String[] args) {
+    		Scanner input = new Scanner(System.in);
+    		int a = input.nextInt();
+    		for(int i = 0; i < a; i++) {
+    			System.out.println(i);
+    		}
+    	}
+    }
+[D 190922 23:50:19 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.java
+[D 190922 23:50:20 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:50:20 Judger:68] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:50:20 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:50:20 Judger:68] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:50:20 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:50:20 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:50:20 Judger:91] 0.0
+[I 190922 23:51:10 Judger:22] #include <bits/stdc++.h>
+    
+    using namespace std;
+    
+    int main() {
+    	int a;
+    	cin >> a;
+    	for(int i = 0; i < a; i++) {
+    		cout << i << endl;
+    	}
+    }
+    
+[D 190922 23:51:10 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+[D 190922 23:51:10 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:51:10 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:51:10 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:51:10 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:51:10 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:51:10 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:51:10 Judger:91] 0.0
+[I 190922 23:51:10 Judger:22] #include "iostream"
+    
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		printf("%d\n", i++);
+    	}
+    }
+[D 190922 23:51:10 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:51:10 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:51:10 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:51:10 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:51:10 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:51:10 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:51:10 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:51:10 Judger:91] 0.0
+[I 190922 23:51:10 Judger:22] import java.util.*;
+    
+    public class Main {
+    	public static void main(String[] args) {
+    		Scanner input = new Scanner(System.in);
+    		int a = input.nextInt();
+    		for(int i = 0; i < a; i++) {
+    			System.out.println(i);
+    		}
+    	}
+    }
+[D 190922 23:51:10 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.java
+[D 190922 23:51:11 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:51:11 Judger:68] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:51:11 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:51:11 Judger:68] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:51:11 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:51:11 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:51:11 Judger:91] 0.0
+[I 190922 23:52:44 Judger:22] #include "iostream"
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		logger.debugf("%d\n", i++);
+    	}
+    }
+[D 190922 23:52:44 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:52:44 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:52:44 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:52:44 Judger:59] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:52:44 Judger:62] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:52:44 Judger:88] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:52:44 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:52:44 Judger:91] 0.0
+[I 190922 23:54:10 Judger:22] #include "iostream"
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		logger.debugf("%d\n", i++);
+    	}
+    }
+[D 190922 23:54:10 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:54:10 Judger:30] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
+[D 190922 23:54:10 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:54:10 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:54:10 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:54:10 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:54:10 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:54:10 Judger:90] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:54:10 Judger:92] 0.0
+[I 190922 23:55:45 Judger:22] #include "iostream"
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		printf("%d\n", i++);
+    	}
+    }
+[D 190922 23:55:45 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:55:45 Judger:30] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
+[D 190922 23:55:45 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:55:45 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:55:45 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:55:45 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:55:45 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:55:45 Judger:90] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:55:45 Judger:92] 0.0
+[I 190922 23:56:06 Judger:22] #include "iostream"
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		printf("%d\n", i++);
+    	}
+    }
+[D 190922 23:56:06 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:56:06 Judger:30] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
+[D 190922 23:56:06 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:56:06 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:56:06 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:56:06 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:56:06 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:56:06 Judger:90] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:56:06 Judger:92] 0.0
+[I 190922 23:56:27 Judger:22] #include "iostream"
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		printf("%d\n", i++);
+    	}
+    }
+[D 190922 23:56:27 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:56:27 Judger:30] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
+[D 190922 23:56:27 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:56:27 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:56:27 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:56:27 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:56:27 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:56:27 Judger:90] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:56:27 Judger:92] 0.0
+[I 190922 23:56:27 Judger:22] #include <bits/stdc++.h>
+    
+    using namespace std;
+    
+    int main() {
+    	int a;
+    	cin >> a;
+    	for(int i = 0; i < a; i++) {
+    		cout << i << endl;
+    	}
+    }
+[D 190922 23:56:27 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+[D 190922 23:56:27 Judger:30] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
+[D 190922 23:56:27 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:56:27 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:56:27 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:56:27 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:56:27 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:56:27 Judger:90] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:56:27 Judger:92] 0.0
+[I 190922 23:56:27 Judger:22] import java.util.*;public class Main{	public static void main(String[] args) {		Scanner input = new Scanner (System.in);		int a = input.nextInt();		for(int i = 0; i < a; i++) {			System.out.println(i);		}	}}
+[D 190922 23:56:27 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.java
+[D 190922 23:56:27 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:56:27 Judger:69] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:56:27 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:56:27 Judger:69] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:56:27 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:56:27 Judger:90] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:56:27 Judger:92] 0.0
+[I 190922 23:56:35 Judger:22] #include "iostream"
+    int main () {
+    	int a;
+    	scanf("%d", &a);
+    	int i = 0;
+    	while (i < a) {
+    		printf("%d\n", i++);
+    	}
+    }
+[D 190922 23:56:35 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c
+[D 190922 23:56:35 Judger:30] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.c -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
+[D 190922 23:56:35 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:56:35 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:56:35 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:56:35 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:56:35 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:56:35 Judger:90] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:56:35 Judger:92] 0.0
+[I 190922 23:56:35 Judger:22] #include <bits/stdc++.h>
+    
+    using namespace std;
+    
+    int main() {
+    	int a;
+    	cin >> a;
+    	for(int i = 0; i < a; i++) {
+    		cout << i << endl;
+    	}
+    }
+[D 190922 23:56:35 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+[D 190922 23:56:35 Judger:30] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
+[D 190922 23:56:35 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:56:35 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:56:35 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:56:35 Judger:63] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:56:35 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:56:35 Judger:90] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:56:35 Judger:92] 0.0
+[I 190922 23:56:35 Judger:22] import java.util.*;public class Main{	public static void main(String[] args) {		Scanner input = new Scanner (System.in);		int a = input.nextInt();		for(int i = 0; i < a; i++) {			System.out.println(i);		}	}}
+[D 190922 23:56:35 Judger:28] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.java
+[D 190922 23:56:36 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 2.in
+[D 190922 23:56:36 Judger:69] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/2.out
+[D 190922 23:56:36 Judger:60] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main 1.in
+[D 190922 23:56:36 Judger:69] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+[D 190922 23:56:36 Judger:89] /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/
+[D 190922 23:56:36 Judger:90] /home/isc-/桌面/CS309_OOAD_online_judge//data/1001/
+[D 190922 23:56:36 Judger:92] 0.0

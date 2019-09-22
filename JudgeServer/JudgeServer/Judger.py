@@ -3,6 +3,16 @@ import sys
 from config import Project_PATH
 from config import FILE_TYPE
 from config import USER_CODES
+from config import logger
+
+WRONG_ANSWER = 0
+ACCEPT = 1
+TLE = 2
+MLE = 3
+RUNTIME_ERROR = 4
+COMPILE_ERROR = 5
+OTHER_ERROR = 6
+
 
 
 class Judger(object):
@@ -24,14 +34,17 @@ class Judger(object):
     def compile(self, language_config, SID):
         # /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
         file = USER_CODES + str(SID) + '/Main' + FILE_TYPE[language_config]
-        print("COMPILING CODE: " + file)
+        logger.debug("COMPILING CODE: " + file)
         if language_config == 1 or language_config == 0:
+            logger.debug("COMPILE COMMAND: " + 'g++ ' + file + ' -o ' + USER_CODES + str(SID) + '/Main')
             # g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
-            self.exec_cmd('g++ ' + file + ' -o ' + USER_CODES + str(SID) + '/Main')
+            if not self.exec_cmd('g++ ' + file + ' -o ' + USER_CODES + str(SID) + '/Main') == '':
+                return False
         elif language_config == 2:
             pass
         elif language_config == 3:
-            self.exec_cmd("javac " + file)
+            logger.debug('COMPILING COMMAND: ' + "javac " + file)
+            # if not self.exec_cmd("javac " + file) == '':
         elif language_config == 6:
             pass
 
@@ -44,6 +57,7 @@ class Judger(object):
     def run_code(self, SID, language_config, problem_id):
         user_folder = USER_CODES + str(SID) + '/'
         problem_folder = Project_PATH + 'data/' + str(problem_id) + '/'
+        result = "ERROR"
         for testfile in os.listdir(Project_PATH + "data/1001/"):
             if not testfile.endswith('.in'):
                 continue
@@ -54,40 +68,48 @@ class Judger(object):
             # /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
             code_file = user_folder + 'Main'
 
-            print("RUNNING CODE: " + code_file + " " + testfile)
-            result = "ERROR"
+            logger.debug("RUNNING CODE: " + code_file + " " + testfile)
             if language_config == 0 or language_config == 1:
                 command = code_file + ' < ' + input_path + '> ' + output_path
-                print("RUNNING COMMAND: " + command)
+                logger.debug("RUNNING COMMAND: " + command)
                 result = self.exec_cmd(command)
             elif language_config == 2:
                 pass
             elif language_config == 3:
-                command = USER_CODES + str(SID) + '/ Main < ' + input_path + '> ' + output_path
-                print('RUNNING COMMAND: java -cp ' + command)
+                command = 'java -cp ' + USER_CODES + str(SID) + '/ Main < ' + input_path + ' > ' + output_path
+                logger.debug('RUNNING COMMAND: ' + command)
                 result = self.exec_cmd(command)
             elif language_config == 4:
                 command = 'python2 ' + code_file + '.py'
-                print("RUNNING COMMAND: " + command)
+                logger.debug("RUNNING COMMAND: " + command)
                 result = self.exec_cmd(command)
             elif language_config == 5:
                 command = 'python ' + code_file + '.py'
-                print("RUNNING COMMAND: " + command)
+                logger.debug("RUNNING COMMAND: " + command)
                 result = self.exec_cmd(command)
             else:
                 pass
         return result
 
     def run(self, SID, code, language_config, problem_id):
+        judge_result = {
+            'time': 0,
+            'memory': 0,
+            'result': -1,
+            'error': -1
+        }
         self.output_Code(SID, code, language_config)
-        self.compile(language_config, SID)
+        if not self.compile(language_config, SID):
+            judge_result.result = COMPILE_ERROR
+            return judge_result
+            # judge_result.
         self.run_code(SID, language_config, problem_id)
         output_folder = USER_CODES + str(SID) + '/'
-        standard_output_folder = Project_PATH + '/data/' + str(problem_id) + '/'
-        print(output_folder)
-        print(standard_output_folder)
+        standard_output_folder = Project_PATH + 'data/' + str(problem_id) + '/'
+        logger.debug(output_folder)
+        logger.debug(standard_output_folder)
         pass_rate = self.compare_output(output_folder, standard_output_folder)
-        print(pass_rate)
+        logger.debug(pass_rate)
 
     '''return the pass rate of this submission'''
 
@@ -146,5 +168,17 @@ for i in range(0, int(a)):\
 PY2_CODE = 'a = input()\
 for i in range(0, int(a)):\
 	print(i)'
+
+C_CODE = "#include \"iostream\"\n\
+int main () {\n\
+	int a;\n\
+	scanf(\"%d\", &a);\n\
+	int i = 0;\n\
+	while (i < a) {\n\
+		printf(\"%d\\n\", i++);\n\
+	}\n\
+}"
 judger = Judger()
+# judger.run(11712225, C_CODE, 0, 1001)
 judger.run(11712225, CPP_CODE, 1, 1001)
+# judger.run(11712225, JAVA_CODE, 3, 1001)
