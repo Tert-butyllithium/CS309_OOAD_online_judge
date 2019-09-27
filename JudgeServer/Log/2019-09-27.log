@@ -322,3 +322,149 @@
 [D 190927 17:39:02 Judger:114] RUNNING COMMAND: python /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main.py < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
 [D 190927 17:39:02 Judger:97] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
 [D 190927 17:39:02 Judger:114] RUNNING COMMAND: python /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main.py < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/1.out
+[D 190927 22:10:09 Judger:66] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 22:10:09 Judger:43] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 22:10:10 Judger:97] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 22:10:10 Judger:100] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 22:10:10 Judger:97] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 22:10:10 Judger:100] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/1.out
+[D 190927 22:10:10 Judger:66] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 22:10:10 Judger:55] COMPILING COMMAND: javac /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 22:10:10 Judger:97] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 22:10:10 Judger:106] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 22:10:10 Judger:97] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 22:10:10 Judger:106] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/1.out
+[D 190927 22:10:11 Judger:66] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 22:10:11 Judger:97] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 22:10:11 Judger:110] RUNNING COMMAND: python2 /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main.py < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 22:10:11 Judger:97] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 22:10:11 Judger:110] RUNNING COMMAND: python2 /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main.py < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/1.out
+[D 190927 22:10:11 Judger:66] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 22:10:11 Judger:97] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 22:10:11 Judger:114] RUNNING COMMAND: python /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main.py < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 22:10:11 Judger:97] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 22:10:11 Judger:114] RUNNING COMMAND: python /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main.py < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/1.out
+[D 190927 23:42:52 Judger:68] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:42:52 Judger:45] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:42:53 Judger:103] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:42:53 Judger:108] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:43:30 Judger:68] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:43:30 Judger:45] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:43:31 Judger:103] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:43:31 Judger:108] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:44:03 Judger:68] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:44:03 Judger:45] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:44:04 Judger:103] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:44:04 Judger:108] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:44:16 Judger:68] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:44:16 Judger:45] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:44:17 Judger:103] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:44:17 Judger:108] RUNNING COMMAND: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in> /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:47:55 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:47:55 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:47:56 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:47:56 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:47:56 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:47:56 Judger:58] COMPILING COMMAND: javac /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:47:56 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:47:56 Judger:118] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:48:30 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:48:30 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:48:31 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:48:31 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:48:31 Judger:58] COMPILING COMMAND: javac /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:48:31 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:48:31 Judger:117] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:49:26 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:49:26 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:49:27 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:49:27 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:49:27 Judger:58] COMPILING COMMAND: javac /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:49:28 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:49:28 Judger:116] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:49:28 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:49:28 Judger:116] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/1.out
+[D 190927 23:49:28 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 23:49:28 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:49:28 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:49:28 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 23:49:28 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:49:28 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:50:05 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:50:05 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:50:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:50:06 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:50:06 Judger:58] COMPILING COMMAND: javac /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:50:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:50:06 Judger:116] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:50:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:50:06 Judger:116] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/1.out
+[D 190927 23:50:06 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 23:50:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:50:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:50:07 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 23:50:07 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:50:07 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:50:36 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:50:36 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:50:37 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:50:37 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:50:37 Judger:58] COMPILING COMMAND: javac /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:50:37 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:50:37 Judger:116] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:50:37 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:50:37 Judger:116] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/1.out
+[D 190927 23:50:37 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 23:50:37 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:50:38 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:50:38 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 23:50:38 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:50:38 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:50:56 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:50:56 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:50:57 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:51:45 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:51:45 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:51:46 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:51:46 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:51:46 Judger:58] COMPILING COMMAND: javac /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:51:47 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:51:47 Judger:116] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:51:47 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:51:47 Judger:116] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/1.out
+[D 190927 23:51:47 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 23:51:47 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:51:47 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:51:47 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 23:51:47 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:51:47 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:51:50 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:51:50 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:51:52 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:52:04 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[D 190927 23:52:04 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[D 190927 23:52:05 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:52:05 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:52:05 Judger:58] COMPILING COMMAND: javac /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.java
+[D 190927 23:52:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:52:06 Judger:116] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/2.out
+[D 190927 23:52:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:52:06 Judger:116] RUNNING COMMAND: java -cp /home/isc-/桌面/CS309_OOAD_online_judge/userCodes// Main < /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in > /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/1.out
+[D 190927 23:52:06 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 23:52:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:52:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:52:06 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.py
+[D 190927 23:52:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:52:06 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[I 190927 23:52:52 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[I 190927 23:52:52 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[I 190927 23:52:53 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[D 190927 23:52:53 Judger:152] {'time': 0.003965139389038086, 'result': {'time': 0.003965139389038086, 'result': 0, 'running_success': True}, 'running_success': False}
+[I 190927 23:53:16 Judger:69] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[I 190927 23:53:16 Judger:46] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[I 190927 23:53:17 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in
+[I 190927 23:53:17 Judger:104] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 1.in
+[D 190927 23:53:17 Judger:152] {'time': 0.009309530258178711, 'result': 0, 'running_success': True}
+[I 190927 23:57:47 Judger:68] COMPILING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp
+[I 190927 23:57:47 Judger:45] COMPILE COMMAND: g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes//Main
+[I 190927 23:57:47 Judger:103] RUNNING CODE: /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/Main 2.in

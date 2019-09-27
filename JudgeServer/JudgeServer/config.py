@@ -5,9 +5,10 @@ import logging
 import datetime
 
 FILE_TYPE = ['.c', '.cpp', '.PAS', '.java', '.py', '.py', '.kt']
-Project_PATH = '/home/isc-/桌面/CS309_OOAD_online_judge/'
+Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge/'
 # Project_PATH = 'D:/Codes/CS309_OOAD_online_judge/'
 USER_CODES_FOLDER = Project_PATH + 'userCodes/'
+RUN_CODE_PY = Project_PATH + 'run_code.py'
 
 DATABASES_HOST = 'localhost'
 DATABASES_USER = 'root'
@@ -20,8 +21,6 @@ if not os.path.exists(LOG_FILE):
     log_file = open(LOG_FILE, 'w')
     log_file.close()
 logzero.logfile(LOG_FILE, loglevel=logging.DEBUG)
-
-
 
 OJ_WT0 = 0
 OJ_WT1 = 1
