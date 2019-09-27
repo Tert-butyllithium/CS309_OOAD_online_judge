@@ -8,11 +8,12 @@ from config import logger
 
 
 def main():
-    OJ_DB = DB(DATABASES_HOST, DATABASES_USER, DATABASES_PWD, DATABASES_DB)
+    task_set = {}
+    OJ_DB = DB(DATABASES_HOST, DATABASES_USER, DATABASES_PWD, DATABASES_DB, task_set)
     OJ_DB.run()
     judger = Judger()
-    while not OJ_DB.task_list.empty():
-        task = OJ_DB.task_list.get()
+    while not OJ_DB.task_set.empty():
+        task = OJ_DB.task_set.get()
         # logger.debug(task)
         language = task[0]
         code = task[1]

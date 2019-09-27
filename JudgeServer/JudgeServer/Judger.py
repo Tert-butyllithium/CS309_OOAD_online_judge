@@ -2,8 +2,14 @@ import os
 import sys
 from config import Project_PATH
 from config import FILE_TYPE
-from config import USER_CODES
+from config import USER_CODES_FOLDER
 from config import logger
+from config import OJ_AC
+from config import OJ_WA
+from config import OJ_TL
+from config import OJ_ML
+from config import OJ_RE
+from config import OJ_CE
 
 WRONG_ANSWER = 0
 ACCEPT = 1
@@ -19,34 +25,54 @@ class Judger(object):
     def __init__(self):
         pass
 
-    def output_Code(self, SID, code, language_config):
-        path = USER_CODES + str(SID)
+    def output_Code(self, code, language_config, append = None):
+        path = USER_CODES_FOLDER
         if not os.path.exists(path):
-            self.exec_cmd("mkdir " + USER_CODES + str(SID))
+            self.exec_cmd("mkdir " + path)
         # /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
-        file_name = USER_CODES + str(SID) + "/Main" + FILE_TYPE[language_config]
+        file_name = USER_CODES_FOLDER + "/Main" + FILE_TYPE[language_config]
         with open(file_name, 'w+') as file:
             saved_stdout = sys.stdout
             sys.stdout = file
+            if append != None:
+                print(append)
             print(code)
             sys.stdout = saved_stdout
 
-    def compile(self, language_config, SID):
+    def compileC_CPP(self, file, append=None):
+        logger.debug("COMPILE COMMAND: " + 'g++ ' + file + ' -o ' + USER_CODES_FOLDER + '/Main')
+        # g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
+        if append == None:
+            command = 'g++ ' + file + ' -o ' + USER_CODES_FOLDER + '/Main'
+        else:
+            command = 'g++ ' + file + ' ' + append +'  -o ' + USER_CODES_FOLDER  + '/Main'
+        if os.system(command):
+            logger.debug("Compile error")
+            return False
+        return True
+
+    def compile_JAVA(self, file):
+        logger.debug('COMPILING COMMAND: ' + "javac " + file)
+        if os.system("javac " + file):
+            logger.debug("Compile error")
+            return False
+        return True
+
+    """需要加一个新的参数 str_append， to represent the parameter in the cmd"""
+    """需要把各个语言的编译单独封装"""
+    def compile(self, language_config):
         # /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
-        file = USER_CODES + str(SID) + '/Main' + FILE_TYPE[language_config]
+        file = USER_CODES_FOLDER  + '/Main' + FILE_TYPE[language_config]
         logger.debug("COMPILING CODE: " + file)
         if language_config == 1 or language_config == 0:
-            logger.debug("COMPILE COMMAND: " + 'g++ ' + file + ' -o ' + USER_CODES + str(SID) + '/Main')
-            # g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
-            if not self.exec_cmd('g++ ' + file + ' -o ' + USER_CODES + str(SID) + '/Main') == '':
-                return False
+            return self.compileC_CPP(file)
         elif language_config == 2:
             pass
         elif language_config == 3:
-            logger.debug('COMPILING COMMAND: ' + "javac " + file)
-            # if not self.exec_cmd("javac " + file) == '':
+            return self.compile_JAVA(file)
         elif language_config == 6:
             pass
+        return True
 
     def exec_cmd(self, cmd):
         r = os.popen(cmd)
@@ -54,11 +80,11 @@ class Judger(object):
         r.close()
         return text
 
-    def run_code(self, SID, language_config, problem_id):
-        user_folder = USER_CODES + str(SID) + '/'
+    def run_code(self, language_config, problem_id):
+        user_folder = USER_CODES_FOLDER
         problem_folder = Project_PATH + 'data/' + str(problem_id) + '/'
-        result = "ERROR"
-        for testfile in os.listdir(Project_PATH + "data/1001/"):
+        result = ""
+        for testfile in os.listdir(problem_folder):
             if not testfile.endswith('.in'):
                 continue
             # /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in
@@ -76,40 +102,58 @@ class Judger(object):
             elif language_config == 2:
                 pass
             elif language_config == 3:
-                command = 'java -cp ' + USER_CODES + str(SID) + '/ Main < ' + input_path + ' > ' + output_path
+                command = 'java -cp ' + USER_CODES_FOLDER + '/ Main < ' + input_path + ' > ' + output_path
                 logger.debug('RUNNING COMMAND: ' + command)
                 result = self.exec_cmd(command)
             elif language_config == 4:
-                command = 'python2 ' + code_file + '.py'
+                command = 'python2 ' + code_file + '.py < ' + input_path + ' > ' + output_path
                 logger.debug("RUNNING COMMAND: " + command)
                 result = self.exec_cmd(command)
             elif language_config == 5:
-                command = 'python ' + code_file + '.py'
+                command = 'python ' + code_file + '.py < ' + input_path + ' > ' + output_path
                 logger.debug("RUNNING COMMAND: " + command)
                 result = self.exec_cmd(command)
             else:
                 pass
-        return result
+        if result != '':
+            print(result)
+            return False
+        else:
+            return True
+        # return result
 
-    def run(self, SID, code, language_config, problem_id):
+    def run(self, code, language_config, problem_id):
         judge_result = {
             'time': 0,
             'memory': 0,
             'result': -1,
             'error': -1
         }
-        self.output_Code(SID, code, language_config)
-        if not self.compile(language_config, SID):
-            judge_result.result = COMPILE_ERROR
+        self.output_Code( code, language_config)
+        if not self.compile(language_config):
+            judge_result['result'] = OJ_CE
             return judge_result
-            # judge_result.
-        self.run_code(SID, language_config, problem_id)
-        output_folder = USER_CODES + str(SID) + '/'
+        if not self.run_code(language_config, problem_id):
+            judge_result['result'] = OJ_RE
+            return judge_result
+        output_folder = USER_CODES_FOLDER  + '/'
         standard_output_folder = Project_PATH + 'data/' + str(problem_id) + '/'
-        logger.debug(output_folder)
-        logger.debug(standard_output_folder)
-        pass_rate = self.compare_output(output_folder, standard_output_folder)
-        logger.debug(pass_rate)
+        if not self.compare_output(output_folder, standard_output_folder):
+            judge_result['result'] = OJ_WA
+            return judge_result
+        judge_result['result'] = OJ_AC
+        os.system('rm -rf '+ USER_CODES_FOLDER+'/')
+        return judge_result
+            # judge_result.result = COMPILE_ERROR
+            # return judge_result
+            # judge_result.
+        # self.run_code(SID, language_config, problem_id)
+        # output_folder = USER_CODES_FOLDER + str(SID) + '/'
+        # standard_output_folder = Project_PATH + 'data/' + str(problem_id) + '/'
+        # logger.debug(output_folder)
+        # logger.debug(standard_output_folder)
+        # pass_rate = self.compare_output(output_folder, standard_output_folder)
+        # logger.debug(pass_rate)
 
     '''return the pass rate of this submission'''
 
@@ -144,7 +188,10 @@ class Judger(object):
                     break
             outfile.close()
             stan_file.close()
-        return success_count / file_count
+        if success_count / file_count == 1:
+            return True
+        else:
+            return False
 
 
 CPP_CODE = '#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n\tint a;\n\tcin >> a;\n\tfor(int i = 0; i < a; i++) {\n\t\tcout << i << endl;\n\t}\n}'
@@ -161,12 +208,12 @@ public class Main{\
 	}\
 }'
 
-PY_CODE = 'a = input()\
-for i in range(0, int(a)):\
+PY_CODE = 'a = input()\n\
+for i in range(0, int(a)):\n\
 	print(i)'
 
-PY2_CODE = 'a = input()\
-for i in range(0, int(a)):\
+PY2_CODE = 'a = input()\n\
+for i in range(0, int(a)):\n\
 	print(i)'
 
 C_CODE = "#include \"iostream\"\n\
@@ -180,5 +227,7 @@ int main () {\n\
 }"
 judger = Judger()
 # judger.run(11712225, C_CODE, 0, 1001)
-judger.run(11712225, CPP_CODE, 1, 1001)
-# judger.run(11712225, JAVA_CODE, 3, 1001)
+print(judger.run(CPP_CODE, 1, 1001))
+print(judger.run(JAVA_CODE, 3, 1001))
+print(judger.run(PY_CODE, 4, 1001))
+print(judger.run(PY2_CODE, 5, 1001))
