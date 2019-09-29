@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4630eb-d24d-4660-a763-08e070bad425" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/DB.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/DB.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/Main" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/TLEjudger.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/TLEjudger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/Log/2019-09-27.log" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/Log/2019-09-27.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userCodes/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/userCodes/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JudgeServer/Log/2019-09-28.log" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/Log/2019-09-28.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userCodes/1.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/userCodes/2.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/userCodes/Main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/userCodes/Main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/userCodes/Main.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +23,13 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/CS309_OOAD_online_judge$main.coverage" NAME="main Coverage Results" MODIFIED="1568221225509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/JudgeServer/JudgeServer" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,7 +52,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Judger">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Judger" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CS309_OOAD_online_judge" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,10 +97,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CS309_OOAD_online_judge" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/JudgeServer/JudgeServer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/JudgeServer/JudgeServer/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Judger" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.Judger" />
+        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -107,7 +142,8 @@
       <workItem from="1568725531942" duration="15359000" />
       <workItem from="1568784561900" duration="842000" />
       <workItem from="1568805265670" duration="45000" />
-      <workItem from="1569606357891" duration="6325000" />
+      <workItem from="1569606357891" duration="17990000" />
+      <workItem from="1569754405178" duration="21835000" />
     </task>
     <servers />
   </component>
@@ -132,14 +168,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py</url>
-          <line>106</line>
-          <option name="timeStamp" value="8" />
+          <line>83</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CS309_OOAD_online_judge$main.coverage" NAME="main Coverage Results" MODIFIED="1569611790088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/JudgeServer/JudgeServer" />
-    <SUITE FILE_PATH="coverage/CS309_OOAD_online_judge$Judger.coverage" NAME="Judger Coverage Results" MODIFIED="1569611839015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/JudgeServer/JudgeServer" />
+    <SUITE FILE_PATH="coverage/CS309_OOAD_online_judge$test.coverage" NAME="test Coverage Results" MODIFIED="1569755900565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/JudgeServer/JudgeServer" />
+    <SUITE FILE_PATH="coverage/CS309_OOAD_online_judge$main.coverage" NAME="main Coverage Results" MODIFIED="1569782328237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/JudgeServer/JudgeServer" />
+    <SUITE FILE_PATH="coverage/CS309_OOAD_online_judge$Judger.coverage" NAME="Judger Coverage Results" MODIFIED="1569766912633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/JudgeServer/JudgeServer" />
   </component>
 </project>

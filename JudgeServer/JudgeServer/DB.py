@@ -4,14 +4,13 @@ import pymysql
 
 
 class DB(object):
-    def __init__(self, host, user, pwd, db, task_set):
+    def __init__(self, host, user, pwd, db):
         self.host = host
         self.user = user
         self.pwd = pwd
         self.db = db
-        self.task_set = task_set
 
-    def search_detail(self, solution_id):
+    def search_one(self, solution_id):
         database = pymysql.connect(
             host=self.host,
             user=self.user,
@@ -20,9 +19,14 @@ class DB(object):
         )
         cursor = database.cursor()
         cursor.execute(
-            "select * from solution s join source_code sc on s.solution_id = sc.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = " + str(solution_id))
-        data = cursor.fetchall()
-        print(data)
+            'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
+                solution_id))
+        data = cursor.fetchone()
+        # (codes, language_config, problem_id, TL, ML, SPJ)
+        database.close()
+        return (data[1], data[9], data[3], data[30], data[31], data[26])
+        # for i in range(0, len(data)):
+        #     print(str(i) + " " + str(data[i]))
 
     def search_submission(self):
         database = pymysql.connect(
@@ -33,18 +37,14 @@ class DB(object):
         )
         cursor = database.cursor()
         cursor.execute(
-            "select * from solution s join source_code sc on s.solution_id = sc.solution_id join problem p on s.problem_id = p.problem_id where s.result = 0")
+            'select * from solution s where s.result = 0;')
         data = cursor.fetchall()
-        for task in data:
-            # print(task)
-            # language, code, spj, time, memory, SID, problem_id
-            self.task_set.put((task[7], task[18], task[26], task[30], task[31], task[2], task[19]))
-        database.close()
+        # Only store the solution id of the tasks have not been judged
+        list = []
+        for i in range(0, len(data)):
+            list.append(data[i][0])
+        return list
 
     def run(self):
         if self.task_set.empty():
             self.search_submission()
-        # else:
-
-#             judge
-

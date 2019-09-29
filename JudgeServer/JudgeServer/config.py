@@ -8,7 +8,7 @@ FILE_TYPE = ['.c', '.cpp', '.PAS', '.java', '.py', '.py', '.kt']
 Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge/'
 # Project_PATH = 'D:/Codes/CS309_OOAD_online_judge/'
 USER_CODES_FOLDER = Project_PATH + 'userCodes/'
-RUN_CODE_PY = Project_PATH + 'run_code.py'
+RUN_CODE_PY = Project_PATH + 'JudgeServer/JudgeServer/Running_Code.py'
 
 DATABASES_HOST = 'localhost'
 DATABASES_USER = 'root'
@@ -35,3 +35,5 @@ OJ_OL = 9
 OJ_RE = 10
 OJ_CE = 11
 OJ_CO = 12
+
+SYSTEM_UID = 1000

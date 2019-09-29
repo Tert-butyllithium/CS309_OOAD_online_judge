@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 from config import Project_PATH
 from config import FILE_TYPE
 from config import USER_CODES_FOLDER
@@ -12,15 +13,8 @@ from config import OJ_RE
 from config import OJ_CE
 from TLEjudger import TimeoutThread
 from config import RUN_CODE_PY
-import time
-
-WRONG_ANSWER = 0
-ACCEPT = 1
-TLE = 2
-MLE = 3
-RUNTIME_ERROR = 4
-COMPILE_ERROR = 5
-OTHER_ERROR = 6
+from Running_Code import DockerThread
+from config import SYSTEM_UID
 
 
 class Judger(object):
@@ -31,7 +25,7 @@ class Judger(object):
         path = USER_CODES_FOLDER
         if not os.path.exists(path):
             self.exec_cmd("mkdir " + path)
-        # /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+        # /home/1000:1000/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
         file_name = USER_CODES_FOLDER + "/Main" + FILE_TYPE[language_config]
         with open(file_name, 'w+') as file:
             saved_stdout = sys.stdout
@@ -40,42 +34,46 @@ class Judger(object):
                 print(append)
             print(code)
             sys.stdout = saved_stdout
-
-    def compileC_CPP(self, file, append=None):
-        logger.info("COMPILE COMMAND: " + 'g++ ' + file + ' -o ' + USER_CODES_FOLDER + 'Main')
-        # g++ /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp -o /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
-        if append == None:
-            command = 'g++ ' + file + ' -o ' + USER_CODES_FOLDER + 'Main'
-        else:
-            command = 'g++ ' + file + ' ' + append + '  -o ' + USER_CODES_FOLDER + 'Main'
-        if os.system(command):
-            logger.info("Compile error")
-            return False
-        return True
-
-    def compile_JAVA(self, file):
-        logger.info('COMPILING COMMAND: ' + "javac " + file)
-        if os.system("javac " + file):
-            logger.info("Compile error")
-            return False
-        return True
-
-    """需要加一个新的参数 str_append， to represent the parameter in the cmd"""
-    """需要把各个语言的编译单独封装"""
+            file.close()
 
     def compile(self, language_config):
-        # /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+        def compileC_CPP(file, append=None):
+            logger.info("COMPILE COMMAND: " + 'g++ ' + file + ' -o ' + USER_CODES_FOLDER + 'Main')
+            compile_result_log = USER_CODES_FOLDER + '/compile_result.log'
+            if append is None:
+                command = 'g++ ' + file + ' -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
+            else:
+                command = 'g++ ' + file + ' ' + append + '  -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
+            self.exec_cmd(command)
+            while not os.path.exists(compile_result_log):
+                pass
+            with open(compile_result_log, 'r+') as file:
+                result = file.read()
+                file.close()
+                if result:
+                    return False, result
+            return True, ''
+
+        def compile_JAVA(file):
+            logger.info('COMPILING COMMAND: ' + "javac " + file)
+            command = "javac " + file
+            if os.system(command):
+                logger.info("Compile error")
+                return False, self.exec_cmd(command)
+            return True, self.exec_cmd(command)
+
+        # /home/1000:1000/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
         file = USER_CODES_FOLDER + 'Main' + FILE_TYPE[language_config]
         logger.info("COMPILING CODE: " + file)
         if language_config == 1 or language_config == 0:
-            return self.compileC_CPP(file)
+            return compileC_CPP(file)
         elif language_config == 2:
             pass
         elif language_config == 3:
-            return self.compile_JAVA(file)
+            return compile_JAVA(file)
         elif language_config == 6:
             pass
-        return True
+        return True, ''
 
     def exec_cmd(self, cmd):
         r = os.popen(cmd)
@@ -84,63 +82,66 @@ class Judger(object):
         return text
 
     def run_code(self, language_config, problem_id, time_limit):
-        user_folder = USER_CODES_FOLDER
-        problem_folder = Project_PATH + 'data/' + str(problem_id) + '/'
-        result = {
-            'time': 0,
-            'result': 0,
-            'running_success': True
-        }
-        for testfile in os.listdir(problem_folder):
-            if not testfile.endswith('.in'):
-                continue
-            # /home/isc-/桌面/CS309_OOAD_online_judge/data/1001/1.in
-            input_path = problem_folder + testfile
-            # /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
-            output_path = user_folder + testfile[0:len(testfile) - 3] + '.out'
-            # /home/isc-/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
-            code_file = user_folder + 'Main'
-
-            logger.info("RUNNING CODE: " + code_file + " " + testfile)
-            timeout_thread = TimeoutThread(time_limit)
+        def get_docker_command():
+            prefix = 'docker run -u ' + str(SYSTEM_UID) + ':' + str(SYSTEM_UID)
             if language_config == 0 or language_config == 1:
                 command = code_file + ' < ' + input_path + '> ' + output_path
-                docker_command = 'docker run -v ' + RUN_CODE_PY + ':' + RUN_CODE_PY + ' -v ' + USER_CODES_FOLDER + ':' + USER_CODES_FOLDER + ' -v ' + input_path + ':' + input_path + ' judge:v2 python3 ' + RUN_CODE_PY + ' \'' + command + '\''
-                logger.info('RUNNING COMMAND: ' + command)
-                via_result = self.TLE_judge(timeout_thread, docker_command)
-                result['result'] = via_result['result']
-                result['time'] = via_result['time'] + result['time']
-                # result = self.exec_cmd(command)
             elif language_config == 2:
                 pass
             elif language_config == 3:
                 command = 'java -cp ' + USER_CODES_FOLDER + '/ Main < ' + input_path + ' > ' + output_path
-                docker_command = 'docker run -v ' + RUN_CODE_PY + ':' + RUN_CODE_PY + ' -v ' + USER_CODES_FOLDER + ':' + USER_CODES_FOLDER + ' -v ' + input_path + ':' + input_path + ' judge:v2 python3 ' + RUN_CODE_PY + ' \'' + command + '\''
-                logger.info('RUNNING COMMAND: ' + command)
-                via_result = self.TLE_judge(timeout_thread, docker_command)
-                result['result'] = via_result['result']
-                result['time'] = via_result['time'] + result['time']
-                # result = self.exec_cmd(command)
             elif language_config == 4:
                 command = 'python2 ' + code_file + '.py < ' + input_path + ' > ' + output_path
-                docker_command = 'docker run -v ' + RUN_CODE_PY + ':' + RUN_CODE_PY + ' -v ' + USER_CODES_FOLDER + ':' + USER_CODES_FOLDER + ' -v ' + input_path + ':' + input_path + ' judge:v2 python3 ' + RUN_CODE_PY + ' \'' + command + '\''
-                logger.info('RUNNING COMMAND: ' + command)
-                via_result = self.TLE_judge(timeout_thread, docker_command)
-                result['result'] = via_result['result']
-                result['time'] = via_result['time'] + result['time']
-                # result = self.exec_cmd(command)
             elif language_config == 5:
                 command = 'python ' + code_file + '.py < ' + input_path + ' > ' + output_path
-                docker_command = 'docker run -v ' + RUN_CODE_PY + ':' + RUN_CODE_PY + ' -v ' + USER_CODES_FOLDER + ':' + USER_CODES_FOLDER + ' -v ' + input_path + ':' + input_path + ' judge:v2 python3 ' + RUN_CODE_PY + ' \'' + command + '\''
-                logger.info('RUNNING COMMAND: ' + command)
-                via_result = self.TLE_judge(timeout_thread, docker_command)
-                result['result'] = via_result['result']
-                result['time'] = via_result['time'] + result['time']
-                # result = self.exec_cmd(command)
             else:
                 pass
-            if result['result'] != 0:
-                result['running_success'] = False
+            runtime_result = USER_CODES_FOLDER + 'runtime_result.log'
+            docker_command = prefix + ' -v ' + RUN_CODE_PY + ':' + RUN_CODE_PY + ' -v ' + USER_CODES_FOLDER + ':' + USER_CODES_FOLDER + ' -v ' + input_path + ':' + input_path + ' judge:v2 python3 ' + RUN_CODE_PY + ' \'' + command + '\' ' + str(
+                time_limit) + ' \'' + USER_CODES_FOLDER + '\' 2> ' + runtime_result
+            logger.info('RUNNING COMMAND: ' + command)
+            name = str(abs(hash(str(time.time()) + docker_command)))
+            docker_command = docker_command[: len(prefix) + 1] + '--name ' + name + ' ' + docker_command[
+                                                                                          len(prefix) + 1:]
+            logger.debug(docker_command)
+            return docker_command, name
+
+        user_folder = USER_CODES_FOLDER
+        problem_folder = Project_PATH + 'data/' + str(problem_id) + '/'
+        result = {
+            'time': 0,
+            'error': 0,
+            'TLE': False
+        }
+        for testfile in os.listdir(problem_folder):
+            if not testfile.endswith('.in'):
+                continue
+            # /home/1000:1000/桌面/CS309_OOAD_online_judge/data/1001/1.in
+            input_path = problem_folder + testfile
+            # /home/1000:1000/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+            output_path = user_folder + testfile[0:len(testfile) - 3] + '.out'
+            # /home/1000:1000/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
+            code_file = user_folder + 'Main'
+
+            logger.info("RUNNING CODE: " + code_file + " " + testfile)
+            # 对于不同的语言
+            docker_command, docker_name = get_docker_command()
+            logger.info(docker_command)
+            docker_thread = DockerThread(docker_command)
+            docker_thread.start()
+            docker_result_log = USER_CODES_FOLDER + '/docker_result.log'
+            while not os.path.exists(docker_result_log):
+                pass
+            time.sleep(0.1)
+            self.exec_cmd('docker stop ' + docker_name)
+            with open(docker_result_log, 'r+') as file:
+                docker_result = eval(file.read())
+                file.close()
+            logger.debug(docker_result)
+            result['time'] += docker_result['time']
+            result['TLE'] = docker_result['TLE']
+            result['error'] = docker_result['error']
+            if result['TLE'] or result['error']:
                 return result
         return result
 
@@ -152,25 +153,34 @@ class Judger(object):
             'error': ''
         }
         self.output_Code(code, language_config)
-        if not self.compile(language_config):
+        compile_result, compile_error = self.compile(language_config)
+        if not compile_result:
             judge_result['result'] = OJ_CE
+            judge_result['error'] = compile_error
+            os.system('rm -rf ' + USER_CODES_FOLDER)
             return judge_result
         runtime_result = self.run_code(language_config, problem_id, time_limit)
         logger.debug(runtime_result)
-        judge_result['result'] = runtime_result['result']
         judge_result['time'] = runtime_result['time']
-        if not runtime_result['running_success']:
+        judge_result['error'] = runtime_result['error']
+        if judge_result['error']:
+            judge_result['result'] = OJ_RE
+            os.system('rm -rf ' + USER_CODES_FOLDER)
             return judge_result
+        if runtime_result['TLE']:
+            judge_result['result'] = OJ_TL
+            os.system('rm -rf ' + USER_CODES_FOLDER)
+            return judge_result
+        logger.info(judge_result)
         output_folder = USER_CODES_FOLDER + '/'
         standard_output_folder = Project_PATH + 'data/' + str(problem_id) + '/'
         if not self.compare_output(output_folder, standard_output_folder):
             judge_result['result'] = OJ_WA
+            os.system('rm -rf ' + USER_CODES_FOLDER)
             return judge_result
         judge_result['result'] = OJ_AC
-        os.system('rm -rf ' + USER_CODES_FOLDER + '/')
+        os.system('rm -rf ' + USER_CODES_FOLDER + '/*')
         return judge_result
-
-    '''return the pass rate of this submission'''
 
     def compare_output(self, output_folder, standard_output_folder):
         success_count = 0
@@ -208,67 +218,50 @@ class Judger(object):
         else:
             return False
 
-    def TLE_judge(self, timeout_thread, docker_command):
-        name = abs(hash(docker_command))
-        # logger.debug(str(name))
-        timeout_thread.container_name = name
-        docker_command = docker_command[:10] + ' --name ' + str(name) + docker_command[10:]
-        logger.info("DOCKER_COMMAND: " + docker_command)
-        timeout_thread.start()
-        start_time = time.time()
-        # logger.info('DOCKER COMMAND: ' + docker_command)
-        runtime_result = self.exec_cmd(docker_command)
-        end_time = time.time()
-        timeout_thread.setCancel()
-        result = timeout_thread.result
-        logger.debug(result)
-        if runtime_result != '':
-            result['result'] = OJ_RE
-            result['running_success'] = False
-        result['time'] = end_time - start_time
-        return result
 
-
-CPP_CODE = '#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n\tint a;\n\tcin >> a;\n\tfor(int i = 0; i < a; i++) {\n\t\tcout << i << endl;\n\t}\n}'
-
-CPP_LOOP = 'int main() {\n\twhile(1) {\n\tint a = 1;\n\tint b = 2;\n\t}}'
-
-JAVA_CODE = 'import java.util.*;\
-\
-public class Main{\
-	public static void main(String[] args) {\
-		Scanner input = new Scanner (System.in);\
-		int a = input.nextInt();\
-		for(int i = 0; i < a; i++) {\
-			System.out.println(i);\
-		}\
-	}\
-}'
-
-PY_CODE = 'a = input()\n\
-for i in range(0, int(a)):\n\
-	print(i)'
-
-PY2_CODE = 'a = input()\n\
-for i in range(0, int(a)):\n\
-	print(i)'
-
-C_CODE = "#include \"iostream\"\n\
-int main () {\n\
-	int a;\n\
-	scanf(\"%d\", &a);\n\
-	int i = 0;\n\
-	while (i < a) {\n\
-		printf(\"%d\\n\", i++);\n\
-	}\n\
-}"
-
-PYTHON_TLE = 'import time \ntime.sleep(3)\n'
-judger = Judger()
-# judger.run(11712225, C_CODE, 0, 1001)
+# CPP_CODE = '#include <bits/stdc++.h>\n\nusing namespace std;\n\tint main() {\n\t\n\tint a;\n\tcin >> a;\n\tfor(int i = 0; i < a; i++) {\n\t\tcout << i << endl;\n\t}\n}'
+#
+# CPP_LOOP = 'int main() {\n\twhile(1) {\n\tint a = 1;\n\tint b = 2;\n\t}}'
+#
+# JAVA_CODE = 'import java.util.*;\
+# \
+# public class Main{\
+# 	public static void main(String[] args) {\
+# 		Scanner input = new Scanner (System.in);\
+# 		int a = input.nextInt();\
+# 		for(int i = 0; i < a; i++) {\
+# 			System.out.println(i);\
+# 		}\
+# 	}\
+# }'
+#
+# PY_CODE = 'a = input()\n\
+# for i in range(0, int(a)):\n\
+# 	print(i)'
+#
+# PY2_CODE = 'a = input()\n\
+# for i in range(0, int(a)):\n\
+# 	print(i)'
+#
+# C_CODE = "#include \"iostream\"\n\
+# int main () {\n\
+# 	int a;\n\
+# 	scanf(\"%d\", &a);\n\
+# 	int i = 0;\n\
+# 	while (i < a) {\n\
+# 		printf(\"%d\\n\", i++);\n\
+# 	}\n\
+# }"
+#
+# PYTHON_TLE = 'import time \ntime.sleep(90)\n'
+# PYTHON_RUNTIME_RERROR = 'a = 1\nprint(a + "ss")'
+# judger = Judger()
+# print(judger.run(C_CODE, 0, 1001, 1))
 # print(judger.run(CPP_LOOP, 1, 1001, 1))
+#
 # print(judger.run(CPP_CODE, 1, 1001, 1))
 # print(judger.run(JAVA_CODE, 3, 1001, 3))
 # print(judger.run(PY_CODE, 4, 1001, 3))
 # print(judger.run(PY2_CODE, 5, 1001, 3))
-print(judger.run(PYTHON_TLE, 4, 1001, 3))
+# print(judger.run(PYTHON_TLE, 4, 1001, 3))
+# print(judger.run(PYTHON_RUNTIME_RERROR, 4, 1001, 3))
