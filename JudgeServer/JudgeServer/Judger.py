@@ -11,7 +11,6 @@ from config import OJ_TL
 from config import OJ_ML
 from config import OJ_RE
 from config import OJ_CE
-from TLEjudger import TimeoutThread
 from config import RUN_CODE_PY
 from Running_Code import DockerThread
 from config import SYSTEM_UID
@@ -81,11 +80,11 @@ class Judger(object):
         r.close()
         return text
 
-    def run_code(self, language_config, problem_id, time_limit):
+    def run_code(self, language_config, problem_id, time_limit, memory_limit):
         def get_docker_command():
             prefix = 'docker run -u ' + str(SYSTEM_UID) + ':' + str(SYSTEM_UID)
             if language_config == 0 or language_config == 1:
-                command = code_file + ' < ' + input_path + '> ' + output_path
+                command = code_file + ' < ' + input_path + ' > ' + output_path
             elif language_config == 2:
                 pass
             elif language_config == 3:
@@ -98,7 +97,7 @@ class Judger(object):
                 pass
             runtime_result = USER_CODES_FOLDER + 'runtime_result.log'
             docker_command = prefix + ' -v ' + RUN_CODE_PY + ':' + RUN_CODE_PY + ' -v ' + USER_CODES_FOLDER + ':' + USER_CODES_FOLDER + ' -v ' + input_path + ':' + input_path + ' judge:v2 python3 ' + RUN_CODE_PY + ' \'' + command + '\' ' + str(
-                time_limit) + ' \'' + USER_CODES_FOLDER + '\' 2> ' + runtime_result
+                time_limit) + ' ' + str(memory_limit) + ' \'' + USER_CODES_FOLDER + '\' 2> ' + runtime_result
             logger.info('RUNNING COMMAND: ' + command)
             name = str(abs(hash(str(time.time()) + docker_command)))
             docker_command = docker_command[: len(prefix) + 1] + '--name ' + name + ' ' + docker_command[
@@ -111,7 +110,9 @@ class Judger(object):
         result = {
             'time': 0,
             'error': 0,
-            'TLE': False
+            'TLE': False,
+            'MLE': False,
+            'memory': 0
         }
         for testfile in os.listdir(problem_folder):
             if not testfile.endswith('.in'):
@@ -131,9 +132,10 @@ class Judger(object):
             docker_thread.start()
             docker_result_log = USER_CODES_FOLDER + '/docker_result.log'
             while not os.path.exists(docker_result_log):
+                time.sleep(0.1)
+                logger.debug("NOT EXISTS DOCKER_RESULT_LOG")
                 pass
             time.sleep(0.1)
-            self.exec_cmd('docker stop ' + docker_name)
             with open(docker_result_log, 'r+') as file:
                 docker_result = eval(file.read())
                 file.close()
@@ -141,11 +143,16 @@ class Judger(object):
             result['time'] += docker_result['time']
             result['TLE'] = docker_result['TLE']
             result['error'] = docker_result['error']
-            if result['TLE'] or result['error']:
+            result['MLE'] = docker_result['MLE']
+            result['memory'] += docker_result['memory']
+            if result['TLE'] or result['error'] or result['MLE']:
                 return result
+
+            os.system('docker stop ' + docker_name)
+            os.system('docker rm ' + docker_name)
         return result
 
-    def run(self, code, language_config, problem_id, time_limit):
+    def run(self, code, language_config, problem_id, time_limit, memory_limit, spj):
         judge_result = {
             'time': 0,
             'memory': 0,
@@ -159,16 +166,21 @@ class Judger(object):
             judge_result['error'] = compile_error
             os.system('rm -rf ' + USER_CODES_FOLDER)
             return judge_result
-        runtime_result = self.run_code(language_config, problem_id, time_limit)
+        runtime_result = self.run_code(language_config, problem_id, time_limit, memory_limit)
         logger.debug(runtime_result)
         judge_result['time'] = runtime_result['time']
         judge_result['error'] = runtime_result['error']
+        judge_result['memory'] = runtime_result['memory']
         if judge_result['error']:
             judge_result['result'] = OJ_RE
             os.system('rm -rf ' + USER_CODES_FOLDER)
             return judge_result
         if runtime_result['TLE']:
             judge_result['result'] = OJ_TL
+            os.system('rm -rf ' + USER_CODES_FOLDER)
+            return judge_result
+        if runtime_result['MLE']:
+            judge_result['result'] = OJ_ML
             os.system('rm -rf ' + USER_CODES_FOLDER)
             return judge_result
         logger.info(judge_result)
@@ -217,7 +229,6 @@ class Judger(object):
             return True
         else:
             return False
-
 
 # CPP_CODE = '#include <bits/stdc++.h>\n\nusing namespace std;\n\tint main() {\n\t\n\tint a;\n\tcin >> a;\n\tfor(int i = 0; i < a; i++) {\n\t\tcout << i << endl;\n\t}\n}'
 #

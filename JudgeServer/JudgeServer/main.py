@@ -25,6 +25,7 @@ class Judger_Client(object):
     def run(self):
         judging_thread = threading.Thread(target=self.judger_thread)
         judging_thread.start()
+
     def judger_thread(self):
         while True:
             if not self.task_queue.empty():
@@ -34,7 +35,8 @@ class Judger_Client(object):
                 queue_lock.release()
                 task_info = OJ_DB.search_one(solution_id)
                 # 这里应该操作数据库，先留着
-                print(self.judger.run(task_info[0], task_info[1], task_info[2], task_info[3] / 1000))
+                print(self.judger.run(task_info[0], task_info[1], task_info[2], task_info[3] / 1000, task_info[4],
+                                      task_info[5]))
             else:
                 OJ_DB = DB(DATABASES_HOST, DATABASES_USER, DATABASES_PWD, DATABASES_DB)
                 list = OJ_DB.search_submission()
@@ -44,9 +46,9 @@ class Judger_Client(object):
                 queue_lock.release()
 
 
-
 def main():
     jc = Judger_Client()
     jc.run()
+
 
 main()
