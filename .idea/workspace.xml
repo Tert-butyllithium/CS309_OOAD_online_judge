@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4e4630eb-d24d-4660-a763-08e070bad425" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/Judger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/Running_Code.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/Running_Code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/JudgeServer/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/JudgeServer/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JudgeServer/Log/2019-10-02.log" beforeDir="false" afterPath="$PROJECT_DIR$/JudgeServer/Log/2019-10-02.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/1002/1.in" beforeDir="false" afterPath="$PROJECT_DIR$/data/1002/1.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/1002/1.out" beforeDir="false" afterPath="$PROJECT_DIR$/data/1002/1.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userCodes/1.out" beforeDir="false" />
-    </list>
+    <list default="true" id="4e4630eb-d24d-4660-a763-08e070bad425" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +158,7 @@
       <workItem from="1569946490904" duration="3616000" />
       <workItem from="1569951178610" duration="12895000" />
       <workItem from="1570015117698" duration="6603000" />
-      <workItem from="1570023702104" duration="1722000" />
+      <workItem from="1570023702104" duration="1879000" />
     </task>
     <servers />
   </component>
