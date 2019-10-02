@@ -4,14 +4,8 @@ import psutil
 
 
 def test():
-    # process = psutil.Process(os.getpid())
-    # print(os.getpid())
-    # print(psutil.pids())
-    # print(process.memory_info().rss/1024/1024)
-    # print(os.system('top -p ' + str(pid)))
-    print("hello")
+    s = 'qwefsfsdfsdf/'
+    str = s + 'nqisjdnjsdnasd.cpp'
+    print(str[len(s): len(str) - 4])
 
-p = Process(target=test)
-# print(p)
-p.start()
-print(p.pid)
+test()

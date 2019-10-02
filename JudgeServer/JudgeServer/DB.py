@@ -1,6 +1,5 @@
-import threading
-import queue
 import pymysql
+from config import logger
 
 
 class DB(object):
@@ -22,11 +21,9 @@ class DB(object):
             'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
                 solution_id))
         data = cursor.fetchone()
-        # (codes, language_config, problem_id, TL, ML, SPJ)
         database.close()
+        # (codes, language_config, problem_id, time_limit, memory_limit)
         return (data[1], data[9], data[3], data[30], data[31], data[26])
-        # for i in range(0, len(data)):
-        #     print(str(i) + " " + str(data[i]))
 
     def search_submission(self):
         database = pymysql.connect(
@@ -44,6 +41,33 @@ class DB(object):
         for i in range(0, len(data)):
             list.append(data[i][0])
         return list
+
+    def write_DB(self, result, solution_id):
+        database = pymysql.connect(
+            host=self.host,
+            user=self.user,
+            password=self.pwd,
+            db=self.db
+        )
+        cursor = database.cursor()
+        sql = 'update solution set time = %s, memory = %s, result = %s where solution_id = %s;' % (
+            result['time'], result['memory'], result['result'], solution_id)
+        database.ping(reconnect=True)
+        try:
+            cursor.execute(sql)
+            database.commit()
+        except:
+            logger.error("Fail to execute command \'%s\' to database" % sql)
+        if result['error'] != '':
+            sql = 'insert into errorinfo (solution_id, error) values (%s, \'%s\');' % (solution_id, result['error'])
+            database.ping(reconnect=True)
+            try:
+                cursor.execute(sql)
+                database.commit()
+            except:
+                logger.error("Fail to execute command \'%s\' to database" % sql)
+        cursor.close()
+        database.close()
 
     def run(self):
         if self.task_set.empty():

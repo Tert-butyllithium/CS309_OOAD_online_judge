@@ -24,7 +24,7 @@ class Judger(object):
         path = USER_CODES_FOLDER
         if not os.path.exists(path):
             self.exec_cmd("mkdir " + path)
-        # /home/1000:1000/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+        # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
         file_name = USER_CODES_FOLDER + "/Main" + FILE_TYPE[language_config]
         with open(file_name, 'w+') as file:
             saved_stdout = sys.stdout
@@ -61,7 +61,7 @@ class Judger(object):
                 return False, self.exec_cmd(command)
             return True, self.exec_cmd(command)
 
-        # /home/1000:1000/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
+        # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
         file = USER_CODES_FOLDER + 'Main' + FILE_TYPE[language_config]
         logger.info("COMPILING CODE: " + file)
         if language_config == 1 or language_config == 0:
@@ -117,11 +117,11 @@ class Judger(object):
         for testfile in os.listdir(problem_folder):
             if not testfile.endswith('.in'):
                 continue
-            # /home/1000:1000/桌面/CS309_OOAD_online_judge/data/1001/1.in
+            # /home/isc-/Desktop/CS309_OOAD_online_judge/data/1001/1.in
             input_path = problem_folder + testfile
-            # /home/1000:1000/桌面/CS309_OOAD_online_judge/userCodes/11712225/1.out
+            # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/1.out
             output_path = user_folder + testfile[0:len(testfile) - 3] + '.out'
-            # /home/1000:1000/桌面/CS309_OOAD_online_judge/userCodes/11712225/Main
+            # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main
             code_file = user_folder + 'Main'
 
             logger.info("RUNNING CODE: " + code_file + " " + testfile)
@@ -132,8 +132,8 @@ class Judger(object):
             docker_thread.start()
             docker_result_log = USER_CODES_FOLDER + '/docker_result.log'
             while not os.path.exists(docker_result_log):
-                time.sleep(0.1)
                 logger.debug("NOT EXISTS DOCKER_RESULT_LOG")
+                time.sleep(1)
                 pass
             time.sleep(0.1)
             with open(docker_result_log, 'r+') as file:
@@ -186,13 +186,43 @@ class Judger(object):
         logger.info(judge_result)
         output_folder = USER_CODES_FOLDER + '/'
         standard_output_folder = Project_PATH + 'data/' + str(problem_id) + '/'
-        if not self.compare_output(output_folder, standard_output_folder):
-            judge_result['result'] = OJ_WA
-            os.system('rm -rf ' + USER_CODES_FOLDER)
-            return judge_result
-        judge_result['result'] = OJ_AC
-        os.system('rm -rf ' + USER_CODES_FOLDER + '/*')
+        if spj == '0':
+            if not self.compare_output(output_folder, standard_output_folder):
+                judge_result['result'] = OJ_WA
+            else:
+                judge_result['result'] = OJ_AC
+            os.system('rm -rf ' + USER_CODES_FOLDER + '/*')
+        else:
+            if not self.compare_output_spj(output_folder, standard_output_folder):
+                judge_result['result'] = OJ_WA
+            else:
+                judge_result['result'] = OJ_AC
+            os.system('rm -rf ' + USER_CODES_FOLDER + '/*')
         return judge_result
+
+    def compare_output_spj(self, output_folder, standard_output_folder):
+        spj_cpp = standard_output_folder + 'spj.cpp'
+        spj_exec = spj_cpp[0:len(spj_cpp) - 4]
+        if os.path.exists(spj_cpp):
+            compile_result = self.exec_cmd('g++ ' + spj_cpp + ' -o ' + spj_exec)
+            if compile_result:
+                raise Exception("Compile spj.cpp error")
+        else:
+            raise Exception("File spj.cpp not found in \'" + spj_cpp + '\'')
+        for TC_out in standard_output_folder:
+            if not TC_out.endswith('.out'):
+                continue
+            TC_in = TC_out[0:len(TC_out) - 4] + '.in'
+            if not os.path.exists(TC_in):
+                raise Exception(TC_in + ' not found but ' + TC_out + ' found')
+            TC_id = TC_out[len(standard_output_folder): len(TC_out) - 4]
+            user_out = output_folder + TC_id + '.in'
+            if not os.path.exists(user_out):
+                return False
+            result = os.system(spj_exec + ' ' + TC_in + ' ' + TC_out + ' ' + user_out)
+            if int(result) != 0:
+                return False
+        return True
 
     def compare_output(self, output_folder, standard_output_folder):
         success_count = 0
