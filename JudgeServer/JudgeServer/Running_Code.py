@@ -52,6 +52,7 @@ class SourceListener(threading.Thread):
         source_listener_end = True
         lock.release()
 
+
 class TaskThread(threading.Thread):
     def __init__(self, command):
         super().__init__()

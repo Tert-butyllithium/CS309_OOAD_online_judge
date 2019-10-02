@@ -127,7 +127,6 @@ class Judger(object):
             logger.info("RUNNING CODE: " + code_file + " " + testfile)
             # 对于不同的语言
             docker_command, docker_name = get_docker_command()
-            logger.info(docker_command)
             docker_thread = DockerThread(docker_command)
             docker_thread.start()
             docker_result_log = USER_CODES_FOLDER + '/docker_result.log'
@@ -183,8 +182,7 @@ class Judger(object):
             judge_result['result'] = OJ_ML
             os.system('rm -rf ' + USER_CODES_FOLDER)
             return judge_result
-        logger.info(judge_result)
-        output_folder = USER_CODES_FOLDER + '/'
+        output_folder = USER_CODES_FOLDER
         standard_output_folder = Project_PATH + 'data/' + str(problem_id) + '/'
         if spj == '0':
             if not self.compare_output(output_folder, standard_output_folder):
@@ -201,6 +199,7 @@ class Judger(object):
         return judge_result
 
     def compare_output_spj(self, output_folder, standard_output_folder):
+        logger.debug(standard_output_folder)
         spj_cpp = standard_output_folder + 'spj.cpp'
         spj_exec = spj_cpp[0:len(spj_cpp) - 4]
         if os.path.exists(spj_cpp):
@@ -209,18 +208,19 @@ class Judger(object):
                 raise Exception("Compile spj.cpp error")
         else:
             raise Exception("File spj.cpp not found in \'" + spj_cpp + '\'')
-        for TC_out in standard_output_folder:
+        for TC_out in os.listdir(standard_output_folder):
             if not TC_out.endswith('.out'):
                 continue
+            TC_out = standard_output_folder + TC_out
             TC_in = TC_out[0:len(TC_out) - 4] + '.in'
             if not os.path.exists(TC_in):
                 raise Exception(TC_in + ' not found but ' + TC_out + ' found')
             TC_id = TC_out[len(standard_output_folder): len(TC_out) - 4]
-            user_out = output_folder + TC_id + '.in'
+            user_out = output_folder + TC_id + '.out'
             if not os.path.exists(user_out):
                 return False
             result = os.system(spj_exec + ' ' + TC_in + ' ' + TC_out + ' ' + user_out)
-            if int(result) != 0:
+            if result != 0:
                 return False
         return True
 
