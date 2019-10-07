@@ -10,19 +10,19 @@ The judger is implemented using python with django.
 
 The total working steps of the judger can be separated into 5 parts: searching information, output code as a file, compile code, run code and compare output. 
 
-### Searching information
+#### Searching information
 
 The judger client maintains a queue of `solution_id`. With something in the queue, the judger would automatically search the database in order to get all the information needed. If the queue is empty, the judger would search the database to prevent some submission from mission. 
 
 ![1570448167288](pic_1.png)
 
-### Output, compile and run
+#### Output, compile and run
 
 Because the code is stored in database and it is almost impossible to compile a string, we have to output the code string got from the database to a file. After outputting the string, the judger would call the system command to compile and run the code. 
 
 ![1570449148121](pic_2.png)
 
-### Compare user output with the standard output
+#### Compare user output with the standard output
 
 There are two kinds of circumstance in this step: ordinary judge and special judge. It is easy to implement the ordinary judge with the I/O operation. For the special judge, a `spj.cc` code is needed. The contrast is done by the `spj.cc`. The only one thing the judger should do is to compile and run the `spj.cc`. The return value of the `spj.cc` determine the correctness of the user output.
 
@@ -30,11 +30,11 @@ There are two kinds of circumstance in this step: ordinary judge and special jud
 
 ## Difficulty
 
-#### How to prevent the server from being attacked by some malicious code like os.system('rm -rf /*')?
+##### How to prevent the server from being attacked by some malicious code like os.system('rm -rf /*')?
 
 Using docker. The docker container would bear most of the attack from malicious code. 
 
-#### How to judge the TLE and MLE?
+##### How to judge the TLE and MLE?
 
 For TLE, it is useful to run the code with a thread. Before the code running, the timeoutThread would be started. In the timeoutThread, it would judge whether time out. 
 
@@ -42,3 +42,7 @@ For MLE, it is useful to run the code with a process. We can easily get a memory
 
 ![1570449831329](pic_4.png)
 
+## To do next
+
+1. Connect the judger and the back end with **Message queue** or modify the judger as a web api.
+2. Encapsulation the judger.
