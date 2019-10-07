@@ -20,7 +20,13 @@ class Judger(object):
     def __init__(self):
         pass
 
-    def output_Code(self, code, language_config, append=None):
+    def exec_cmd(self, cmd):
+        r = os.popen(cmd)
+        text = r.read()
+        r.close()
+        return text
+
+    def output_Code(self, code, language_config):
         path = USER_CODES_FOLDER
         if not os.path.exists(path):
             self.exec_cmd("mkdir " + path)
@@ -29,13 +35,11 @@ class Judger(object):
         with open(file_name, 'w+') as file:
             saved_stdout = sys.stdout
             sys.stdout = file
-            if append != None:
-                print(append)
             print(code)
             sys.stdout = saved_stdout
             file.close()
 
-    def compile(self, language_config):
+    def compile(self, language_config, append=None):
         def compileC_CPP(file, append=None):
             logger.info("COMPILE COMMAND: " + 'g++ ' + file + ' -o ' + USER_CODES_FOLDER + 'Main')
             compile_result_log = USER_CODES_FOLDER + '/compile_result.log'
@@ -73,12 +77,6 @@ class Judger(object):
         elif language_config == 6:
             pass
         return True, ''
-
-    def exec_cmd(self, cmd):
-        r = os.popen(cmd)
-        text = r.read()
-        r.close()
-        return text
 
     def run_code(self, language_config, problem_id, time_limit, memory_limit):
         def get_docker_command():

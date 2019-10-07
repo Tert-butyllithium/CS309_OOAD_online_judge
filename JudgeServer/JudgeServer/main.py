@@ -38,7 +38,6 @@ class Judger_Client(object):
                 solution_id = self.task_queue.get()
                 queue_lock.release()
                 task_info = OJ_DB.search_one(solution_id)
-                # 这里应该操作数据库，先留着
                 logger.info('_____________________START____________________________')
                 logger.info('Searching solution_id: %s' % solution_id)
 
@@ -66,8 +65,10 @@ class Judger_Client(object):
 
 
 def main():
+    # solution_i
     jc = Judger_Client()
     jc.run()
+    # jc.new_task(1)
 
 
 main()
