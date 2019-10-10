@@ -30,6 +30,18 @@ import time
 
 ## 接口
 
+在使用接口之前，需要开进程运行 `\judger\service\app.py`
+
+命令行传参，参数分别为端口，ip地址和是否开启debug model
+
+![1570698189139](api_2.png)
+
+默认参数为 5000, localhost, false
+
+可以只传前两个或者前一个。
+
+
+
 所有的request都用POST的形式，其他形式不被接受
 
 所有的request都需要带上一个header, 格式如下

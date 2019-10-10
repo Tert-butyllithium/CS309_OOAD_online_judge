@@ -5,7 +5,7 @@ ADD sources.list /etc/apt/sources.list
 
 RUN buildDeps='software-properties-common git libtool cmake python-dev python3-pip python-pip libseccomp-dev' && \
     apt-get update && apt-get install -y python python3.5 python-pkg-resources python3-pkg-resources gcc g++ $buildDeps && \
-    add-apt-repository ppa:openjdk-r/ppa && apt-get update && apt-get install -y openjdk-8-jdk && \
+    add-apt-repository ppa:openjdk-r/ppa && apt-get update && apt-get install -y openjdk-11-jdk && \
     pip3 install --no-cache-dir psutil gunicorn flask requests
 
 RUN git clone https://github.com/QingdaoU/Judger /Judger && \
