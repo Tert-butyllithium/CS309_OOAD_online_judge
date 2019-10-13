@@ -1,0 +1,642 @@
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [10/Oct/2019 21:50:54] "POST /api/start HTTP/1.1" 308 -
+127.0.0.1 - - [10/Oct/2019 21:51:17] "POST /api/start HTTP/1.1" 308 -
+127.0.0.1 - - [10/Oct/2019 21:51:22] "POST /api/judge HTTP/1.1" 308 -
+127.0.0.1 - - [10/Oct/2019 21:51:24] "POST /api/start/ HTTP/1.1" 200 -
+fd70efe29ddf
+[I 191010 21:51:25 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:25 Judge_Service:43] Searching solution_id: 5
+[I 191010 21:51:25 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp
+[I 191010 21:51:25 Judger:45] COMPILE COMMAND: g++ /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp -o /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main
+[I 191010 21:51:26 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:26 Judger:105] RUNNING COMMAND: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:26 Judger:109] docker run -u 1000:1000 --name 8938424821731960039 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:26 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:27 Judger:145] {'memory': 110592, 'MLE': False, 'TLE': False, 'time': 0.021008729934692383, 'error': ''}
+8938424821731960039
+8938424821731960039
+[I 191010 21:51:27 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 1.in
+[I 191010 21:51:27 Judger:105] RUNNING COMMAND: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out
+[D 191010 21:51:27 Judger:109] docker run -u 1000:1000 --name 7597782947986795104 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:27 Judger:145] {'memory': 110592, 'MLE': False, 'TLE': False, 'time': 0.021008729934692383, 'error': ''}
+7597782947986795104
+7597782947986795104
+[D 191010 21:51:28 Judger:173] {'time': 0.042017459869384766, 'error': '', 'TLE': False, 'MLE': False, 'memory': 221184}
+[D 191010 21:51:28 Judge_Service:56] Searching end with the result '{'time': 0.042017459869384766, 'memory': 221184, 'result': 4, 'error': ''}'
+[I 191010 21:51:28 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:28 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:28 Judge_Service:43] Searching solution_id: 6
+[I 191010 21:51:28 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp
+[I 191010 21:51:28 Judger:45] COMPILE COMMAND: g++ /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp -o /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main
+[I 191010 21:51:29 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:29 Judger:105] RUNNING COMMAND: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:29 Judger:109] docker run -u 1000:1000 --name 7691694294112451106 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:29 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:30 Judger:145] {'error': '', 'MLE': False, 'memory': 36864, 'TLE': False, 'time': 0.002632617950439453}
+7691694294112451106
+7691694294112451106
+[I 191010 21:51:30 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 1.in
+[I 191010 21:51:30 Judger:105] RUNNING COMMAND: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out
+[D 191010 21:51:30 Judger:109] docker run -u 1000:1000 --name 4195484508993191877 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:30 Judger:145] {'error': '', 'MLE': False, 'memory': 36864, 'TLE': False, 'time': 0.002632617950439453}
+4195484508993191877
+4195484508993191877
+[D 191010 21:51:31 Judger:173] {'time': 0.005265235900878906, 'error': '', 'TLE': False, 'MLE': False, 'memory': 73728}
+[D 191010 21:51:31 Judge_Service:56] Searching end with the result '{'time': 0.005265235900878906, 'memory': 73728, 'result': 6, 'error': ''}'
+[I 191010 21:51:31 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:31 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:31 Judge_Service:43] Searching solution_id: 7
+[I 191010 21:51:31 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp
+[I 191010 21:51:31 Judger:45] COMPILE COMMAND: g++ /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp -o /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main
+[D 191010 21:51:31 Judge_Service:56] Searching end with the result '{'time': 0, 'memory': 0, 'result': 11, 'error': '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:2: 错误：invalid preprocessing directive #idnclude; did you mean #include?\n    1 | #idnclude <bits/stdc++.h>\n      |  ^~~~~~~~\n      |  include\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp: 在函数‘int main()’中:\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:6:2: 错误：‘cin’在此作用域中尚未声明\n    6 |  cin >> a;\n      |  ^~~\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:1: 附注：‘std::cin’ is defined in header ‘<iostream>’; did you forget to ‘#include <iostream>’?\n  +++ |+#include <iostream>\n    1 | #idnclude <bits/stdc++.h>\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:8:3: 错误：‘cout’在此作用域中尚未声明\n    8 |   cout << i << endl;\n      |   ^~~~\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:8:3: 附注：‘std::cout’ is defined in header ‘<iostream>’; did you forget to ‘#include <iostream>’?\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:8:16: 错误：‘endl’在此作用域中尚未声明\n    8 |   cout << i << endl;\n      |                ^~~~\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:1: 附注：‘std::endl’ is defined in header ‘<ostream>’; did you forget to ‘#include <ostream>’?\n  +++ |+#include <ostream>\n    1 | #idnclude <bits/stdc++.h>\n'}'
+[E 191010 21:51:31 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (7, '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:2: 错误：invalid preprocessing directive #idnclude; did you mean #include?
+        1 | #idnclude <bits/stdc++.h>
+          |  ^~~~~~~~
+          |  include
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp: 在函数‘int main()’中:
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:6:2: 错误：‘cin’在此作用域中尚未声明
+        6 |  cin >> a;
+          |  ^~~
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:1: 附注：‘std::cin’ is defined in header ‘<iostream>’; did you forget to ‘#include <iostream>’?
+      +++ |+#include <iostream>
+        1 | #idnclude <bits/stdc++.h>
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:8:3: 错误：‘cout’在此作用域中尚未声明
+        8 |   cout << i << endl;
+          |   ^~~~
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:8:3: 附注：‘std::cout’ is defined in header ‘<iostream>’; did you forget to ‘#include <iostream>’?
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:8:16: 错误：‘endl’在此作用域中尚未声明
+        8 |   cout << i << endl;
+          |                ^~~~
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:1: 附注：‘std::endl’ is defined in header ‘<ostream>’; did you forget to ‘#include <ostream>’?
+      +++ |+#include <ostream>
+        1 | #idnclude <bits/stdc++.h>
+    ');' to database
+[I 191010 21:51:31 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:31 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:31 Judge_Service:43] Searching solution_id: 8
+[I 191010 21:51:31 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp
+[I 191010 21:51:31 Judger:45] COMPILE COMMAND: g++ /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp -o /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main
+[D 191010 21:51:32 Judge_Service:56] Searching end with the result '{'time': 0, 'memory': 0, 'result': 11, 'error': '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp: 在函数‘int main()’中:\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:5:2: 错误：‘cin’ was not declared in this scope; did you mean ‘std::cin’?\n    5 |  cin >> a;\n      |  ^~~\n      |  std::cin\nIn file included from /usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/stdc++.h:75,\n                 from /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:\n/usr/include/c++/9.1.0/iostream:60:18: 附注：‘std::cin’ declared here\n   60 |   extern istream cin;  /// Linked to standard input\n      |                  ^~~\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:7:3: 错误：‘cout’ was not declared in this scope; did you mean ‘std::cout’?\n    7 |   cout << i << endl;\n      |   ^~~~\n      |   std::cout\nIn file included from /usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/stdc++.h:75,\n                 from /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:\n/usr/include/c++/9.1.0/iostream:61:18: 附注：‘std::cout’ declared here\n   61 |   extern ostream cout;  /// Linked to standard output\n      |                  ^~~~\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:7:16: 错误：‘endl’ was not declared in this scope; did you mean ‘std::endl’?\n    7 |   cout << i << endl;\n      |                ^~~~\n      |                std::endl\nIn file included from /usr/include/c++/9.1.0/istream:39,\n                 from /usr/include/c++/9.1.0/sstream:38,\n                 from /usr/include/c++/9.1.0/complex:45,\n                 from /usr/include/c++/9.1.0/ccomplex:39,\n                 from /usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/stdc++.h:54,\n                 from /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:\n/usr/include/c++/9.1.0/ostream:599:5: 附注：‘std::endl’ declared here\n  599 |     endl(basic_ostream<_CharT, _Traits>& __os)\n      |     ^~~~\n'}'
+[E 191010 21:51:32 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (8, '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp: 在函数‘int main()’中:
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:5:2: 错误：‘cin’ was not declared in this scope; did you mean ‘std::cin’?
+        5 |  cin >> a;
+          |  ^~~
+          |  std::cin
+    In file included from /usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/stdc++.h:75,
+                     from /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:
+    /usr/include/c++/9.1.0/iostream:60:18: 附注：‘std::cin’ declared here
+       60 |   extern istream cin;  /// Linked to standard input
+          |                  ^~~
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:7:3: 错误：‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+        7 |   cout << i << endl;
+          |   ^~~~
+          |   std::cout
+    In file included from /usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/stdc++.h:75,
+                     from /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:
+    /usr/include/c++/9.1.0/iostream:61:18: 附注：‘std::cout’ declared here
+       61 |   extern ostream cout;  /// Linked to standard output
+          |                  ^~~~
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:7:16: 错误：‘endl’ was not declared in this scope; did you mean ‘std::endl’?
+        7 |   cout << i << endl;
+          |                ^~~~
+          |                std::endl
+    In file included from /usr/include/c++/9.1.0/istream:39,
+                     from /usr/include/c++/9.1.0/sstream:38,
+                     from /usr/include/c++/9.1.0/complex:45,
+                     from /usr/include/c++/9.1.0/ccomplex:39,
+                     from /usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/stdc++.h:54,
+                     from /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp:1:
+    /usr/include/c++/9.1.0/ostream:599:5: 附注：‘std::endl’ declared here
+      599 |     endl(basic_ostream<_CharT, _Traits>& __os)
+          |     ^~~~
+    ');' to database
+[I 191010 21:51:32 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:32 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:32 Judge_Service:43] Searching solution_id: 9
+[I 191010 21:51:32 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:51:32 Judger:62] COMPILING COMMAND: javac /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:51:33 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:33 Judger:105] RUNNING COMMAND: java -cp /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes// Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:33 Judger:109] docker run -u 1000:1000 --name 2660795368156600388 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'java -cp /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes// Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 5 1207959552 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:33 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:34 Judger:145] {'MLE': False, 'time': 0.1783280372619629, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n', 'memory': 110592, 'TLE': False}
+[D 191010 21:51:34 Judger:173] {'time': 0.1783280372619629, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n', 'TLE': False, 'MLE': False, 'memory': 110592}
+[D 191010 21:51:34 Judge_Service:56] Searching end with the result '{'time': 0.1783280372619629, 'memory': 110592, 'result': 10, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n'}'
+[E 191010 21:51:34 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (9, 'Error: A JNI error has occurred, please check your installation and try again
+    Exception in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+    	at java.lang.ClassLoader.defineClass1(Native Method)
+    	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+    	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+    	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+    	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+    	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+    	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+    	at java.security.AccessController.doPrivileged(Native Method)
+    	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+    	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+    	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+    	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+    	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+    ');' to database
+[I 191010 21:51:34 Judge_Service:58] ______________________END_____________________________
+20b7937744a6
+[I 191010 21:51:35 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:35 Judge_Service:43] Searching solution_id: 10
+[I 191010 21:51:35 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:51:35 Judger:62] COMPILING COMMAND: javac /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:51:35 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:35 Judger:105] RUNNING COMMAND: java -cp /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes// Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:35 Judger:109] docker run -u 1000:1000 --name 1202139563180967225 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'java -cp /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes// Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 5 1207959552 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:35 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:37 Judger:145] {'memory': 45056, 'time': 0.05586433410644531, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n', 'MLE': False, 'TLE': False}
+[D 191010 21:51:37 Judger:173] {'time': 0.05586433410644531, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n', 'TLE': False, 'MLE': False, 'memory': 45056}
+[D 191010 21:51:37 Judge_Service:56] Searching end with the result '{'time': 0.05586433410644531, 'memory': 45056, 'result': 10, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n'}'
+[E 191010 21:51:37 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (10, 'Error: A JNI error has occurred, please check your installation and try again
+    Exception in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+    	at java.lang.ClassLoader.defineClass1(Native Method)
+    	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+    	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+    	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+    	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+    	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+    	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+    	at java.security.AccessController.doPrivileged(Native Method)
+    	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+    	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+    	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+    	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+    	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+    ');' to database
+[I 191010 21:51:37 Judge_Service:58] ______________________END_____________________________
+7572a370267f
+[I 191010 21:51:37 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:37 Judge_Service:43] Searching solution_id: 11
+[I 191010 21:51:37 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:51:37 Judger:62] COMPILING COMMAND: javac /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java:1: 错误: 需要class, interface或enum
+ikmport java.util.*;
+^
+1 个错误
+[I 191010 21:51:37 Judger:65] Compile error
+/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java:1: 错误: 需要class, interface或enum
+ikmport java.util.*;
+^
+1 个错误
+[D 191010 21:51:37 Judge_Service:56] Searching end with the result '{'time': 0, 'memory': 0, 'result': 11, 'error': ''}'
+[I 191010 21:51:37 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:37 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:37 Judge_Service:43] Searching solution_id: 12
+[I 191010 21:51:37 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:51:37 Judger:62] COMPILING COMMAND: javac /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:51:38 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:38 Judger:105] RUNNING COMMAND: java -cp /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes// Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:38 Judger:109] docker run -u 1000:1000 --name 8073998935706187043 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'java -cp /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes// Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 5 1207959552 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:38 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:39 Judger:145] {'TLE': False, 'MLE': False, 'memory': 45056, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n', 'time': 0.058484792709350586}
+[D 191010 21:51:39 Judger:173] {'time': 0.058484792709350586, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n', 'TLE': False, 'MLE': False, 'memory': 45056}
+[D 191010 21:51:40 Judge_Service:56] Searching end with the result '{'time': 0.058484792709350586, 'memory': 45056, 'result': 10, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n'}'
+[E 191010 21:51:40 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (12, 'Error: A JNI error has occurred, please check your installation and try again
+    Exception in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+    	at java.lang.ClassLoader.defineClass1(Native Method)
+    	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+    	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+    	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+    	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+    	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+    	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+    	at java.security.AccessController.doPrivileged(Native Method)
+    	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+    	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+    	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+    	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+    	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+    ');' to database
+[I 191010 21:51:40 Judge_Service:58] ______________________END_____________________________
+5a3c551145e4
+[I 191010 21:51:40 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:40 Judge_Service:43] Searching solution_id: 13
+[I 191010 21:51:40 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py
+[I 191010 21:51:40 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:40 Judger:105] RUNNING COMMAND: python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:40 Judger:109] docker run -u 1000:1000 --name 8606664766884911266 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:40 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:41 Judger:145] {'memory': 45056, 'error': '', 'MLE': False, 'TLE': False, 'time': 0.03374314308166504}
+8606664766884911266
+8606664766884911266
+[I 191010 21:51:41 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 1.in
+[I 191010 21:51:41 Judger:105] RUNNING COMMAND: python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out
+[D 191010 21:51:41 Judger:109] docker run -u 1000:1000 --name 103119351954146079 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:41 Judger:145] {'memory': 45056, 'error': '', 'MLE': False, 'TLE': False, 'time': 0.03374314308166504}
+103119351954146079
+103119351954146079
+[D 191010 21:51:42 Judger:173] {'time': 0.06748628616333008, 'error': '', 'TLE': False, 'MLE': False, 'memory': 90112}
+[D 191010 21:51:42 Judge_Service:56] Searching end with the result '{'time': 0.06748628616333008, 'memory': 90112, 'result': 4, 'error': ''}'
+[I 191010 21:51:42 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:42 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:42 Judge_Service:43] Searching solution_id: 14
+[I 191010 21:51:42 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py
+[I 191010 21:51:42 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:42 Judger:105] RUNNING COMMAND: python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:42 Judger:109] docker run -u 1000:1000 --name 4419814972308899476 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:42 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:43 Judger:145] {'time': 0.009018898010253906, 'memory': 36864, 'error': '', 'TLE': False, 'MLE': False}
+4419814972308899476
+4419814972308899476
+[I 191010 21:51:43 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 1.in
+[I 191010 21:51:43 Judger:105] RUNNING COMMAND: python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out
+[D 191010 21:51:43 Judger:109] docker run -u 1000:1000 --name 2863585842386748541 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:43 Judger:145] {'time': 0.009018898010253906, 'memory': 36864, 'error': '', 'TLE': False, 'MLE': False}
+2863585842386748541
+2863585842386748541
+[D 191010 21:51:44 Judger:173] {'time': 0.018037796020507812, 'error': '', 'TLE': False, 'MLE': False, 'memory': 73728}
+[D 191010 21:51:44 Judge_Service:56] Searching end with the result '{'time': 0.018037796020507812, 'memory': 73728, 'result': 6, 'error': ''}'
+[I 191010 21:51:44 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:44 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:44 Judge_Service:43] Searching solution_id: 15
+[I 191010 21:51:44 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py
+[I 191010 21:51:44 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:44 Judger:105] RUNNING COMMAND: python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:44 Judger:109] docker run -u 1000:1000 --name 7775157439971124072 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:44 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:45 Judger:145] {'TLE': False, 'memory': 45056, 'error': '', 'MLE': False, 'time': 0.009335994720458984}
+7775157439971124072
+7775157439971124072
+[I 191010 21:51:45 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 1.in
+[I 191010 21:51:45 Judger:105] RUNNING COMMAND: python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out
+[D 191010 21:51:45 Judger:109] docker run -u 1000:1000 --name 3625946237151016566 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:45 Judger:145] {'TLE': False, 'memory': 45056, 'error': '', 'MLE': False, 'time': 0.009335994720458984}
+3625946237151016566
+3625946237151016566
+[D 191010 21:51:46 Judger:173] {'time': 0.01867198944091797, 'error': '', 'TLE': False, 'MLE': False, 'memory': 90112}
+[D 191010 21:51:46 Judge_Service:56] Searching end with the result '{'time': 0.01867198944091797, 'memory': 90112, 'result': 4, 'error': ''}'
+[I 191010 21:51:46 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:46 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:46 Judge_Service:43] Searching solution_id: 17
+[I 191010 21:51:46 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py
+[I 191010 21:51:46 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:46 Judger:105] RUNNING COMMAND: python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:46 Judger:109] docker run -u 1000:1000 --name 6863090255235639158 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:46 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:47 Judger:145] {'TLE': False, 'time': 0.009470701217651367, 'MLE': False, 'error': '', 'memory': 45056}
+6863090255235639158
+6863090255235639158
+[I 191010 21:51:47 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 1.in
+[I 191010 21:51:47 Judger:105] RUNNING COMMAND: python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out
+[D 191010 21:51:47 Judger:109] docker run -u 1000:1000 --name 4455300517546414893 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:47 Judger:145] {'TLE': False, 'time': 0.009470701217651367, 'MLE': False, 'error': '', 'memory': 45056}
+4455300517546414893
+4455300517546414893
+[D 191010 21:51:48 Judger:173] {'time': 0.018941402435302734, 'error': '', 'TLE': False, 'MLE': False, 'memory': 90112}
+[D 191010 21:51:48 Judge_Service:56] Searching end with the result '{'time': 0.018941402435302734, 'memory': 90112, 'result': 4, 'error': ''}'
+[I 191010 21:51:48 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:48 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:48 Judge_Service:43] Searching solution_id: 18
+[I 191010 21:51:48 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py
+[I 191010 21:51:48 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:48 Judger:105] RUNNING COMMAND: python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:48 Judger:109] docker run -u 1000:1000 --name 5301357420213109494 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:48 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:49 Judger:145] {'MLE': False, 'error': '', 'time': 0.009211063385009766, 'memory': 36864, 'TLE': False}
+5301357420213109494
+5301357420213109494
+[I 191010 21:51:50 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 1.in
+[I 191010 21:51:50 Judger:105] RUNNING COMMAND: python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out
+[D 191010 21:51:50 Judger:109] docker run -u 1000:1000 --name 6925731769894634804 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:50 Judger:145] {'MLE': False, 'error': '', 'time': 0.009211063385009766, 'memory': 36864, 'TLE': False}
+6925731769894634804
+6925731769894634804
+[D 191010 21:51:50 Judger:173] {'time': 0.01842212677001953, 'error': '', 'TLE': False, 'MLE': False, 'memory': 73728}
+[D 191010 21:51:50 Judge_Service:56] Searching end with the result '{'time': 0.01842212677001953, 'memory': 73728, 'result': 6, 'error': ''}'
+[I 191010 21:51:50 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:50 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:50 Judge_Service:43] Searching solution_id: 19
+[I 191010 21:51:50 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py
+[I 191010 21:51:50 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:50 Judger:105] RUNNING COMMAND: python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:50 Judger:109] docker run -u 1000:1000 --name 4958703599882551281 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:50 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:52 Judger:145] {'memory': 36864, 'error': '', 'TLE': False, 'MLE': False, 'time': 0.009154796600341797}
+4958703599882551281
+4958703599882551281
+[I 191010 21:51:52 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 1.in
+[I 191010 21:51:52 Judger:105] RUNNING COMMAND: python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out
+[D 191010 21:51:52 Judger:109] docker run -u 1000:1000 --name 728445768979517130 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/1.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/1.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:52 Judger:145] {'memory': 36864, 'error': '', 'TLE': False, 'MLE': False, 'time': 0.009154796600341797}
+728445768979517130
+728445768979517130
+[D 191010 21:51:53 Judger:173] {'time': 0.018309593200683594, 'error': '', 'TLE': False, 'MLE': False, 'memory': 73728}
+[D 191010 21:51:53 Judge_Service:56] Searching end with the result '{'time': 0.018309593200683594, 'memory': 73728, 'result': 4, 'error': ''}'
+[I 191010 21:51:53 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:53 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:53 Judge_Service:43] Searching solution_id: 41
+[I 191010 21:51:53 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c
+[I 191010 21:51:53 Judger:45] COMPILE COMMAND: g++ /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c -o /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main
+[D 191010 21:51:53 Judge_Service:56] Searching end with the result '{'time': 0, 'memory': 0, 'result': 11, 'error': '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:8:10: 警告：缺少结尾的 " 字符\n    8 |   printf("%d\n      |          ^\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:8:10: 错误：缺少结尾的 " 字符\n    8 |   printf("%d\n      |          ^~~\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:9:1: 警告：缺少结尾的 " 字符\n    9 | ", a);\n      | ^\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:9:1: 错误：缺少结尾的 " 字符\n    9 | ", a);\n      | ^~~~~~\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c: 在函数‘int main()’中:\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:10:2: 错误：expected primary-expression before ‘}’ token\n   10 |  }\n      |  ^\n'}'
+[E 191010 21:51:53 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (41, '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:8:10: 警告：缺少结尾的 " 字符
+        8 |   printf("%d
+          |          ^
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:8:10: 错误：缺少结尾的 " 字符
+        8 |   printf("%d
+          |          ^~~
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:9:1: 警告：缺少结尾的 " 字符
+        9 | ", a);
+          | ^
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:9:1: 错误：缺少结尾的 " 字符
+        9 | ", a);
+          | ^~~~~~
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c: 在函数‘int main()’中:
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:10:2: 错误：expected primary-expression before ‘}’ token
+       10 |  }
+          |  ^
+    ');' to database
+[I 191010 21:51:53 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:53 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:53 Judge_Service:43] Searching solution_id: 42
+[I 191010 21:51:53 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c
+[I 191010 21:51:53 Judger:45] COMPILE COMMAND: g++ /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c -o /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main
+[D 191010 21:51:53 Judge_Service:56] Searching end with the result '{'time': 0, 'memory': 0, 'result': 11, 'error': '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:19:10: 警告：缺少结尾的 " 字符\n   19 |   printf("%d\n      |          ^\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:19:10: 错误：缺少结尾的 " 字符\n   19 |   printf("%d\n      |          ^~~\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:20:1: 警告：缺少结尾的 " 字符\n   20 | ", i);\n      | ^\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:20:1: 错误：缺少结尾的 " 字符\n   20 | ", i);\n      | ^~~~~~\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c: 在函数‘int main()’中:\n/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:21:2: 错误：expected primary-expression before ‘}’ token\n   21 |  }\n      |  ^\n'}'
+[E 191010 21:51:53 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (42, '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:19:10: 警告：缺少结尾的 " 字符
+       19 |   printf("%d
+          |          ^
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:19:10: 错误：缺少结尾的 " 字符
+       19 |   printf("%d
+          |          ^~~
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:20:1: 警告：缺少结尾的 " 字符
+       20 | ", i);
+          | ^
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:20:1: 错误：缺少结尾的 " 字符
+       20 | ", i);
+          | ^~~~~~
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c: 在函数‘int main()’中:
+    /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.c:21:2: 错误：expected primary-expression before ‘}’ token
+       21 |  }
+          |  ^
+    ');' to database
+[I 191010 21:51:53 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:53 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:53 Judge_Service:43] Searching solution_id: 43
+[I 191010 21:51:53 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp
+[I 191010 21:51:53 Judger:45] COMPILE COMMAND: g++ /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp -o /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main
+[I 191010 21:51:54 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:54 Judger:105] RUNNING COMMAND: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:54 Judger:109] docker run -u 1000:1000 --name 4714985855485797816 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:54 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:55 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:56 Judger:145] {'MLE': False, 'memory': 36864, 'error': '', 'TLE': True, 'time': 1.1}
+[D 191010 21:51:56 Judger:173] {'time': 1.1, 'error': '', 'TLE': True, 'MLE': False, 'memory': 36864}
+[D 191010 21:51:56 Judge_Service:56] Searching end with the result '{'time': 1.1, 'memory': 36864, 'result': 7, 'error': ''}'
+[I 191010 21:51:56 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:56 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:56 Judge_Service:43] Searching solution_id: 44
+[I 191010 21:51:56 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp
+[I 191010 21:51:56 Judger:45] COMPILE COMMAND: g++ /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.cpp -o /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main
+[I 191010 21:51:57 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:51:57 Judger:105] RUNNING COMMAND: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:51:57 Judger:109] docker run -u 1000:1000 --name 9156732289185489252 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:51:57 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:58 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:51:59 Judger:145] {'time': 1.1, 'MLE': False, 'TLE': True, 'memory': 36864, 'error': ''}
+[D 191010 21:51:59 Judger:173] {'time': 1.1, 'error': '', 'TLE': True, 'MLE': False, 'memory': 36864}
+[D 191010 21:51:59 Judge_Service:56] Searching end with the result '{'time': 1.1, 'memory': 36864, 'result': 7, 'error': ''}'
+[I 191010 21:51:59 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:51:59 Judge_Service:42] _____________________START____________________________
+[I 191010 21:51:59 Judge_Service:43] Searching solution_id: 45
+[I 191010 21:51:59 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:51:59 Judger:62] COMPILING COMMAND: javac /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:52:00 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:52:00 Judger:105] RUNNING COMMAND: java -cp /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes// Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:52:00 Judger:109] docker run -u 1000:1000 --name 6676349237680333403 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'java -cp /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes// Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 5 1207959552 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:52:00 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:52:01 Judger:145] {'MLE': False, 'memory': 36864, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n', 'TLE': False, 'time': 0.04675126075744629}
+[D 191010 21:52:01 Judger:173] {'time': 0.04675126075744629, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n', 'TLE': False, 'MLE': False, 'memory': 36864}
+[D 191010 21:52:01 Judge_Service:56] Searching end with the result '{'time': 0.04675126075744629, 'memory': 36864, 'result': 10, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n'}'
+[E 191010 21:52:01 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (45, 'Error: A JNI error has occurred, please check your installation and try again
+    Exception in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+    	at java.lang.ClassLoader.defineClass1(Native Method)
+    	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+    	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+    	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+    	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+    	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+    	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+    	at java.security.AccessController.doPrivileged(Native Method)
+    	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+    	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+    	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+    	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+    	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+    ');' to database
+[I 191010 21:52:01 Judge_Service:58] ______________________END_____________________________
+630ef8520c0b
+[I 191010 21:52:01 Judge_Service:42] _____________________START____________________________
+[I 191010 21:52:01 Judge_Service:43] Searching solution_id: 46
+[I 191010 21:52:01 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:52:01 Judger:62] COMPILING COMMAND: javac /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.java
+[I 191010 21:52:02 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:52:02 Judger:105] RUNNING COMMAND: java -cp /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes// Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:52:02 Judger:109] docker run -u 1000:1000 --name 2004231278542576869 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'java -cp /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes// Main < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 5 1207959552 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:52:02 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:52:03 Judger:145] {'memory': 45056, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n', 'TLE': False, 'MLE': False, 'time': 0.06284260749816895}
+[D 191010 21:52:03 Judger:173] {'time': 0.06284260749816895, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n', 'TLE': False, 'MLE': False, 'memory': 45056}
+[D 191010 21:52:03 Judge_Service:56] Searching end with the result '{'time': 0.06284260749816895, 'memory': 45056, 'result': 10, 'error': 'Error: A JNI error has occurred, please check your installation and try again\nException in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:763)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:424)\n\tat sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:357)\n\tat sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)\n'}'
+[E 191010 21:52:03 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (46, 'Error: A JNI error has occurred, please check your installation and try again
+    Exception in thread "main" java.lang.UnsupportedClassVersionError: Main has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+    	at java.lang.ClassLoader.defineClass1(Native Method)
+    	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+    	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+    	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+    	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+    	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+    	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+    	at java.security.AccessController.doPrivileged(Native Method)
+    	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+    	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+    	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+    	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+    	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+    ');' to database
+[I 191010 21:52:03 Judge_Service:58] ______________________END_____________________________
+27805f621894
+[I 191010 21:52:03 Judge_Service:42] _____________________START____________________________
+[I 191010 21:52:03 Judge_Service:43] Searching solution_id: 47
+[I 191010 21:52:03 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py
+[I 191010 21:52:03 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:52:03 Judger:105] RUNNING COMMAND: python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:52:03 Judger:109] docker run -u 1000:1000 --name 976272668699577466 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:52:03 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:52:04 Judger:145] {'memory': 45056, 'time': 0.009097099304199219, 'MLE': False, 'TLE': False, 'error': '  File "/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py", line 2\n    while True\n             ^\nSyntaxError: invalid syntax\n'}
+[D 191010 21:52:04 Judger:173] {'time': 0.009097099304199219, 'error': '  File "/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py", line 2\n    while True\n             ^\nSyntaxError: invalid syntax\n', 'TLE': False, 'MLE': False, 'memory': 45056}
+[D 191010 21:52:04 Judge_Service:56] Searching end with the result '{'time': 0.009097099304199219, 'memory': 45056, 'result': 10, 'error': '  File "/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py", line 2\n    while True\n             ^\nSyntaxError: invalid syntax\n'}'
+[E 191010 21:52:04 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (47, '  File "/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py", line 2
+        while True
+                 ^
+    SyntaxError: invalid syntax
+    ');' to database
+[I 191010 21:52:04 Judge_Service:58] ______________________END_____________________________
+21bf885a9ca5
+[I 191010 21:52:05 Judge_Service:42] _____________________START____________________________
+[I 191010 21:52:05 Judge_Service:43] Searching solution_id: 48
+[I 191010 21:52:05 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py
+[I 191010 21:52:05 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:52:05 Judger:105] RUNNING COMMAND: python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:52:05 Judger:109] docker run -u 1000:1000 --name 8600431353702697197 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python2 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:52:05 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:52:06 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:52:07 Judger:145] {'time': 1.1, 'error': '', 'TLE': True, 'memory': 36864, 'MLE': False}
+[D 191010 21:52:07 Judger:173] {'time': 1.1, 'error': '', 'TLE': True, 'MLE': False, 'memory': 36864}
+[D 191010 21:52:07 Judge_Service:56] Searching end with the result '{'time': 1.1, 'memory': 36864, 'result': 7, 'error': ''}'
+[I 191010 21:52:07 Judge_Service:58] ______________________END_____________________________
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Remove one or more containers
+[I 191010 21:52:07 Judge_Service:42] _____________________START____________________________
+[I 191010 21:52:07 Judge_Service:43] Searching solution_id: 49
+[I 191010 21:52:07 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py
+[I 191010 21:52:07 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:52:07 Judger:105] RUNNING COMMAND: python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:52:07 Judger:109] docker run -u 1000:1000 --name 7356009425842496089 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:52:07 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:52:10 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:52:11 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:52:13 Judger:145] {'memory': 45056, 'MLE': False, 'time': 0.05766606330871582, 'error': '  File "/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py", line 2\n    while True\n             ^\nSyntaxError: invalid syntax\n', 'TLE': False}
+[D 191010 21:52:13 Judger:173] {'time': 0.05766606330871582, 'error': '  File "/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py", line 2\n    while True\n             ^\nSyntaxError: invalid syntax\n', 'TLE': False, 'MLE': False, 'memory': 45056}
+[D 191010 21:52:13 Judge_Service:56] Searching end with the result '{'time': 0.05766606330871582, 'memory': 45056, 'result': 10, 'error': '  File "/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py", line 2\n    while True\n             ^\nSyntaxError: invalid syntax\n'}'
+[E 191010 21:52:13 DB:69] Fail to execute command 'insert into errorinfo (solution_id, error) values (49, '  File "/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py", line 2
+        while True
+                 ^
+    SyntaxError: invalid syntax
+    ');' to database
+[I 191010 21:52:13 Judge_Service:58] ______________________END_____________________________
+e6abe1051834
+f41479495584
+[I 191010 21:52:13 Judge_Service:42] _____________________START____________________________
+[I 191010 21:52:13 Judge_Service:43] Searching solution_id: 50
+[I 191010 21:52:13 Judger:71] COMPILING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py
+[I 191010 21:52:13 Judger:131] RUNNING CODE: /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main 2.in
+[I 191010 21:52:13 Judger:105] RUNNING COMMAND: python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out
+[D 191010 21:52:13 Judger:109] docker run -u 1000:1000 --name 6990591831079760756 -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/ -v /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in:/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in judge:v2 python3 /home/isc-/Desktop/CS309_OOAD_online_judge/judger/service/Running_Code.py 'python /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/Main.py < /home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out' 1 134217728 '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log
+[D 191010 21:52:13 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:52:14 Judger:138] NOT EXISTS DOCKER_RESULT_LOG
+[D 191010 21:52:25 Judger:145] {'TLE': True, 'error': '', 'MLE': False, 'time': 1.1, 'memory': 36864}
+[D 191010 21:52:25 Judger:173] {'time': 1.1, 'error': '', 'TLE': True, 'MLE': False, 'memory': 36864}
+[D 191010 21:52:25 Judge_Service:56] Searching end with the result '{'time': 1.1, 'memory': 36864, 'result': 7, 'error': ''}'
+[I 191010 21:52:25 Judge_Service:58] ______________________END_____________________________
+127.0.0.1 - - [10/Oct/2019 21:53:05] "POST /api/judge/ HTTP/1.1" 200 -
+c386211b5592
+1161c28e2c50
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)

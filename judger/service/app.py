@@ -10,11 +10,11 @@ js = JudgeService()
 @app.route('/api/start/', methods=['POST'])
 def start():
     _token = request.headers.get('Cs309-Token')
-    if _token != token:
-        return {
-            'result': 0,
-            'info': 'Invalid token'
-        }
+ #   if _token != token:
+  #      return {
+   #         'result': 0,
+    #        'info': 'Invalid token'
+     #   }
     js.run()
     return {
         'result': 1,
@@ -25,11 +25,11 @@ def start():
 @app.route('/api/judge/', methods=['POST'])
 def new_task():
     _token = request.headers.get('Cs309-Token')
-    if _token != token:
-        return {
-            'result': 0,
-            'info': 'Invalid token'
-        }
+#    if _token != token:
+ #       return {
+  #          'result': 0,
+   #         'info': 'Invalid token'
+    #    }
     if not js.running:
         return {
             'result': 0,
