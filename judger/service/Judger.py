@@ -84,7 +84,7 @@ class Judger(object):
         def get_docker_command():
             ml = memory_limit
             tl = time_limit
-            prefix = 'docker run -u ' + str(SYSTEM_UID) + ':' + str(SYSTEM_UID)
+            prefix = 'docker run --rm -u ' + str(SYSTEM_UID) + ':' + str(SYSTEM_UID)
             if language_config == 0 or language_config == 1:
                 command = code_file + ' < ' + input_path + ' > ' + output_path
             elif language_config == 2:
@@ -104,8 +104,7 @@ class Judger(object):
                 tl) + ' ' + str(ml) + ' \'' + USER_CODES_FOLDER + '\' 2> ' + runtime_result
             logger.info('RUNNING COMMAND: ' + command)
             name = str(abs(hash(str(time.time()) + docker_command)))
-            docker_command = docker_command[: len(prefix) + 1] + '--name ' + name + ' ' + docker_command[
-                                                                                          len(prefix) + 1:]
+            docker_command = docker_command[: len(prefix) + 1] + '--name ' + name + ' ' + docker_command[len(prefix) + 1:]
             logger.debug(docker_command)
             return docker_command, name
 
@@ -151,8 +150,8 @@ class Judger(object):
             if result['TLE'] or result['error'] or result['MLE']:
                 return result
 
-            os.system('docker stop ' + docker_name)
-            os.system('docker rm ' + docker_name)
+            # os.system('docker stop ' + docker_name)
+            # os.system('docker rm ' + docker_name)
         return result
 
     def run(self, code, language_config, problem_id, time_limit, memory_limit, spj):

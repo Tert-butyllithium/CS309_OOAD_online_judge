@@ -7,9 +7,9 @@ app = Flask(__name__)
 js = JudgeService()
 
 
-@app.route('/api/start/', methods=['POST'])
+@app.route('/api/startJudger', methods=['POST'])
 def start():
-    _token = request.headers.get('Cs309-Token')
+    # _token = request.headers.get('Cs309-Token')
  #   if _token != token:
   #      return {
    #         'result': 0,
@@ -22,9 +22,9 @@ def start():
     }
 
 
-@app.route('/api/judge/', methods=['POST'])
+@app.route('/api/judge', methods=['POST'])
 def new_task():
-    _token = request.headers.get('Cs309-Token')
+    # _token = request.headers.get('Cs309-Token')
 #    if _token != token:
  #       return {
   #          'result': 0,
@@ -35,11 +35,11 @@ def new_task():
             'result': 0,
             'info': 'The judge sevice has not been started yep. Please start the service before transferring the solution id.'
         }
-    _solution_id = request.form.get('solution_id')
+    _solution_id = request.form.get('solutionId')
     js.new_task(_solution_id)
     return {
         'result': 1,
-        'info': 'solution_id: ' + str(_solution_id) + ' has been added to the task queue.'
+        'info': 'solutionId: ' + str(_solution_id) + ' has been added to the task queue.'
     }
 
 
