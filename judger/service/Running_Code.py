@@ -108,6 +108,7 @@ def main(argv):
     # taskThread = TaskThread(command)
     p.start()
     process = psutil.Process(p.pid)
+    print(psutil.pids())
     source_listener = SourceListener(time_limit, memory_limit, process, process.memory_full_info().uss)
     source_listener.start()
     # taskThread.start()

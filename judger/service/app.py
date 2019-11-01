@@ -7,7 +7,6 @@ app = Flask(__name__)
 js = JudgeService()
 
 
-<<<<<<< HEAD
 # @app.route('/api/startJudger', methods=['POST'])
 # def start():
 #     # _token = request.headers.get('Cs309-Token')
@@ -21,21 +20,19 @@ js = JudgeService()
 #         'result': 1,
 #         'info': "The judgeService has been started successfully."
 #     }
-=======
-@app.route('/api/startJudger', methods=['POST'])
-def start():
-    # _token = request.headers.get('Cs309-Token')
- #   if _token != token:
-  #      return {
-   #         'result': 0,
-    #        'info': 'Invalid token'
-     #   }
-    js.run()
-    return {
-        'result': 1,
-        'info': "The judgeService has been started successfully."
-    }
->>>>>>> e6d9da866ecdb87407b3684b9c7dd2e807b980d1
+# @app.route('/api/startJudger', methods=['POST'])
+# def start():
+#     # _token = request.headers.get('Cs309-Token')
+#  #   if _token != token:
+#   #      return {
+#    #         'result': 0,
+#     #        'info': 'Invalid token'
+#      #   }
+#     js.run()
+#     return {
+#         'result': 1,
+#         'info': "The judgeService has been started successfully."
+#     }
 
 
 @app.route('/api/judge', methods=['POST'])
