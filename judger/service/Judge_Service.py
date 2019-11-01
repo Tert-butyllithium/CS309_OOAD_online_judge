@@ -33,7 +33,7 @@ class JudgeService(object):
     def judger_thread(self):
         while True:
             if not self.task_queue.empty():
-                os.system('docker rm $(docker ps -qf status=exited)')
+                # os.system('docker rm $(docker ps -qf status=exited)')
                 OJ_DB = DB(DATABASES_HOST, DATABASES_USER, DATABASES_PWD, DATABASES_DB)
                 queue_lock.acquire()
                 solution_id = self.task_queue.get()

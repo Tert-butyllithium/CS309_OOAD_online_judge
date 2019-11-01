@@ -3,6 +3,7 @@ import threading
 import time
 import os
 import psutil
+from multiprocessing import Process
 
 result = {
     'error': '',
@@ -33,7 +34,7 @@ class SourceListener(threading.Thread):
         startTime = time.time()
         while time.time() - startTime <= self.time_limit and not taskThread_end:
             if not taskThread_end:
-                memory = self.process.memory_info().rss
+                memory = self.process.memory_full_info().uss
                 max_memory = max(max_memory, memory)
                 if memory - self.initial_memory >= int(self.memory_limit):
                     lock.acquire()
@@ -71,6 +72,19 @@ class TaskThread(threading.Thread):
         # self.result['time'] = endTime - startTime
 
 
+def run(command):
+    # startTime = time.time()
+    global result
+    global taskThread_end
+    error = exec_cmd(command)
+    # endTime = time.time()
+    lock.acquire()
+    taskThread_end = True
+    result['error'] = error
+    lock.release()
+    # self.result['time'] = endTime - startTime
+
+
 def exec_cmd(cmd):
     r = os.popen(cmd)
     text = r.read()
@@ -79,18 +93,24 @@ def exec_cmd(cmd):
 
 
 def main(argv):
-    process = psutil.Process(os.getpid())
     # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/2.out
     command = argv[1]
     time_limit = argv[2]
     memory_limit = argv[3]
     userCodes_folder = argv[4]
+
+    p = Process(target=run, args=(command,))
+    # print(psutil.pids())
+    # pp = psutil.Process(p.pid)
+
     output_file = userCodes_folder + '/docker_result.log'
     runtime_result = userCodes_folder + '/runtime_result.log'
-    taskThread = TaskThread(command)
-    source_listener = SourceListener(time_limit, memory_limit, process, process.memory_info().rss)
+    # taskThread = TaskThread(command)
+    p.start()
+    process = psutil.Process(p.pid)
+    source_listener = SourceListener(time_limit, memory_limit, process, process.memory_full_info().uss)
     source_listener.start()
-    taskThread.start()
+    # taskThread.start()
     while not os.path.exists(runtime_result) or not taskThread_end or not source_listener_end:
         # print((taskThread_end, timeoutThread_end, memoryThread_end))
         pass

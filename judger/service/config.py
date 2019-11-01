@@ -7,7 +7,7 @@ import hashlib
 import socket
 
 # restful api使用的时候需要带上的东西
-original_token = 'TESTING_TOKEN'
+# original_token = 'TESTING_TOKEN'
 
 OJ_JAVA_TIME_BONUS = 2
 OJ_JAVA_MEMORY_BONUS = 512
@@ -20,7 +20,7 @@ SYSTEM_UID = 1000
 DATABASES_HOST = 'localhost'
 DATABASES_USER = 'root'
 DATABASES_PWD = '123456'
-DATABASES_DB = 'db_test'
+DATABASES_DB = 'jol'
 
 # 把这行改成这个repos的路径
 Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge/'
@@ -52,9 +52,9 @@ OJ_CE = 11
 OJ_CO = 12
 
 
-sha256 = hashlib.sha256()
-sha256.update(original_token.encode('utf-8'))
-token = sha256.hexdigest()
+# sha256 = hashlib.sha256()
+# sha256.update(original_token.encode('utf-8'))
+# token = sha256.hexdigest()
 
 
 def get_host_ip():
