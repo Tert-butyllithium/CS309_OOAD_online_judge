@@ -34,7 +34,7 @@ class SourceListener(threading.Thread):
         startTime = time.time()
         while time.time() - startTime <= self.time_limit and not taskThread_end:
             if not taskThread_end:
-                memory = self.process.memory_full_info().uss
+                memory = self.process.memory_full_info().rss / 100
                 max_memory = max(max_memory, memory)
                 if memory - self.initial_memory >= int(self.memory_limit):
                     lock.acquire()
@@ -96,7 +96,7 @@ def main(argv):
     # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/Main < /home/isc-/Desktop/CS309_OOAD_online_judge/data/1001/2.in > /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/2.out
     command = argv[1]
     time_limit = argv[2]
-    memory_limit = argv[3]
+    memory_limit = argv[3] * 1024
     userCodes_folder = argv[4]
 
     p = Process(target=run, args=(command,))
@@ -109,7 +109,8 @@ def main(argv):
     p.start()
     process = psutil.Process(p.pid)
     print(psutil.pids())
-    source_listener = SourceListener(time_limit, memory_limit, process, process.memory_full_info().uss)
+    print(process.pid)
+    source_listener = SourceListener(time_limit, memory_limit, process, process.memory_full_info().rss / 100)
     source_listener.start()
     # taskThread.start()
     while not os.path.exists(runtime_result) or not taskThread_end or not source_listener_end:
