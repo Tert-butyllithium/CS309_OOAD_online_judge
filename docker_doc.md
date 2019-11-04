@@ -2,7 +2,7 @@
 
 Docker container的构建
 
-第一步先构建镜像：`docker build -t judger:v2 .`
+第一步先构建镜像：`docker build -t judge:v2 .`
 
 第二步直接run:`docker run --mount type=bind,source=/home/data/Code/2019fall/OJ_template/Judger/demo/,target=/Judger/mount judge:v2 python3 Judger/mount/demo.py`
 

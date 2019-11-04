@@ -93,16 +93,16 @@ class Judger(object):
             elif language_config == 3:
                 command = 'java -cp ' + USER_CODES_FOLDER + '/ Main < ' + input_path + ' > ' + output_path
                 tl += OJ_JAVA_TIME_BONUS
-                ml += OJ_JAVA_MEMORY_BONUS * 1024
+                ml += OJ_JAVA_MEMORY_BONUS * 1024 * 1024
             elif language_config == 4:
                 command = 'python2 ' + code_file + '.py < ' + input_path + ' > ' + output_path
             elif language_config == 5:
                 command = 'python ' + code_file + '.py < ' + input_path + ' > ' + output_path
             else:
                 pass
-            docker_result_log = USER_CODES_FOLDER + 'docker_result.log'
-            docker_command = prefix + ' -v ' + Project_PATH + ':' + Project_PATH + ' judge:v3 python3 ' + RUN_CODE_PY + ' \'' + command + '\' ' + str(
-                tl) + ' ' + str(ml) + ' \'' + docker_result_log + '\''
+            runtime_result = USER_CODES_FOLDER + 'runtime_result.log'
+            docker_command = prefix + ' -v ' + Project_PATH + ':' + Project_PATH + ' judge:v2 python3 ' + RUN_CODE_PY + ' \'' + command + '\' ' + str(
+                tl) + ' ' + str(ml) + ' \'' + USER_CODES_FOLDER + '\' 2> ' + runtime_result
             # docker_command = prefix + ' -v ' + RUN_CODE_PY + ':' + RUN_CODE_PY + ' -v ' + USER_CODES_FOLDER + ':' + USER_CODES_FOLDER + ' -v ' + input_path + ':' + input_path + ' judge:v2 python3 ' + RUN_CODE_PY + ' \'' + command + '\' ' + str(
             #     tl) + ' ' + str(ml) + ' \'' + USER_CODES_FOLDER + '\' 2> ' + runtime_result
             logger.info('RUNNING COMMAND: ' + command)
@@ -116,7 +116,9 @@ class Judger(object):
         problem_folder = SERVICE_PATH + 'data/' + str(problem_id) + '/'
         result = {
             'time': 0,
-            'result': 0,
+            'error': 0,
+            'TLE': False,
+            'MLE': False,
             'memory': 0
         }
         logger.error(problem_folder)
@@ -142,17 +144,17 @@ class Judger(object):
                 time.sleep(1)
                 pass
             time.sleep(0.1)
-            file = open(docker_result_log, 'r')
-            docker_result = eval(file.read())
-            file.close()
+            with open(docker_result_log, 'r+') as file:
+                docker_result = eval(file.read())
+                file.close()
             logger.debug(docker_result)
-            result['time'] += docker_result['timeused']
-            # result['TLE'] = docker_result['TLE']
-            result['result'] = docker_result['result']
-            # result['MLE'] = docker_result['MLE']
-            result['memory'] += docker_result['memoryused']
-            # if result['TLE'] or result['error'] or result['MLE']:
-            #     return result
+            result['time'] += docker_result['time']
+            result['TLE'] = docker_result['TLE']
+            result['error'] = docker_result['error']
+            result['MLE'] = docker_result['MLE']
+            result['memory'] += docker_result['memory']
+            if result['TLE'] or result['error'] or result['MLE']:
+                return result
 
             # os.system('docker stop ' + docker_name)
             # os.system('docker rm ' + docker_name)
@@ -177,21 +179,20 @@ class Judger(object):
         runtime_result = self.run_code(language_config, problem_id, time_limit, memory_limit)
         logger.debug(runtime_result)
         judge_result['time'] = runtime_result['time']
-        # judge_result['error'] = runtime_result['error']
+        judge_result['error'] = runtime_result['error']
         judge_result['memory'] = runtime_result['memory']
-        judge_result['result'] = runtime_result['result']
-        # if judge_result['error']:
-        #     judge_result['result'] = OJ_RE
-        #     os.system('rm -rf ' + USER_CODES_FOLDER)
-        #     return judge_result
-        # if runtime_result['TLE']:
-        #     judge_result['result'] = OJ_TL
-        #     os.system('rm -rf ' + USER_CODES_FOLDER)
-        #     return judge_result
-        # if runtime_result['MLE']:
-        #     judge_result['result'] = OJ_ML
-        #     os.system('rm -rf ' + USER_CODES_FOLDER)
-        #     return judge_result
+        if judge_result['error']:
+            judge_result['result'] = OJ_RE
+            os.system('rm -rf ' + USER_CODES_FOLDER)
+            return judge_result
+        if runtime_result['TLE']:
+            judge_result['result'] = OJ_TL
+            os.system('rm -rf ' + USER_CODES_FOLDER)
+            return judge_result
+        if runtime_result['MLE']:
+            judge_result['result'] = OJ_ML
+            os.system('rm -rf ' + USER_CODES_FOLDER)
+            return judge_result
         output_folder = USER_CODES_FOLDER
         standard_output_folder = SERVICE_PATH + 'data/' + str(problem_id) + '/'
         if spj == '0':

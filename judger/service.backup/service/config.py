@@ -20,7 +20,7 @@ SYSTEM_UID = 1000
 DATABASES_HOST = 'localhost'
 DATABASES_USER = 'root'
 DATABASES_PWD = '123456'
-DATABASES_DB = 'jol'
+DATABASES_DB = 'db_test'
 
 # 把这行改成这个repos的路径
 Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge/'
