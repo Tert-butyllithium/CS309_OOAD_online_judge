@@ -49,6 +49,15 @@ class Judger(object):
                 command = 'g++ ' + file + ' -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
             else:
                 command = 'g++ ' + file + ' ' + append + '  -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
+
+            # logger.info(f'COMPILING COMMAND: /usr/bin/g++ -DONLINE_JUDGE -w -fmax-errors=3 -std=c++11 {file} -lm -o {USER_CODES_FOLDER}Main')
+            # compile_result_log = USER_CODES_FOLDER + '/compile_result.log'
+            
+            # command = f'/usr/bin/g++ -DONLINE_JUDGE -w -fmax-errors=3 -std=c++11 {file} -lm -o {USER_CODES_FOLDER}Main'
+            # '/usr/bin/gcc -DONLINE_JUDGE -w -fmax-errors=3 -std=c11 ' + file + ' -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
+            
+               
+            #command = 'g++ ' + file + ' ' + append + '  -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
             self.exec_cmd(command)
             while not os.path.exists(compile_result_log):
                 pass
@@ -60,12 +69,13 @@ class Judger(object):
             return True, ''
 
         def compile_JAVA(file):
-            logger.info('COMPILING COMMAND: ' + "javac " + file)
-            command = "javac " + file
+            logger.info(f'COMPILING COMMAND: /usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF8')
+            command = f'/usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF8'
             if os.system(command):
                 logger.info("Compile error")
                 return False, self.exec_cmd(command)
             return True, self.exec_cmd(command)
+        
 
         # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
         file = USER_CODES_FOLDER + 'Main' + FILE_TYPE[language_config]

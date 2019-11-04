@@ -21,10 +21,13 @@ class DB(object):
         cursor.execute(
             'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
                 solution_id))
+        logger.debug('select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str( solution_id))
+
         logger.debug(solution_id)
         data = cursor.fetchone()
         database.close()
         # (codes, language_config, problem_id, time_limit, memory_limit)
+        logger.debug(data)
         return (data[1], data[9], data[3], data[30], data[31], data[26])
 
     def search_submission(self):
