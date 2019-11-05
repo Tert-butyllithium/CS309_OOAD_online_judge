@@ -86,6 +86,8 @@ def main(argv):
 
         rst['error'] = error_file.read()
         error_file.close()
+    else:
+        rst['error'] = ''
     fin.close()
     fout.close()
     result = open(docker_result_log, 'w')
