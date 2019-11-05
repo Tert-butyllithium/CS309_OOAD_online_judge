@@ -43,17 +43,10 @@ class JudgeService(object):
                 logger.info('_____________________START____________________________')
                 logger.info('Searching solution_id: %s' % solution_id)
 
-                # Bonus for java
-                # if task_info[1] == 3:
                 result = self.judger.run(task_info[0], task_info[1], task_info[2],
                                          task_info[3],
                                          task_info[4],
                                          task_info[5])
-                # else:
-                #     result = self.judger.run(task_info[0], task_info[1], task_info[2],
-                #                              task_info[3],
-                #                              task_info[4],
-                #                              task_info[5])
                 logger.debug('Searching end with the result \'%s\'' % result)
                 OJ_DB.write_DB(result, solution_id)
                 logger.info('______________________END_____________________________')

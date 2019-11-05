@@ -33,7 +33,7 @@ def main(argv):
     OJ_OL = 9
     OJ_RE = 10
     OJ_CE = 11
-    # 第三方库与HUSTOJ的结果的映射
+
     mapping = {
         1: OJ_PE,
         2: OJ_TL,
@@ -56,8 +56,8 @@ def main(argv):
     # run_code_command = argv[1].split(' ')
     # print(run_code_command)
     run_code_command = argv[1].split('<')[0].lstrip().rstrip().split(' ')
-    run_code_command.append('-XX:MaxMetaspaceSize=128m')
-    print(run_code_command)
+    # run_code_command.append('-XX:MaxMetaspaceSize=128m')
+    # print(run_code_command)
     # test_file = '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data/1000/2.in'
     test_file = argv[1].split('<')[1].split('>')[0].lstrip().rstrip()
     # out_file = '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/2.out'
@@ -74,11 +74,18 @@ def main(argv):
         'fd_in': fin.fileno(),
         'fd_out': fout.fileno(),
         'timelimit': time_limit * 1000,  # in MS
-        'memorylimit': memory_limit / 1024,  # in KB
+        'memorylimit': memory_limit * 1024,  # in KB
     }
+    print(runcfg)
     rst = lorun.run(runcfg)
+    print(rst)
     if rst['result'] != 0:
         rst['result'] = mapping[rst['result']]
+    if rst['result'] == OJ_RE:
+        error_file = open(out_file, 'r')
+
+        rst['error'] = error_file.read()
+        error_file.close()
     fin.close()
     fout.close()
     result = open(docker_result_log, 'w')

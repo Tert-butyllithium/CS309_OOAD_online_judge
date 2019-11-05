@@ -1,3 +1,5 @@
+import time
+
 import pymysql
 from config import logger
 from config import IP
@@ -20,12 +22,18 @@ class DB(object):
         )
         cursor = database.cursor()
         try:
-            logger.debug('select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
-            cursor.execute( 'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
+            logger.debug(
+                'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
+                    solution_id))
+            cursor.execute(
+                'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
+                    solution_id))
         except Exception as e:
             logger.debug('Fail to query databse, delay 200ms')
-            time.sleep(200)
-            cursor.execute( 'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
+            time.sleep(0.2)
+            cursor.execute(
+                'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
+                    solution_id))
         logger.debug(solution_id)
         data = cursor.fetchone()
         database.close()
@@ -60,6 +68,7 @@ class DB(object):
         cursor = database.cursor()
         sql = 'update solution set time = %s, memory = %s, result = %s , judger = "%s" where solution_id = %s;' % (
             result['time'], result['memory'], result['result'], str(IP), solution_id)
+        logger.debug(sql)
         database.ping(reconnect=True)
         try:
             cursor.execute(sql)
@@ -67,14 +76,14 @@ class DB(object):
         except:
             logger.error("Fail to execute command \'%s\' to database" % sql)
         if result['error'] != '':
-            #logger.debug(result['result'])
-            #logger.debug(type(result['result']))
-            #logger.debug(result['result'] == OJ_CE)
             table_name = 'compileinfo' if result['result'] == OJ_CE else 'runtimeinfo'
             # sql = f"insert into {table_name} (solution_id, error) values ({solution_id},\'{result['error']}\')"
-            sql = 'insert into %s (solution_id, error) values (%s, \'%s\');' % (table_name, solution_id, result['error'])
+            sql = 'insert into %s (solution_id, error) values (%s, \'%s\');' % (
+            table_name, solution_id, result['error'])
+            logger.debug(sql)
             database.ping(reconnect=True)
             try:
+                cursor = database.cursor()
                 cursor.execute(sql)
                 database.commit()
             except:

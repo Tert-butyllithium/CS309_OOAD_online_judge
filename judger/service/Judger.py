@@ -41,39 +41,35 @@ class Judger(object):
             sys.stdout = saved_stdout
             file.close()
 
-    def compile(self, language_config, append=None):
-        def compileC_CPP(file, append=None):
-            logger.info("COMPILE COMMAND: " + 'g++ ' + file + ' -o ' + USER_CODES_FOLDER + 'Main')
-            compile_result_log = USER_CODES_FOLDER + '/compile_result.log'
-            if append is None:
-                command = 'g++ ' + file + ' -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
-            else:
-                command = 'g++ ' + file + ' ' + append + '  -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
-
-            # logger.info(f'COMPILING COMMAND: /usr/bin/g++ -DONLINE_JUDGE -w -fmax-errors=3 -std=c++11 {file} -lm -o {USER_CODES_FOLDER}Main')
-            # compile_result_log = USER_CODES_FOLDER + '/compile_result.log'
-
-            # command = f'/usr/bin/g++ -DONLINE_JUDGE -w -fmax-errors=3 -std=c++11 {file} -lm -o {USER_CODES_FOLDER}Main'
-            # '/usr/bin/gcc -DONLINE_JUDGE -w -fmax-errors=3 -std=c11 ' + file + ' -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
-
-            # command = 'g++ ' + file + ' ' + append + '  -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
-            self.exec_cmd(command)
-            while not os.path.exists(compile_result_log):
-                pass
-            with open(compile_result_log, 'r+') as file:
-                result = file.read()
-                file.close()
-                if result:
-                    return False, result
+    def compile(self, language_config):
+        def compileC_CPP(file):
+            compile_result_log = f'{USER_CODES_FOLDER}/compile_result.log'
+            command = f'g++ {file} -o {USER_CODES_FOLDER}Main 2> {compile_result_log}'
+            logger.info(f"COMPILE COMMAND: {command}")
+            if os.system(command):
+                logger.info("Compile error")
+                time.sleep(0.1)
+                with open(compile_result_log, 'r+') as file:
+                    result = file.read()
+                    file.close()
+                    if result:
+                        return False, result
             return True, ''
 
         def compile_JAVA(file):
-            logger.info(f'COMPILING COMMAND: /usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF8')
-            command = f'/usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF8'
+            compile_result_log = f'{USER_CODES_FOLDER}/compile_result.log'
+            command = f'/usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF8 2> {compile_result_log}'
+            logger.info(f'COMPILING COMMAND: {command}')
+            # logger.debug(self.exec_cmd(command))
             if os.system(command):
                 logger.info("Compile error")
-                return False, self.exec_cmd(command)
-            return True, self.exec_cmd(command)
+                time.sleep(0.1)
+                with open(compile_result_log, 'r+') as file:
+                    result = file.read()
+                    file.close()
+                    if result:
+                        return False, result
+            return True, ''
 
         # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
         file = USER_CODES_FOLDER + 'Main' + FILE_TYPE[language_config]
@@ -101,7 +97,7 @@ class Judger(object):
             elif language_config == 3:
                 command = 'java ' + USER_CODES_FOLDER + '/ Main < ' + input_path + ' > ' + output_path
                 tl += OJ_JAVA_TIME_BONUS
-                ml += OJ_JAVA_MEMORY_BONUS * 1024
+                ml += OJ_JAVA_MEMORY_BONUS
             elif language_config == 4:
                 command = 'python2 ' + code_file + '.py < ' + input_path + ' > ' + output_path
             elif language_config == 5:
@@ -127,7 +123,8 @@ class Judger(object):
         result = {
             'time': 0,
             'result': 0,
-            'memory': 0
+            'memory': 0,
+            'error': ''
         }
         logger.error(problem_folder)
         for testfile in os.listdir(problem_folder):
@@ -159,7 +156,7 @@ class Judger(object):
             result['time'] += docker_result['timeused']
             # result['TLE'] = docker_result['TLE']
             result['result'] = docker_result['result']
-            # result['MLE'] = docker_result['MLE']
+            result['error'] = docker_result['error']
             result['memory'] += docker_result['memoryused']
             # if result['TLE'] or result['error'] or result['MLE']:
             #     return result
@@ -187,21 +184,13 @@ class Judger(object):
         runtime_result = self.run_code(language_config, problem_id, time_limit, memory_limit)
         logger.debug(runtime_result)
         judge_result['time'] = runtime_result['time']
-        # judge_result['error'] = runtime_result['error']
+        judge_result['result'] = runtime_result['result']
         judge_result['memory'] = runtime_result['memory']
         judge_result['result'] = runtime_result['result']
-        # if judge_result['error']:
-        #     judge_result['result'] = OJ_RE
-        #     os.system('rm -rf ' + USER_CODES_FOLDER)
-        #     return judge_result
-        # if runtime_result['TLE']:
-        #     judge_result['result'] = OJ_TL
-        #     os.system('rm -rf ' + USER_CODES_FOLDER)
-        #     return judge_result
-        # if runtime_result['MLE']:
-        #     judge_result['result'] = OJ_ML
-        #     os.system('rm -rf ' + USER_CODES_FOLDER)
-        #     return judge_result
+        judge_result['error'] = runtime_result['error']
+        if judge_result['result'] == OJ_RE:
+            return judge_result
+
         output_folder = USER_CODES_FOLDER
         standard_output_folder = SERVICE_PATH + 'data/' + str(problem_id) + '/'
         if spj == '0':
