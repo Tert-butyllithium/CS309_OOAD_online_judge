@@ -1,6 +1,7 @@
 import pymysql
 from config import logger
 from config import IP
+from config import OJ_CE
 
 
 class DB(object):
@@ -21,7 +22,9 @@ class DB(object):
         cursor.execute(
             'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
                 solution_id))
-        logger.debug('select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str( solution_id))
+        logger.debug(
+            'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
+                solution_id))
 
         logger.debug(solution_id)
         data = cursor.fetchone()
@@ -64,7 +67,9 @@ class DB(object):
         except:
             logger.error("Fail to execute command \'%s\' to database" % sql)
         if result['error'] != '':
-            sql = 'insert into errorinfo (solution_id, error) values (%s, \'%s\');' % (solution_id, result['error'])
+            table_name = 'compileinfo' if result['result'] == OJ_CE else 'runtimeinfo'
+            sql = f"insert into {table_name} (solution_id, error) values ({solution_id}, {result['error']}"
+            # sql = 'insert into errorinfo (solution_id, error) values (%s, \'%s\');' % (solution_id, result['error'])
             database.ping(reconnect=True)
             try:
                 cursor.execute(sql)

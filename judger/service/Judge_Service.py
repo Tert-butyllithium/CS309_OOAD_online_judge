@@ -13,6 +13,7 @@ import os
 
 queue_lock = threading.Lock()
 
+
 class JudgeService(object):
     def __init__(self):
         self.task_queue = queue.Queue()
@@ -43,16 +44,16 @@ class JudgeService(object):
                 logger.info('Searching solution_id: %s' % solution_id)
 
                 # Bonus for java
-                if task_info[1] == 3:
-                    result = self.judger.run(task_info[0], task_info[1], task_info[2],
-                                             task_info[3] + OJ_JAVA_TIME_BONUS,
-                                             task_info[4] + OJ_JAVA_MEMORY_BONUS * 1024 * 1024,
-                                             task_info[5])
-                else:
-                    result = self.judger.run(task_info[0], task_info[1], task_info[2],
-                                             task_info[3],
-                                             task_info[4],
-                                             task_info[5])
+                # if task_info[1] == 3:
+                result = self.judger.run(task_info[0], task_info[1], task_info[2],
+                                         task_info[3],
+                                         task_info[4],
+                                         task_info[5])
+                # else:
+                #     result = self.judger.run(task_info[0], task_info[1], task_info[2],
+                #                              task_info[3],
+                #                              task_info[4],
+                #                              task_info[5])
                 logger.debug('Searching end with the result \'%s\'' % result)
                 OJ_DB.write_DB(result, solution_id)
                 logger.info('______________________END_____________________________')
@@ -63,4 +64,3 @@ class JudgeService(object):
                 for i in range(0, len(list)):
                     self.task_queue.put(list[i])
                 queue_lock.release()
-
