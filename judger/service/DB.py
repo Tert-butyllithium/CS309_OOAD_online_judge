@@ -19,13 +19,13 @@ class DB(object):
             db=self.db
         )
         cursor = database.cursor()
-        cursor.execute(
-            'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
-                solution_id))
-        logger.debug(
-            'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
-                solution_id))
-
+        try:
+            logger.debug('select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
+            cursor.execute( 'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
+        except Exception as e:
+            logger.debug('Fail to query databse, delay 200ms')
+            time.sleep(200)
+            cursor.execute( 'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
         logger.debug(solution_id)
         data = cursor.fetchone()
         database.close()
@@ -67,9 +67,12 @@ class DB(object):
         except:
             logger.error("Fail to execute command \'%s\' to database" % sql)
         if result['error'] != '':
+            #logger.debug(result['result'])
+            #logger.debug(type(result['result']))
+            #logger.debug(result['result'] == OJ_CE)
             table_name = 'compileinfo' if result['result'] == OJ_CE else 'runtimeinfo'
-            sql = f"insert into {table_name} (solution_id, error) values ({solution_id}, {result['error']}"
-            # sql = 'insert into errorinfo (solution_id, error) values (%s, \'%s\');' % (solution_id, result['error'])
+            # sql = f"insert into {table_name} (solution_id, error) values ({solution_id},\'{result['error']}\')"
+            sql = 'insert into %s (solution_id, error) values (%s, \'%s\');' % (table_name, solution_id, result['error'])
             database.ping(reconnect=True)
             try:
                 cursor.execute(sql)

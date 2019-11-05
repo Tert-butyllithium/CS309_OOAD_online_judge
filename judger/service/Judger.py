@@ -70,6 +70,7 @@ class Judger(object):
 
         def compile_JAVA(file):
             logger.info(f'COMPILING COMMAND: /usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF8')
+            logger.debug(os.path.exists(file))
             command = f'/usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF8'
             if os.system(command):
                 logger.info("Compile error")

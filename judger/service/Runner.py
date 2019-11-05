@@ -52,7 +52,7 @@ def main(argv):
     # time_limit = argv[2].lstrip().rstrip()
     # memory_limit = argv[3].lstrip().rstrip()
     print(argv)
-    run_code_command = argv[1].split('<')[0].lstrip().rstrip().split(' ')
+    run_code_command = (argv[1] + ' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log').split('<')[0].lstrip().rstrip().split(' ')
     test_file = argv[1].split('<')[1].split('>')[0].lstrip().rstrip()
     out_file = argv[1].split('<')[1].split('>')[1].lstrip().rstrip()
     time_limit = int(argv[2].lstrip().rstrip())

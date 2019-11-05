@@ -18,14 +18,14 @@ SYSTEM_UID = 1000
 
 # 修改数据库的配置 不需要多说
 DATABASES_HOST = 'localhost'
-DATABASES_USER = 'root'
-DATABASES_PWD = '123456'
+DATABASES_USER = 'lanran'
+DATABASES_PWD = 'lanran'
 DATABASES_DB = 'jol'
 
 # 把这行改成这个repos的路径
-# Project_PATH = '/home/lumia/CS309_OOAD_online_judge/'
+Project_PATH = '/home/lumia/CS309_OOAD_online_judge/'
 
-Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge/'
+# Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge/'
 
 
 FILE_TYPE = ['.c', '.cpp', '.PAS', '.java', '.py', '.py', '.kt']
