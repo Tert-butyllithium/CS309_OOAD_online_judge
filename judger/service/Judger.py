@@ -52,12 +52,11 @@ class Judger(object):
 
             # logger.info(f'COMPILING COMMAND: /usr/bin/g++ -DONLINE_JUDGE -w -fmax-errors=3 -std=c++11 {file} -lm -o {USER_CODES_FOLDER}Main')
             # compile_result_log = USER_CODES_FOLDER + '/compile_result.log'
-            
+
             # command = f'/usr/bin/g++ -DONLINE_JUDGE -w -fmax-errors=3 -std=c++11 {file} -lm -o {USER_CODES_FOLDER}Main'
             # '/usr/bin/gcc -DONLINE_JUDGE -w -fmax-errors=3 -std=c11 ' + file + ' -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
-            
-               
-            #command = 'g++ ' + file + ' ' + append + '  -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
+
+            # command = 'g++ ' + file + ' ' + append + '  -o ' + USER_CODES_FOLDER + 'Main 2> ' + compile_result_log
             self.exec_cmd(command)
             while not os.path.exists(compile_result_log):
                 pass
@@ -70,13 +69,11 @@ class Judger(object):
 
         def compile_JAVA(file):
             logger.info(f'COMPILING COMMAND: /usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF8')
-            logger.debug(os.path.exists(file))
             command = f'/usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF8'
             if os.system(command):
                 logger.info("Compile error")
                 return False, self.exec_cmd(command)
             return True, self.exec_cmd(command)
-        
 
         # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
         file = USER_CODES_FOLDER + 'Main' + FILE_TYPE[language_config]
@@ -102,7 +99,7 @@ class Judger(object):
             elif language_config == 2:
                 pass
             elif language_config == 3:
-                command = 'java -cp ' + USER_CODES_FOLDER + '/ Main < ' + input_path + ' > ' + output_path
+                command = 'java ' + USER_CODES_FOLDER + '/ Main < ' + input_path + ' > ' + output_path
                 tl += OJ_JAVA_TIME_BONUS
                 ml += OJ_JAVA_MEMORY_BONUS * 1024
             elif language_config == 4:
@@ -112,10 +109,12 @@ class Judger(object):
             else:
                 pass
             docker_result_log = USER_CODES_FOLDER + 'docker_result.log'
-            docker_command = prefix + ' -v ' + Project_PATH + ':' + Project_PATH + ' judge:v3 python3 ' + RUN_CODE_PY + ' \'' + command + '\' ' + str(
-                tl) + ' ' + str(ml) + ' \'' + docker_result_log + '\''
-            # docker_command = prefix + ' -v ' + RUN_CODE_PY + ':' + RUN_CODE_PY + ' -v ' + USER_CODES_FOLDER + ':' + USER_CODES_FOLDER + ' -v ' + input_path + ':' + input_path + ' judge:v2 python3 ' + RUN_CODE_PY + ' \'' + command + '\' ' + str(
-            #     tl) + ' ' + str(ml) + ' \'' + USER_CODES_FOLDER + '\' 2> ' + runtime_result
+            # runtime_log = USER_CODES_FOLDER + 'runtime.log'
+            # command += f' 2> {runtime_log}'
+            docker_command = f'{prefix} -v {Project_PATH}:{Project_PATH}  judge:v3 python3 {RUN_CODE_PY} \'{command}\' {str(tl)} {str(ml)} \'{docker_result_log}\''
+
+            # prefix + ' -v ' + Project_PATH + ':' + Project_PATH + ' judge:v3 python3 ' + RUN_CODE_PY + ' \'' + command + '\' ' + str(
+            #    tl) + ' ' + str(ml) + ' \'' + docker_result_log + '\''
             logger.info('RUNNING COMMAND: ' + command)
             name = str(abs(hash(str(time.time()) + docker_command)))
             docker_command = docker_command[: len(prefix) + 1] + '--name ' + name + ' ' + docker_command[
