@@ -95,7 +95,7 @@ class Judger(object):
             elif language_config == 2:
                 pass
             elif language_config == 3:
-                command = 'java ' + USER_CODES_FOLDER + '/ Main < ' + input_path + ' > ' + output_path
+                command = 'java -XX:-UseCompressedClassPointers -cp ' + USER_CODES_FOLDER + '/ Main < ' + input_path + ' > ' + output_path
                 tl += OJ_JAVA_TIME_BONUS
                 ml += OJ_JAVA_MEMORY_BONUS
             elif language_config == 4:

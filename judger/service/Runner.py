@@ -71,14 +71,15 @@ def main(argv):
     fout = open(out_file, 'w')
     runcfg = {
         'args': run_code_command,
+        #'args': ['java', '-XX:-UseCompressedClassPointers'],
         'fd_in': fin.fileno(),
         'fd_out': fout.fileno(),
         'timelimit': time_limit * 1000,  # in MS
         'memorylimit': memory_limit * 1024,  # in KB
     }
-    print(runcfg)
+    print('runcfg', runcfg)
     rst = lorun.run(runcfg)
-    print(rst)
+    print('rst', rst)
     if rst['result'] != 0:
         rst['result'] = mapping[rst['result']]
     if rst['result'] == OJ_RE:

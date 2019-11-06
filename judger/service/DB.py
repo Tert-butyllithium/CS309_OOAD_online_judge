@@ -21,21 +21,21 @@ class DB(object):
             db=self.db
         )
         cursor = database.cursor()
-        try:
-            logger.debug(
-                'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
-                    solution_id))
-            cursor.execute(
-                'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
-                    solution_id))
-        except Exception as e:
-            logger.debug('Fail to query databse, delay 200ms')
-            time.sleep(0.2)
-            cursor.execute(
-                'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
-                    solution_id))
+
+        logger.debug(
+            'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
+                 solution_id))
+        cursor.execute(
+             'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
+                solution_id))
+
         logger.debug(solution_id)
         data = cursor.fetchone()
+        if data == None:
+            logger.debug('Fail to query database. Delay 200ms')
+            time.sleep(0.2)
+            cursor.execute('select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
+
         database.close()
         # (codes, language_config, problem_id, time_limit, memory_limit)
         logger.debug(data)
