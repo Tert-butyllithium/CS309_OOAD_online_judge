@@ -44,10 +44,11 @@ def new_task():
    #         'info': 'Invalid token'
     #    }
     if not js.running:
-        return {
-            'result': 0,
-            'info': 'The judge sevice has not been started yep. Please start the service before transferring the solution id.'
-        }
+        js.run()
+        #return {
+         #   'result': 0,
+          #  'info': 'The judge sevice has not been started yep. Please start the service before transferring the solution id.'
+       # }
     _solution_id = request.form.get('solutionId')
     js.new_task(_solution_id)
     return {

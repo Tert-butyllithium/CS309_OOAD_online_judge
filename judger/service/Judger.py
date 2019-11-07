@@ -49,11 +49,11 @@ class Judger(object):
             if os.system(command):
                 logger.info("Compile error")
                 time.sleep(0.1)
-                with open(compile_result_log, 'r+') as file:
-                    result = file.read()
-                    file.close()
+                with open(compile_result_log, 'r+') as logFile:
+                    result = logFile.read()
+                    logFile.close()
                     if result:
-                        return False, result
+                        return False, result.replace(file, 'main.cpp')
             return True, ''
 
         def compile_JAVA(file):
@@ -64,11 +64,11 @@ class Judger(object):
             if os.system(command):
                 logger.info("Compile error")
                 time.sleep(0.1)
-                with open(compile_result_log, 'r+') as file:
-                    result = file.read()
-                    file.close()
+                with open(compile_result_log, 'r+') as logFile:
+                    result = logFile.read()
+                    logFile.close()
                     if result:
-                        return False, result
+                        return False,result.replace(file, 'Main')
             return True, ''
 
         # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
@@ -153,11 +153,11 @@ class Judger(object):
             docker_result = eval(file.read())
             file.close()
             logger.debug(docker_result)
-            result['time'] += docker_result['timeused']
+            result['time'] = max(docker_result['timeused'], result['time'])
             # result['TLE'] = docker_result['TLE']
             result['result'] = docker_result['result']
             result['error'] = docker_result['error']
-            result['memory'] += docker_result['memoryused']
+            result['memory'] =max(docker_result['memoryused'], result['memory'])
             # if result['TLE'] or result['error'] or result['MLE']:
             #     return result
 
