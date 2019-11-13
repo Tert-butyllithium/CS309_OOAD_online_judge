@@ -3,7 +3,7 @@ import time
 import pymysql
 from config import logger
 from config import IP
-from config import OJ_CE
+from config import OJ_RESULT
 
 
 class DB(object):
@@ -31,7 +31,7 @@ class DB(object):
 
         logger.debug(solution_id)
         data = cursor.fetchone()
-        if data == None:
+        if data is None:
             logger.debug('Fail to query database. Delay 200ms')
             time.sleep(0.2)
             cursor.execute('select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
@@ -77,7 +77,7 @@ class DB(object):
         except:
             logger.error("Fail to execute command \'%s\' to database" % sql)
         if result['error'] != '':
-            table_name = 'compileinfo' if result['result'] == OJ_CE else 'runtimeinfo'
+            table_name = 'compileinfo' if result['result'] == OJ_RESULT.RE else 'runtimeinfo'
             # sql = f"insert into {table_name} (solution_id, error) values ({solution_id},\'{result['error']}\')"
             sql = 'insert into %s (solution_id, error) values (%s, \'%s\');' % (
             table_name, solution_id, result['error'])

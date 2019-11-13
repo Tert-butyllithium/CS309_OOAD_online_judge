@@ -1,9 +1,5 @@
 import sys
 import lorun
-import os
-
-# from config import OJ_PE, OJ_TL, OJ_ML, OJ_WA, OJ_RE, OJ_OL, OJ_CE
-
 result = {
     'error': '',
     'TLE': False,
@@ -14,16 +10,6 @@ result = {
 taskThread_end = False
 source_listener_end = False
 
-
-# def run(command):
-#     def exec_cmd(cmd):
-#         r = os.popen(cmd)
-#         text = r.read()
-#         r.close()
-#         return text
-#
-#     error = exec_cmd(command + ' 2> /home/isc-/Desktop/CS309_OOAD_online_judge/judger/userCodes/runtime_result.log')
-#
 
 def main(argv):
     OJ_PE = 5

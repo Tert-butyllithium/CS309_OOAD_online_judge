@@ -2,6 +2,6 @@
 /.idea/
 
 *.log
-/judger/venv
+# /judger/venv
 /judger/service/__pycache__
 /judger/.idea

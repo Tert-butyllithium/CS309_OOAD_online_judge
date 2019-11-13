@@ -3,6 +3,7 @@ import logzero
 from logzero import logger
 import logging
 import datetime
+from enum import Enum, unique
 import hashlib
 import socket
 
@@ -11,7 +12,6 @@ import socket
 
 OJ_JAVA_TIME_BONUS = 2
 OJ_JAVA_MEMORY_BONUS = 512
-
 
 # 当前用户组的UID，使用这个是为了避免用root启动
 SYSTEM_UID = 1000
@@ -23,36 +23,39 @@ DATABASES_PWD = 'lanran'
 DATABASES_DB = 'jol'
 
 # 把这行改成这个repos的路径
-Project_PATH = '/home/lumia/CS309_OOAD_online_judge/'
-
-# Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge/'
-
+Project_PATH = '/home/lumia/CS309_OOAD_online_judge'
+# Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge'
+DATA_PATH = '/home/judge/data'
+# DATA_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data'
 
 FILE_TYPE = ['.c', '.cpp', '.PAS', '.java', '.py', '.py', '.kt']
-SERVICE_PATH = Project_PATH + 'judger/'
-USER_CODES_FOLDER = SERVICE_PATH + 'userCodes/'
-RUN_CODE_PY = SERVICE_PATH + 'service/Runner.py'
+SERVICE_PATH = f'{Project_PATH}/judger'
+USER_CODES_FOLDER = f'{SERVICE_PATH}/userCodes'
+RUN_CODE_PY = f'{SERVICE_PATH}/service/Runner.py'
 
 # 封装logger，这里不需要修改
-LOG_FILE = SERVICE_PATH + 'Log/' + str(datetime.date.today()) + '.log'
+LOG_FILE = f'{SERVICE_PATH}/Log/{str(datetime.date.today())}.log'
 if not os.path.exists(LOG_FILE):
     log_file = open(LOG_FILE, 'w')
     log_file.close()
 logzero.logfile(LOG_FILE, loglevel=logging.DEBUG)
 
-OJ_WT0 = 0
-OJ_WT1 = 1
-OJ_CI = 2
-OJ_RI = 3
-OJ_AC = 4
-OJ_PE = 5
-OJ_WA = 6
-OJ_TL = 7
-OJ_ML = 8
-OJ_OL = 9
-OJ_RE = 10
-OJ_CE = 11
-OJ_CO = 12
+
+@unique
+class OJ_RESULT(Enum):
+    WT0 = 0
+    WA1 = 1
+    CI = 2
+    RI = 3
+    AC = 4
+    PE = 5
+    WA = 6
+    TL = 7
+    ML = 8
+    OL = 9
+    RE = 10
+    CE = 11
+    CO = 12
 
 
 # sha256 = hashlib.sha256()
