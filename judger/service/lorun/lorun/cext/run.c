@@ -107,8 +107,8 @@ int traceLoop(struct Runobj *runobj, struct Result *rst, pid_t pid) {
 
         ptrace(PTRACE_SYSCALL, pid, NULL, NULL);
     }
-    
-    
+
+
     rst->time_used = ru.ru_utime.tv_sec * 1000
             + ru.ru_utime.tv_usec / 1000
             + ru.ru_stime.tv_sec * 1000
