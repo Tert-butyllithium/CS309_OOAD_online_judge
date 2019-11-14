@@ -5,3 +5,4 @@
 # /judger/venv
 /judger/service/__pycache__
 /judger/.idea
+/judger/data

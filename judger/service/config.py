@@ -25,8 +25,8 @@ DATABASES_DB = 'jol'
 # 把这行改成这个repos的路径
 Project_PATH = '/home/lumia/CS309_OOAD_online_judge'
 # Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge'
-DATA_PATH = '/home/judge/data'
-# DATA_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge/judger/data'
+# DATA_PATH = '/home/judge/data'
+DATA_PATH = '/home/lumia/CS309_OOAD_online_judge/judger/data'
 
 FILE_TYPE = ['.c', '.cpp', '.PAS', '.java', '.py', '.py', '.kt']
 SERVICE_PATH = f'{Project_PATH}/judger'
@@ -56,6 +56,16 @@ class OJ_RESULT(Enum):
     RE = 10
     CE = 11
     CO = 12
+    
+@unique
+class LANGUAGE(Enum):
+    C = 0
+    CPP = 1
+    PASCAL = 2
+    JAVA = 3
+    PY2 = 4
+    PY3 = 5
+    KOTLIN = 6
 
 
 # sha256 = hashlib.sha256()

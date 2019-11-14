@@ -39,7 +39,7 @@ class DB(object):
 
         database.close()
         # (codes, language_config, problem_id, time_limit, memory_limit)
-        logger.debug(data)
+        # logger.debug(data)
         return (data[1], data[9], data[3], data[30], data[31], data[26])
 
     def search_submission(self):
@@ -77,10 +77,10 @@ class DB(object):
         except:
             logger.error("Fail to execute command \'%s\' to database" % sql)
         if result['error'] != '':
-            table_name = 'compileinfo' if result['result'] == OJ_RESULT.RE else 'runtimeinfo'
+            table_name = 'compileinfo' if result['result'] == OJ_RESULT.CE.value else 'runtimeinfo'
             # sql = f"insert into {table_name} (solution_id, error) values ({solution_id},\'{result['error']}\')"
-            sql = 'insert into %s (solution_id, error) values (%s, \'%s\');' % (
-            table_name, solution_id, result['error'])
+            result['error'] = result['error'].replace('\'', '\\\'')
+            sql = 'insert into %s (solution_id, error) values (%s, \'%s\');' % (table_name, solution_id, result['error'])
             logger.debug(sql)
             database.ping(reconnect=True)
             try:
