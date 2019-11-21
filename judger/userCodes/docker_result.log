@@ -1,1 +1,1 @@
-{'timeused': 164, 'memoryused': 28192, 'result': 10, 'error': 'Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 3\n\tat Main.main(Main.java:4)\n'}
+{'result': 0, 'timeused': 25, 'error': '', 'memoryused': 8068}

@@ -39,6 +39,20 @@ class Judger(object):
             file.close()
 
     def compile(self, language_config):
+        def compile_Py(file):
+            compile_result_log = f'{USER_CODES_FOLDER}/compile_result.log'
+            command = f'python3 -m py_compile {file} 2> {compile_result_log}'
+            logger.info(f"COMPILE COMMAND: {command}")
+            os.system(command)
+            time.sleep(0.1)
+            log_file = open(compile_result_log, 'r')
+            compile_result = log_file.read()
+            log_file.close()
+            if compile_result:
+                logger.info('Compile error')
+                return False, compile_result.replace(file, 'Main.py')
+            return True, ''
+
         def compileC_CPP(file):
             compile_result_log = f'{USER_CODES_FOLDER}/compile_result.log'
             command = f'g++ {file} -o {USER_CODES_FOLDER}/Main 2> {compile_result_log}'
@@ -91,7 +105,7 @@ class Judger(object):
         elif language_config == LANGUAGE.JAVA.value:
             return compile_JAVA(file)
         elif language_config == LANGUAGE.PY2.value or language_config == LANGUAGE.PY3.value:
-            return True, ''
+            return compile_Py(file)
         elif language_config == LANGUAGE.KOTLIN.value:
             return compile_Kotlin(file)
         return True, ''
@@ -109,16 +123,16 @@ class Judger(object):
                 pass
             elif language_config == LANGUAGE.JAVA.value:
                 command = f'java -XX:-UseCompressedClassPointers -cp {USER_CODES_FOLDER}/ Main < {input_path} > {output_path} 2> {error_file}'
-                tl += OJ_JAVA_TIME_BONUS
-                ml += OJ_JAVA_MEMORY_BONUS
+                # tl += OJ_JAVA_TIME_BONUS
+                # ml += OJ_JAVA_MEMORY_BONUS
             elif language_config == LANGUAGE.PY2.value:
                 command = f'python2 {code_file}.py < {input_path} > {output_path} 2> {error_file}'
             elif language_config == LANGUAGE.PY3.value:
                 command = f'python3 {code_file}.py < {input_path} > {output_path} 2> {error_file}'
             elif language_config == LANGUAGE.KOTLIN.value:
                 command = f'java -XX:-UseCompressedClassPointers -jar {code_file}.jar < {input_path} > {output_path} 2> {error_file}'
-                tl += OJ_JAVA_TIME_BONUS
-                ml += OJ_JAVA_MEMORY_BONUS
+                # tl += OJ_JAVA_TIME_BONUS
+                # ml += OJ_JAVA_MEMORY_BONUS
             else:
                 logger.error(f'Error! Cannot recognize language.')
             docker_result_log = f'{USER_CODES_FOLDER}/docker_result.log'
@@ -156,10 +170,15 @@ class Judger(object):
             # docker_thread.start()
             os.system(docker_command)
             docker_result_log = f'{USER_CODES_FOLDER}/docker_result.log'
-            while not os.path.exists(docker_result_log):
+            start_time = time.time()
+            while not os.path.exists(docker_result_log) and time.time() - start_time < 2 * time_limit:
                 logger.debug("NOT EXISTS DOCKER_RESULT_LOG")
                 time.sleep(1)
                 pass
+            if time.time() - start_time > time_limit:
+                result['result'] = OJ_RESULT.TL.value
+                result['time'] = time.time() - start_time
+                return result
             time.sleep(0.1)
             file = open(docker_result_log, 'r')
             docker_result = eval(file.read())
@@ -167,9 +186,11 @@ class Judger(object):
             logger.debug(docker_result)
             result['time'] = max(docker_result['timeused'], result['time'])
             # result['TLE'] = docker_result['TLE']
-            result['result'] = docker_result['result']
             result['error'] = docker_result['error']
             result['memory'] = max(docker_result['memoryused'], result['memory'])
+            result['result'] = docker_result['result']
+            if result['result'] != OJ_RESULT.AC.value:
+                return result
         return result
 
     def run(self, code, language_config, problem_id, time_limit, memory_limit, spj):
@@ -193,18 +214,23 @@ class Judger(object):
         judge_result['time'] = runtime_result['time']
         judge_result['result'] = runtime_result['result']
         judge_result['memory'] = runtime_result['memory']
-        judge_result['result'] = runtime_result['result']
         judge_result['error'] = runtime_result['error']
         if judge_result['result'] == OJ_RESULT.RE.value:
+            os.system(f'rm -rf {USER_CODES_FOLDER}/*')
+            return judge_result
+        if judge_result['result'] == OJ_RESULT.ML.value:
+            os.system(f'rm -rf {USER_CODES_FOLDER}/*')
+            return judge_result
+        if judge_result['result'] == OJ_RESULT.TL.value:
+            os.system(f'rm -rf {USER_CODES_FOLDER}/*')
             return judge_result
 
         output_folder = USER_CODES_FOLDER
         standard_output_folder = f'{DATA_PATH}/{str(problem_id)}'
-        if spj == '0':
+        if spj == 0:
             if not self.compare_output(output_folder, standard_output_folder):
                 judge_result['result'] = OJ_RESULT.WA.value
             else:
-                logger.debug(judge_result)
                 judge_result['result'] = OJ_RESULT.AC.value
                 logger.debug(OJ_RESULT.AC.value)
                 logger.debug(judge_result)
@@ -213,13 +239,13 @@ class Judger(object):
             if not self.compare_output_spj(output_folder, standard_output_folder):
                 judge_result['result'] = OJ_RESULT.WA.value
             else:
-                judge_result['result'] = OJ_RESULT.AC.vlaue
+                judge_result['result'] = OJ_RESULT.AC.value
             os.system(f'rm -rf {USER_CODES_FOLDER}/*')
         return judge_result
 
     def compare_output_spj(self, output_folder, standard_output_folder):
         logger.debug(standard_output_folder)
-        spj_cpp = f'{standard_output_folder}spj.cpp'
+        spj_cpp = f'{standard_output_folder}/spj.cpp'
         spj_exec = spj_cpp[0:len(spj_cpp) - 4]
         if os.path.exists(spj_cpp):
             compile_result = self.exec_cmd(f'g++ {spj_cpp} -o {spj_exec}')

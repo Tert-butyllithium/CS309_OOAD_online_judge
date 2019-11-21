@@ -67,7 +67,13 @@ class LANGUAGE(Enum):
     PY3 = 5
     KOTLIN = 6
 
-
+class LIMIT(Enum):
+    JAVA_TIME_BONUS = 2
+    JAVA_SPACE_BONUS = 512
+    PYTHON_TIME_BONUS = 2
+    PYTHON_SPACE_BONUS = 512
+    KT_TIME_BONUS = 2
+    KT_SAPCE_BONUS = 512
 # sha256 = hashlib.sha256()
 # sha256.update(original_token.encode('utf-8'))
 # token = sha256.hexdigest()

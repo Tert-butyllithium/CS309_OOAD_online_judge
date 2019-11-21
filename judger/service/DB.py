@@ -4,6 +4,8 @@ import pymysql
 from config import logger
 from config import IP
 from config import OJ_RESULT
+from config import LIMIT
+from config import LANGUAGE
 
 
 class DB(object):
@@ -29,7 +31,7 @@ class DB(object):
              'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
                 solution_id))
 
-        logger.debug(solution_id)
+        logger.info(solution_id)
         data = cursor.fetchone()
         if data is None:
             logger.debug('Fail to query database. Delay 200ms')
@@ -37,10 +39,36 @@ class DB(object):
             cursor.execute('select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
             data = cursor.fetchone()
 
-        database.close()
+        # database.close()
+        # code, language_config, problem, time, memory, spj
+        res = [data[1], int(data[9]), data[3], data[30], int(data[31]), int(data[26])]
+        problem_id =  data[3]
+        logger.info(f'Search TL and ML')
+        sql = f'select * from extra_time_space where problem = {problem_id}'
+        database.ping(reconnect=True)
+        cursor = database.cursor()
+        cursor.execute(sql)
+        data = cursor.fetchone()
+        if data is not None:
+            res[3] += int(data[1])
+            res[4] += int(data[2])
+        else:
+            if res[1] == LANGUAGE.JAVA.value:
+                res[3] += LIMIT.JAVA_TIME_BONUS.value
+                res[4] += LIMIT.JAVA_SPACE_BONUS.value
+            elif res[1] == LANGUAGE.PY2.value:
+                res[3] += LIMIT.PYTHON_TIME_BONUS.value
+                res[4] += LIMIT.PYTHON_SPACE_BONUS.value
+            elif res[1] == LANGUAGE.PY3.value:
+                res[3] += LIMIT.PYTHON_TIME_BONUS.value
+                res[4] += LIMIT.PYTHON_SPACE_BONUS.value
+            elif res[1] == LANGUAGE.KOTLIN.value:
+                res[3] += LIMIT.KT_TIME_BONUS.value
+                res[4] += LIMIT.KT_SAPCE_BONUS.value
+
         # (codes, language_config, problem_id, time_limit, memory_limit)
         # logger.debug(data)
-        return (data[1], data[9], data[3], data[30], data[31], data[26])
+        return res #(data[1], data[9], data[3], data[30], data[31], data[26])
 
     def search_submission(self):
         database = pymysql.connect(
@@ -50,8 +78,7 @@ class DB(object):
             db=self.db
         )
         cursor = database.cursor()
-        cursor.execute(
-            'select * from solution s where s.result = 0;')
+        cursor.execute('select * from solution s where s.result = 0;')
         data = cursor.fetchall()
         # Only store the solution id of the tasks have not been judged
         list = []

@@ -71,31 +71,29 @@ def main(argv):
         'fd_in': fin.fileno(),
         'fd_out': fout.fileno(),
         'fd_err': ferr.fileno(),
-        'timelimit': time_limit * 1000,  # in MS
+        'timelimit': time_limit * 1000 * 2,  # in MS
         'memorylimit': memory_limit * 1024,  # in KB
+
+                                                    
     }
     # print('runcfg', runcfg)
     rst = lorun.run(runcfg)
     # print('rst', rst)
     if rst['result'] != 0:
         rst['result'] = mapping[rst['result']]
+    if rst['timeused'] > time_limit * 1000:
+        rst['result'] = OJ_TL
+    if rst['memoryused'] > memory_limit * 1024:
+        rst['result'] = OJ_ML
     error = open(error_file, 'r')
     rst['error'] = error.read()
     if rst['error']:
         rst['result'] = OJ_RE
     error.close()
 
-
-#    if rst['result'] == OJ_RE:
- #       error_file = open(out_file, 'r')
-#
- #       rst['error'] = error_file.read()
-  #      error_file.close()
-   # else:
-    #    rst['error'] = ''
     fin.close()
     fout.close()
-    result = open(docker_result_log, 'w')
+    result = open(docker_result_log, 'w+')
     result.write(str(rst))
     result.close()
 
