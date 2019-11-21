@@ -21,7 +21,12 @@ def new_task():
         #   'result': 0,
         #  'info': 'The judge sevice has not been started yep. Please start the service before transferring the solution id.'
     # }
-    _solution_id = request.form.get('solutionId')
+   # logger.debug(type(request.json['solutionId']))
+    #logger.debug(request.data)
+    #logger.debug(request.form)
+    #logger.debug(request.form.get('solutionId'))
+    #logger.debug(request.data)
+    _solution_id = request.json['solutionId'][0]
     logger.debug(f'Insert task {_solution_id}')
     js.new_task(_solution_id)
     return {
@@ -32,7 +37,7 @@ def new_task():
 
 if __name__ == '__main__':
     port = sys.argv[1] if len(sys.argv) > 1 else 5000
-    host = sys.argv[2] if len(sys.argv) > 2 else '127.0.0.1'
+    host = sys.argv[2] if len(sys.argv) > 2 else '0.0.0.0'
     debug = sys.argv[3] if len(sys.argv) > 3 else None
     js.run()
     app.run(port=port, host=host, debug=debug)
