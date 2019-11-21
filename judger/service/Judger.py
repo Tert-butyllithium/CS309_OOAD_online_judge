@@ -256,7 +256,7 @@ class Judger(object):
         for TC_out in os.listdir(standard_output_folder):
             if not TC_out.endswith('.out'):
                 continue
-            TC_out = standard_output_folder + TC_out
+            TC_out = f'{standard_output_folder}/{TC_out}'
             TC_in = TC_out[0:len(TC_out) - 4] + '.in'
             if not os.path.exists(TC_in):
                 raise Exception(TC_in + ' not found but ' + TC_out + ' found')
@@ -264,7 +264,7 @@ class Judger(object):
             user_out = output_folder + TC_id + '.out'
             if not os.path.exists(user_out):
                 return False
-            result = os.system(spj_exec + ' ' + TC_in + ' ' + TC_out + ' ' + user_out)
+            result = os.system(f'{spj_exec} {TC_in} {TC_out} {user_out}')
             if result != 0:
                 return False
         return True
