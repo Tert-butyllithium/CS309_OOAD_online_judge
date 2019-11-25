@@ -217,6 +217,9 @@ class Judger(object):
         judge_result['error'] = runtime_result['error']
         if judge_result['result'] == OJ_RESULT.RE.value:
             os.system(f'rm -rf {USER_CODES_FOLDER}/*')
+            # judge_result['error'] = judge_result['error'].replace(USER_CODES_FOLDER, '')
+            # judge_result['error'] = judge_result['error'].replace('\"', '')
+            # judge_result['error'] = judge_result['error'].replace('\'', '')
             return judge_result
         if judge_result['result'] == OJ_RESULT.ML.value:
             os.system(f'rm -rf {USER_CODES_FOLDER}/*')

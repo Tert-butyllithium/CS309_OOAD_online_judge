@@ -22,6 +22,9 @@ DATABASES_USER = 'lanran'
 DATABASES_PWD = 'lanran'
 DATABASES_DB = 'jol'
 
+BACKEND_IP = '10.20.71.60:1235'
+TOKEN = '123456'
+
 # 把这行改成这个repos的路径
 Project_PATH = '/home/lumia/CS309_OOAD_online_judge'
 # Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge'

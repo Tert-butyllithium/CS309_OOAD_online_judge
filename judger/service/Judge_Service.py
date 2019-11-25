@@ -8,6 +8,9 @@ from config import DATABASES_DB
 from config import logger
 from config import OJ_JAVA_TIME_BONUS
 from config import OJ_JAVA_MEMORY_BONUS
+from config import BACKEND_IP
+from config import TOKEN
+import requests
 import queue
 import os
 
@@ -48,6 +51,7 @@ class JudgeService(object):
                                          task_info[4],
                                          task_info[5])
                 logger.debug('Searching end with the result \'%s\'' % result)
+                self.notify_backend(solution_id)
                 OJ_DB.write_DB(result, solution_id)
                 logger.info('______________________END_____________________________')
             else:
@@ -57,3 +61,11 @@ class JudgeService(object):
                 for i in range(0, len(list)):
                     self.task_queue.put(list[i])
                 queue_lock.release()
+
+    def notify_backend(self, solution_id):
+        request_url = f'http://{BACKEND_IP}/api/finishjudge'
+        para = {
+            'solution_id': solution_id,
+            'token': TOKEN
+        }
+        requests.post(request_url, json=para)

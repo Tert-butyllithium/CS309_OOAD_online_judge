@@ -105,16 +105,15 @@ class DB(object):
             logger.error("Fail to execute command \'%s\' to database" % sql)
         if result['error'] != '':
             table_name = 'compileinfo' if result['result'] == OJ_RESULT.CE.value else 'runtimeinfo'
-            # sql = f"insert into {table_name} (solution_id, error) values ({solution_id},\'{result['error']}\')"
             result['error'] = result['error'].replace('\'', '\\\'')
-            sql = 'insert into %s (solution_id, error) values (%s, \'%s\');' % (table_name, solution_id, result['error'])
+            sql = f"insert into {table_name} (solution_id, error) values ({solution_id}, \'{result['error']}\') ON DUPLICATE KEY update solution_id={solution_id}, error=\'{result['error']}\';"
             logger.debug(sql)
             database.ping(reconnect=True)
             try:
                 cursor = database.cursor()
                 cursor.execute(sql)
                 database.commit()
-            except:
-                logger.error("Fail to execute command \'%s\' to database" % sql)
+            except Exception as e:
+                logger.error(f"Fail to execute command \'{sql}\' to database for : {e}")
         cursor.close()
         database.close()
