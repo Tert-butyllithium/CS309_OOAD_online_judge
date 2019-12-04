@@ -36,9 +36,9 @@ class JudgeService(object):
         judging_thread.start()
 
     def judger_thread(self):
+        last_search_time = time.time()
         while True:
             if not self.task_queue.empty():
-                # os.system('docker rm $(docker ps -qf status=exited)')
                 OJ_DB = DB(DATABASES_HOST, DATABASES_USER, DATABASES_PWD, DATABASES_DB)
                 queue_lock.acquire()
                 solution_id = self.task_queue.get()
@@ -55,14 +55,14 @@ class JudgeService(object):
                 self.notify_backend(solution_id)
                 OJ_DB.write_DB(result, solution_id)
                 logger.info('______________________END_____________________________')
-            else:
-                time.sleep(10)
+            elif time.time() - last_search_time >= 20:
                 OJ_DB = DB(DATABASES_HOST, DATABASES_USER, DATABASES_PWD, DATABASES_DB)
                 list_ = OJ_DB.search_submission()
                 queue_lock.acquire()
                 for i in range(0, len(list_)):
                     self.task_queue.put(list_[i])
                 queue_lock.release()
+                last_search_time = time.time()
 
     def notify_backend(self, solution_id):
         request_url = f'http://{BACKEND_IP}/api/finishjudge'
