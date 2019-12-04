@@ -1,0 +1,13 @@
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb http://mirrors.sustech.rocks/ubuntu/ bionic main restricted universe multiverse
+# deb-src http://mirrors.sustech.rocks/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.sustech.rocks/ubuntu/ bionic-updates main restricted universe multiverse
+# deb-src http://mirrors.sustech.rocks/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.sustech.rocks/ubuntu/ bionic-backports main restricted universe multiverse
+# deb-src http://mirrors.sustech.rocks/ubuntu/ xenial-backports main restricted universe multiverse
+deb http://mirrors.sustech.rocks/ubuntu/ bionic-security main restricted universe multiverse
+# deb-src http://mirrors.sustech.rocks/ubuntu/ xenial-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb http://mirrors.sustech.rocks/ubuntu/ xenial-proposed main restricted universe multiverse
+
