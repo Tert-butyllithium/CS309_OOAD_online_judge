@@ -6,13 +6,14 @@ from config import DATABASES_USER
 from config import DATABASES_PWD
 from config import DATABASES_DB
 from config import logger
-from config import OJ_JAVA_TIME_BONUS
-from config import OJ_JAVA_MEMORY_BONUS
+# from config import OJ_JAVA_TIME_BONUS
+# from config import OJ_JAVA_MEMORY_BONUS
 from config import BACKEND_IP
 from config import TOKEN
 import requests
 import queue
 import os
+import time
 
 queue_lock = threading.Lock()
 
@@ -50,16 +51,17 @@ class JudgeService(object):
                                          task_info[3],
                                          task_info[4],
                                          task_info[5])
-                logger.debug('Searching end with the result \'%s\'' % result)
+                logger.info('Searching end with the result \'%s\'' % result)
                 self.notify_backend(solution_id)
                 OJ_DB.write_DB(result, solution_id)
                 logger.info('______________________END_____________________________')
             else:
+                time.sleep(10)
                 OJ_DB = DB(DATABASES_HOST, DATABASES_USER, DATABASES_PWD, DATABASES_DB)
-                list = OJ_DB.search_submission()
+                list_ = OJ_DB.search_submission()
                 queue_lock.acquire()
-                for i in range(0, len(list)):
-                    self.task_queue.put(list[i])
+                for i in range(0, len(list_)):
+                    self.task_queue.put(list_[i])
                 queue_lock.release()
 
     def notify_backend(self, solution_id):

@@ -10,11 +10,13 @@ import socket
 # restful api使用的时候需要带上的东西
 # original_token = 'TESTING_TOKEN'
 
-OJ_JAVA_TIME_BONUS = 2
-OJ_JAVA_MEMORY_BONUS = 512
+# OJ_JAVA_TIME_BONUS = 2
+# OJ_JAVA_MEMORY_BONUS = 512
+
 
 # 当前用户组的UID，使用这个是为了避免用root启动
 SYSTEM_UID = 1000
+DOCKER_VERSION = 'judge:v4'
 
 # 修改数据库的配置 不需要多说
 DATABASES_HOST = 'localhost'
@@ -25,19 +27,18 @@ DATABASES_DB = 'jol'
 BACKEND_IP = '10.20.71.60:1235'
 TOKEN = '123456'
 
-# 把这行改成这个repos的路径
-Project_PATH = '/home/lumia/CS309_OOAD_online_judge'
-# Project_PATH = '/home/isc-/Desktop/CS309_OOAD_online_judge'
-# DATA_PATH = '/home/judge/data'
-DATA_PATH = '/home/lumia/CS309_OOAD_online_judge/judger/data'
+CONFIG_PATH = os.path.abspath(os.path.dirname(__file__))
+Project_PATH = os.path.split(os.path.split(CONFIG_PATH)[0])[0]
+SERVICE_PATH = os.path.join(Project_PATH, 'judger')
+DATA_PATH = os.path.join(SERVICE_PATH, 'data')
+USER_CODES_FOLDER = os.path.join(SERVICE_PATH, 'userCodes')
+TMP_PATH = os.path.join(SERVICE_PATH, 'tmp')
+RUN_CODE_PY = os.path.join(os.path.join(SERVICE_PATH, 'service'), 'Runner.py')
+LOG_FOLDER = os.path.join(SERVICE_PATH, 'Log')
+LOG_FILE = os.path.join(LOG_FOLDER, f'{str(datetime.date.today())}.log')
 
 FILE_TYPE = ['.c', '.cpp', '.PAS', '.java', '.py', '.py', '.kt']
-SERVICE_PATH = f'{Project_PATH}/judger'
-USER_CODES_FOLDER = f'{SERVICE_PATH}/userCodes'
-RUN_CODE_PY = f'{SERVICE_PATH}/service/Runner.py'
 
-# 封装logger，这里不需要修改
-LOG_FILE = f'{SERVICE_PATH}/Log/{str(datetime.date.today())}.log'
 if not os.path.exists(LOG_FILE):
     log_file = open(LOG_FILE, 'w')
     log_file.close()
@@ -59,7 +60,7 @@ class OJ_RESULT(Enum):
     RE = 10
     CE = 11
     CO = 12
-    
+
 @unique
 class LANGUAGE(Enum):
     C = 0

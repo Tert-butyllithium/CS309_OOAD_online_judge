@@ -11,9 +11,10 @@ from config import LANGUAGE
 from config import RUN_CODE_PY
 # from Runner import DockerThread
 from config import SYSTEM_UID
-from config import OJ_JAVA_TIME_BONUS
-from config import OJ_JAVA_MEMORY_BONUS
+# from config import OJ_JAVA_TIME_BONUS
+# from config import OJ_JAVA_MEMORY_BONUS
 from config import DATA_PATH
+from config import DOCKER_VERSION
 
 
 class Judger(object):
@@ -67,7 +68,6 @@ class Judger(object):
                 return False, compile_result.replace(file, 'Main.cpp')
             return True, ''
 
-
         def compile_JAVA(file):
             compile_result_log = f'{USER_CODES_FOLDER}/compile_result.log'
             command = f'/usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF-8 2> {compile_result_log}'
@@ -82,6 +82,7 @@ class Judger(object):
                     if result:
                         return False, result.replace(file, 'Main.java')
             return True, ''
+
         def compile_Kotlin(file):
             compile_result_log = f'{USER_CODES_FOLDER}/compile_result.log'
             command = f'kotlinc {file} -include-runtime -d {USER_CODES_FOLDER}/Main.jar 2> {compile_result_log} '
@@ -112,86 +113,96 @@ class Judger(object):
 
     def run_code(self, language_config, problem_id, time_limit, memory_limit):
 
-        def get_docker_command():
-            ml = memory_limit
-            tl = time_limit
-            prefix = f'docker run --rm -u {str(SYSTEM_UID)}:{str(SYSTEM_UID)}'
-            command = ''
-            if language_config == LANGUAGE.C.value or language_config == LANGUAGE.CPP.value:
-                command = f'{code_file} < {input_path} > {output_path} 2> {error_file}'
-            elif language_config == LANGUAGE.PASCAL.value:
-                pass
-            elif language_config == LANGUAGE.JAVA.value:
-                command = f'java -XX:-UseCompressedClassPointers -cp {USER_CODES_FOLDER}/ Main < {input_path} > {output_path} 2> {error_file}'
-                # tl += OJ_JAVA_TIME_BONUS
-                # ml += OJ_JAVA_MEMORY_BONUS
-            elif language_config == LANGUAGE.PY2.value:
-                command = f'python2 {code_file}.py < {input_path} > {output_path} 2> {error_file}'
-            elif language_config == LANGUAGE.PY3.value:
-                command = f'python3 {code_file}.py < {input_path} > {output_path} 2> {error_file}'
-            elif language_config == LANGUAGE.KOTLIN.value:
-                command = f'java -XX:-UseCompressedClassPointers -jar {code_file}.jar < {input_path} > {output_path} 2> {error_file}'
-                # tl += OJ_JAVA_TIME_BONUS
-                # ml += OJ_JAVA_MEMORY_BONUS
-            else:
-                logger.error(f'Error! Cannot recognize language.')
-            docker_result_log = f'{USER_CODES_FOLDER}/docker_result.log'
-            docker_command = f'{prefix} -v {Project_PATH}:{Project_PATH}  judge:v3 python3 {RUN_CODE_PY} \'{command}\' {str(tl)} {str(ml)} \'{docker_result_log}\''
-
-            logger.info('RUNNING COMMAND: ' + command)
-            logger.debug(docker_command)
-            return docker_command
-
-        user_folder = USER_CODES_FOLDER
-        problem_folder = f'{DATA_PATH}/{str(problem_id)}'
+        problem_folder = os.path.join(DATA_PATH, str(problem_id))
         result = {
             'time': 0,
             'result': 0,
             'memory': 0,
             'error': ''
         }
-        logger.info(problem_folder)
+        output_folder = USER_CODES_FOLDER
+        prefix = f'docker run --rm -u {str(SYSTEM_UID)}:{str(SYSTEM_UID)} -v {Project_PATH}:{Project_PATH} {DOCKER_VERSION}'
+        docker_result_log = os.path.join(
+            USER_CODES_FOLDER, 'docker_result.log')
+        code_file = ''
+        if language_config == LANGUAGE.C.value or language_config == LANGUAGE.CPP.value:
+            code_file = os.path.join(USER_CODES_FOLDER, 'Main')
+        elif language_config == LANGUAGE.JAVA.value:
+            code_file = os.path.join(USER_CODES_FOLDER, 'Main')
+        elif language_config == LANGUAGE.PY2.value or language_config == LANGUAGE.PY3.value:
+            code_file = os.path.join(USER_CODES_FOLDER, 'Main.py')
+        elif language_config == LANGUAGE.KOTLIN.value:
+            code_file = os.path.join(USER_CODES_FOLDER, 'Main.jar')
+        docker_command = f'{prefix} python3 {RUN_CODE_PY} \'{code_file}\' \'{problem_folder}\' \'{output_folder}\' {language_config} {time_limit} {memory_limit} \'{docker_result_log}\''
+
+        logger.info(f'DOCKER_COMMAND: {docker_command}')
+        os.system(docker_command)
+        testcase_cnt = 0
         for testfile in os.listdir(problem_folder):
             if not testfile.endswith('.in'):
                 continue
-            # /home/isc-/Desktop/CS309_OOAD_online_judge/data/1001/1.in
-            input_path = f'{problem_folder}/{testfile}'
-            # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/1.out
-            output_path = f'{user_folder}/{testfile[0:len(testfile) - 3]}.out'
-            # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main
-            code_file = f'{user_folder}/Main'
-            #
-            error_file = f'{user_folder}/{testfile[0:len(testfile) - 3]}.err'
-
-            logger.info(f'RUNNING CODE: {code_file} {testfile}')
-            # 对于不同的语言
-            docker_command = get_docker_command()
-            # docker_thread = DockerThread(docker_command)
-            # docker_thread.start()
-            os.system(docker_command)
-            docker_result_log = f'{USER_CODES_FOLDER}/docker_result.log'
-            start_time = time.time()
-            while not os.path.exists(docker_result_log) and time.time() - start_time < 2 * time_limit:
-                logger.debug("NOT EXISTS DOCKER_RESULT_LOG")
-                time.sleep(1)
-                pass
-            if time.time() - start_time > time_limit:
-                result['result'] = OJ_RESULT.TL.value
-                result['time'] = time.time() - start_time
-                return result
-            time.sleep(0.1)
-            file = open(docker_result_log, 'r')
-            docker_result = eval(file.read())
-            file.close()
-            logger.debug(docker_result)
-            result['time'] = max(docker_result['timeused'], result['time'])
-            # result['TLE'] = docker_result['TLE']
-            result['error'] = docker_result['error']
-            result['memory'] = max(docker_result['memoryused'], result['memory'])
-            result['result'] = docker_result['result']
-            if result['result'] != OJ_RESULT.AC.value:
-                return result
+            testcase_cnt += 1
+        start_time = time.time()
+        while not os.path.exists(docker_result_log) and time.time() - start_time < 2 * time_limit * testcase_cnt:
+            logger.info("NOT EXISTS DOCKER_RESULT_LOG")
+            time.sleep(1)
+        if time.time() - start_time > time_limit * testcase_cnt:
+            result['result'] = OJ_RESULT.TL.value
+            result['time'] = time.time() - start_time
+            return result
+        time.sleep(0.1)
+        file = open(docker_result_log, 'r')
+        docker_result = eval(file.read())
+        file.close()
+        logger.info(f'docker_result: {docker_result}')
+        result['time'] = docker_result['timeused']
+        result['error'] = docker_result['error']
+        result['memory'] = docker_result['memoryused']
+        result['result'] = docker_result['result']
         return result
+
+        # for testfile in os.listdir(problem_folder):
+        #     if not testfile.endswith('.in'):
+        #         continue
+        #     # /home/isc-/Desktop/CS309_OOAD_online_judge/data/1001/1.in
+        #     input_path = f'{problem_folder}/{testfile}'
+        #     # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/1.out
+        #     output_path = f'{user_folder}/{testfile[0:len(testfile) - 3]}.out'
+        #     # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main
+        #     code_file = f''
+        #     #
+        #     error_file = f'{user_folder}/{testfile[0:len(testfile) - 3]}.err'
+
+        #     logger.info(f'RUNNING CODE: {code_file} {testfile}')
+        #     # 对于不同的语言
+        #     docker_command = get_docker_command()
+        #     # docker_thread = DockerThread(docker_command)
+        #     # docker_thread.start()
+        #     os.system(docker_command)
+        #     docker_result_log = f'{USER_CODES_FOLDER}/docker_result.log'
+        #     start_time = time.time()
+        #     while not os.path.exists(docker_result_log) and time.time() - start_time < 2 * time_limit:
+        #         logger.debug("NOT EXISTS DOCKER_RESULT_LOG")
+        #         time.sleep(1)
+        #         pass
+        #     if time.time() - start_time > time_limit:
+        #         result['result'] = OJ_RESULT.TL.value
+        #         result['time'] = time.time() - start_time
+        #         return result
+        #     time.sleep(0.1)
+        #     file = open(docker_result_log, 'r')
+        #     docker_result = eval(file.read())
+        #     file.close()
+        #     logger.debug(docker_result)
+        #     result['time'] = max(docker_result['timeused'], result['time'])
+        #     # result['TLE'] = docker_result['TLE']
+        #     result['error'] = docker_result['error']
+        #     result['memory'] = max(
+        #         docker_result['memoryused'], result['memory'])
+        #     result['result'] = docker_result['result']
+        #     if result['result'] != OJ_RESULT.AC.value:
+        #         return result
+        # return result
 
     def run(self, code, language_config, problem_id, time_limit, memory_limit, spj):
         judge_result = {
@@ -209,8 +220,8 @@ class Judger(object):
             os.system(f'rm -rf {USER_CODES_FOLDER}/*')
             return judge_result
 
-        runtime_result = self.run_code(language_config, problem_id, time_limit, memory_limit)
-        logger.debug(runtime_result)
+        runtime_result = self.run_code(
+            language_config, problem_id, time_limit, memory_limit)
         judge_result['time'] = runtime_result['time']
         judge_result['result'] = runtime_result['result']
         judge_result['memory'] = runtime_result['memory']
@@ -235,8 +246,6 @@ class Judger(object):
                 judge_result['result'] = OJ_RESULT.WA.value
             else:
                 judge_result['result'] = OJ_RESULT.AC.value
-                logger.debug(OJ_RESULT.AC.value)
-                logger.debug(judge_result)
             os.system(f'rm -rf {USER_CODES_FOLDER}/*')
         else:
             if not self.compare_output_spj(output_folder, standard_output_folder):
@@ -247,7 +256,7 @@ class Judger(object):
         return judge_result
 
     def compare_output_spj(self, output_folder, standard_output_folder):
-        logger.debug(standard_output_folder)
+        logger.info(standard_output_folder)
         spj_cpp = f'{standard_output_folder}/spj.cpp'
         spj_exec = spj_cpp[0:len(spj_cpp) - 4]
         if os.path.exists(spj_cpp):

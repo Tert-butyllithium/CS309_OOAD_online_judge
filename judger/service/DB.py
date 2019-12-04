@@ -23,8 +23,7 @@ class DB(object):
             db=self.db
         )
         cursor = database.cursor()
-
-        logger.debug(
+        logger.info(
             'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(
                  solution_id))
         cursor.execute(
@@ -34,7 +33,7 @@ class DB(object):
         logger.info(solution_id)
         data = cursor.fetchone()
         if data is None:
-            logger.debug('Fail to query database. Delay 200ms')
+            logger.info('Fail to query database. Delay 200ms')
             time.sleep(0.2)
             cursor.execute('select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
             data = cursor.fetchone()
@@ -96,7 +95,7 @@ class DB(object):
         cursor = database.cursor()
         sql = 'update solution set time = %s, memory = %s, result = %s , judger = "%s" where solution_id = %s;' % (
             result['time'], result['memory'], result['result'], str(IP), solution_id)
-        logger.debug(sql)
+        logger.info(sql)
         database.ping(reconnect=True)
         try:
             cursor.execute(sql)
@@ -107,7 +106,7 @@ class DB(object):
             table_name = 'compileinfo' if result['result'] == OJ_RESULT.CE.value else 'runtimeinfo'
             result['error'] = result['error'].replace('\'', '\\\'')
             sql = f"insert into {table_name} (solution_id, error) values ({solution_id}, \'{result['error']}\') ON DUPLICATE KEY update solution_id={solution_id}, error=\'{result['error']}\';"
-            logger.debug(sql)
+            logger.info(sql)
             database.ping(reconnect=True)
             try:
                 cursor = database.cursor()
