@@ -189,7 +189,7 @@ class Judger(object):
         if not compile_result:
             judge_result['result'] = OJ_RESULT.CE.value
             judge_result['error'] = compile_error
-            os.system(f'rm -rf {solution_folder}/*')
+            os.system(f'rm -rf {solution_folder}')
             return judge_result, int(solution_id)
 
         runtime_result = self.run_code(
@@ -199,16 +199,16 @@ class Judger(object):
         judge_result['memory'] = runtime_result['memory']
         judge_result['error'] = runtime_result['error']
         if judge_result['result'] == OJ_RESULT.RE.value:
-            os.system(f'rm -rf {solution_folder}/*')
+            os.system(f'rm -rf {solution_folder}')
             # judge_result['error'] = judge_result['error'].replace(USER_CODES_FOLDER, '')
             # judge_result['error'] = judge_result['error'].replace('\"', '')
             # judge_result['error'] = judge_result['error'].replace('\'', '')
             return judge_result,  int(solution_id)
         if judge_result['result'] == OJ_RESULT.ML.value:
-            os.system(f'rm -rf {solution_folder}/*')
+            os.system(f'rm -rf {solution_folder}')
             return judge_result,  int(solution_id)
         if judge_result['result'] == OJ_RESULT.TL.value:
-            os.system(f'rm -rf {solution_folder}/*')
+            os.system(f'rm -rf {solution_folder}')
             return judge_result,  int(solution_id)
 
         # output_folder = USER_CODES_FOLDER
