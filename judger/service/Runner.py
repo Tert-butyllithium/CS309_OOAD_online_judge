@@ -155,7 +155,9 @@ def main(argv):
     mle_error = 'failed; error=\'Not enough space\''
     
     # r = open('/home/lumia/CS309_OOAD_online_judge/judger/tmp.file', 'w+')
-    for testcase in os.listdir(input_folder):
+    test_cases = os.listdir(input_folder)
+    test_cases.sort()
+    for testcase in test_cases:
         if not testcase.endswith('.in'):
             continue
         logger.debug(f'test:{testcase}')
