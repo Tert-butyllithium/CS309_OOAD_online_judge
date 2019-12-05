@@ -27,11 +27,12 @@ class Judger(object):
         r.close()
         return text
 
-    def output_Code(self, code, language_config):
-        path = USER_CODES_FOLDER
-        if not os.path.exists(path):
-            self.exec_cmd(f"mkdir {path}")
-        file_name = f'{USER_CODES_FOLDER}/Main{FILE_TYPE[language_config]}'
+    def output_Code(self, code, language_config, solution_id):
+        solution_folder = os.path.join(USER_CODES_FOLDER, solution_id)
+        if not os.path.exists(solution_folder):
+            self.exec_cmd(f"mkdir {solution_folder}")
+        file_name = os.path.join(
+            solution_folder, f'Main{FILE_TYPE[language_config]}')
         with open(file_name, 'w+') as file:
             saved_stdout = sys.stdout
             sys.stdout = file
@@ -39,9 +40,11 @@ class Judger(object):
             sys.stdout = saved_stdout
             file.close()
 
-    def compile(self, language_config):
-        def compile_Py(file):
-            compile_result_log = f'{USER_CODES_FOLDER}/compile_result.log'
+    def compile(self, language_config, solution_id):
+        def compile_Py(file, solution_folder):
+            # f'{USER_CODES_FOLDER}/compile_result.log'
+            compile_result_log = os.path.join(
+                solution_folder, 'compile_result.log')
             command = f'python3 -m py_compile {file} 2> {compile_result_log}'
             logger.info(f"COMPILE COMMAND: {command}")
             os.system(command)
@@ -54,23 +57,27 @@ class Judger(object):
                 return False, compile_result.replace(file, 'Main.py')
             return True, ''
 
-        def compileC_CPP(file):
-            compile_result_log = f'{USER_CODES_FOLDER}/compile_result.log'
-            command = f'g++ {file} -o {USER_CODES_FOLDER}/Main 2> {compile_result_log}'
+        def compileC_CPP(file, solution_folder):
+            # f'{USER_CODES_FOLDER}/compile_result.log'
+            compile_result_log = os.path.join(
+                solution_folder, 'compile_result.log')
+            command = f'g++ {file} -O2 -o {solution_folder}/Main 2> {compile_result_log}'
             logger.info(f"COMPILE COMMAND: {command}")
             os.system(command)
             time.sleep(0.1)
             log_file = open(compile_result_log, 'r')
             compile_result = log_file.read()
             log_file.close()
-            if compile_result:
+            if compile_result and 'error:' in compile_result:
                 logger.info('Compile error')
                 return False, compile_result.replace(file, 'Main.cpp')
             return True, ''
 
-        def compile_JAVA(file):
-            compile_result_log = f'{USER_CODES_FOLDER}/compile_result.log'
-            command = f'/usr/bin/javac {file} -d {USER_CODES_FOLDER} -encoding UTF-8 2> {compile_result_log}'
+        def compile_JAVA(file, solution_folder):
+            logger.debug(2)
+            compile_result_log = os.path.join(
+                solution_folder, 'compile_result.log')
+            command = f'/usr/bin/javac {file} -d {solution_folder} -encoding UTF-8 2> {compile_result_log}'
             logger.info(f'COMPILING COMMAND: {command}')
             # logger.debug(self.exec_cmd(command))
             if os.system(command):
@@ -83,9 +90,10 @@ class Judger(object):
                         return False, result.replace(file, 'Main.java')
             return True, ''
 
-        def compile_Kotlin(file):
-            compile_result_log = f'{USER_CODES_FOLDER}/compile_result.log'
-            command = f'kotlinc {file} -include-runtime -d {USER_CODES_FOLDER}/Main.jar 2> {compile_result_log} '
+        def compile_Kotlin(file, solution_folder):
+            compile_result_log = os.path.join(
+                solution_folder, 'compile_result.log')
+            command = f'kotlinc {file} -include-runtime -d {solution_folder}/Main.jar 2> {compile_result_log} '
             logger.info(f'COMPILING COMMAND: {command}')
             os.system(command)
             time.sleep(0.1)
@@ -97,22 +105,25 @@ class Judger(object):
                 return False, compile_result.replace(file, 'Main.kt')
             return True, ''
         # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main.cpp
-        file = f'{USER_CODES_FOLDER}/Main{FILE_TYPE[language_config]}'
+        solution_folder = os.path.join(USER_CODES_FOLDER, solution_id)
+        file = os.path.join(
+            solution_folder, f'Main{FILE_TYPE[language_config]}')
         logger.info(f'COMPILING CODE: {file}')
         if language_config == LANGUAGE.C.value or language_config == LANGUAGE.CPP.value:
-            return compileC_CPP(file)
+            return compileC_CPP(file, solution_folder)
         elif language_config == LANGUAGE.PASCAL.value:
             pass
         elif language_config == LANGUAGE.JAVA.value:
-            return compile_JAVA(file)
+            logger.debug(1)
+            return compile_JAVA(file, solution_folder)
         elif language_config == LANGUAGE.PY2.value or language_config == LANGUAGE.PY3.value:
-            return compile_Py(file)
+            return compile_Py(file, solution_folder)
         elif language_config == LANGUAGE.KOTLIN.value:
-            return compile_Kotlin(file)
+            return compile_Kotlin(file, solution_folder)
         return True, ''
 
-    def run_code(self, language_config, problem_id, time_limit, memory_limit):
-
+    def run_code(self, language_config, problem_id, time_limit, memory_limit, solution_id):
+        solution_folder = os.path.join(USER_CODES_FOLDER, solution_id)
         problem_folder = os.path.join(DATA_PATH, str(problem_id))
         result = {
             'time': 0,
@@ -120,22 +131,25 @@ class Judger(object):
             'memory': 0,
             'error': ''
         }
-        output_folder = USER_CODES_FOLDER
-        prefix = f'docker run --rm -u {str(SYSTEM_UID)}:{str(SYSTEM_UID)} -v {Project_PATH}:{Project_PATH} {DOCKER_VERSION}'
-        docker_result_log = os.path.join(
-            USER_CODES_FOLDER, 'docker_result.log')
+        # output_folder = USER_CODES_FOLDER
+        # prefix = f'docker run -u {str(SYSTEM_UID)}:{str(SYSTEM_UID)} -v {Project_PATH}:{Project_PATH} {DOCKER_VERSION}'
+        prefix = ''
+        docker_result_log = os.path.join(solution_folder, 'docker_result.log')
         code_file = ''
+        # logger.debug(1)
         if language_config == LANGUAGE.C.value or language_config == LANGUAGE.CPP.value:
-            code_file = os.path.join(USER_CODES_FOLDER, 'Main')
+            code_file = os.path.join(solution_folder, 'Main')
         elif language_config == LANGUAGE.JAVA.value:
-            code_file = os.path.join(USER_CODES_FOLDER, 'Main')
+            code_file = os.path.join(solution_folder, 'Main')
         elif language_config == LANGUAGE.PY2.value or language_config == LANGUAGE.PY3.value:
-            code_file = os.path.join(USER_CODES_FOLDER, 'Main.py')
+            code_file = os.path.join(solution_folder, 'Main.py')
         elif language_config == LANGUAGE.KOTLIN.value:
-            code_file = os.path.join(USER_CODES_FOLDER, 'Main.jar')
-        docker_command = f'{prefix} python3 {RUN_CODE_PY} \'{code_file}\' \'{problem_folder}\' \'{output_folder}\' {language_config} {time_limit} {memory_limit} \'{docker_result_log}\''
+            code_file = os.path.join(solution_folder, 'Main.jar')
+        
+        # logger.debug(2)
+        docker_command = f'{prefix} python3 {RUN_CODE_PY} \'{code_file}\' \'{problem_folder}\' \'{solution_folder}\' {language_config} {time_limit} {memory_limit} \'{docker_result_log}\''
 
-        logger.info(f'DOCKER_COMMAND: {docker_command}')
+        logger.debug(f'DOCKER_COMMAND: {docker_command}')
         os.system(docker_command)
         testcase_cnt = 0
         for testfile in os.listdir(problem_folder):
@@ -161,99 +175,57 @@ class Judger(object):
         result['result'] = docker_result['result']
         return result
 
-        # for testfile in os.listdir(problem_folder):
-        #     if not testfile.endswith('.in'):
-        #         continue
-        #     # /home/isc-/Desktop/CS309_OOAD_online_judge/data/1001/1.in
-        #     input_path = f'{problem_folder}/{testfile}'
-        #     # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/1.out
-        #     output_path = f'{user_folder}/{testfile[0:len(testfile) - 3]}.out'
-        #     # /home/isc-/Desktop/CS309_OOAD_online_judge/userCodes/11712225/Main
-        #     code_file = f''
-        #     #
-        #     error_file = f'{user_folder}/{testfile[0:len(testfile) - 3]}.err'
-
-        #     logger.info(f'RUNNING CODE: {code_file} {testfile}')
-        #     # 对于不同的语言
-        #     docker_command = get_docker_command()
-        #     # docker_thread = DockerThread(docker_command)
-        #     # docker_thread.start()
-        #     os.system(docker_command)
-        #     docker_result_log = f'{USER_CODES_FOLDER}/docker_result.log'
-        #     start_time = time.time()
-        #     while not os.path.exists(docker_result_log) and time.time() - start_time < 2 * time_limit:
-        #         logger.debug("NOT EXISTS DOCKER_RESULT_LOG")
-        #         time.sleep(1)
-        #         pass
-        #     if time.time() - start_time > time_limit:
-        #         result['result'] = OJ_RESULT.TL.value
-        #         result['time'] = time.time() - start_time
-        #         return result
-        #     time.sleep(0.1)
-        #     file = open(docker_result_log, 'r')
-        #     docker_result = eval(file.read())
-        #     file.close()
-        #     logger.debug(docker_result)
-        #     result['time'] = max(docker_result['timeused'], result['time'])
-        #     # result['TLE'] = docker_result['TLE']
-        #     result['error'] = docker_result['error']
-        #     result['memory'] = max(
-        #         docker_result['memoryused'], result['memory'])
-        #     result['result'] = docker_result['result']
-        #     if result['result'] != OJ_RESULT.AC.value:
-        #         return result
-        # return result
-
-    def run(self, code, language_config, problem_id, time_limit, memory_limit, spj):
+    def run(self, code, language_config, problem_id, time_limit, memory_limit, spj, solution_id):
+        solution_folder = os.path.join(USER_CODES_FOLDER, solution_id)
         judge_result = {
             'time': 0,
             'memory': 0,
             'result': -1,
             'error': ''
         }
-        self.output_Code(code, language_config)
-        compile_result, compile_error = self.compile(language_config)
-
+        self.output_Code(code, language_config, solution_id)
+        compile_result, compile_error = self.compile(
+            language_config, solution_id)
         if not compile_result:
             judge_result['result'] = OJ_RESULT.CE.value
             judge_result['error'] = compile_error
-            os.system(f'rm -rf {USER_CODES_FOLDER}/*')
-            return judge_result
+            os.system(f'rm -rf {solution_folder}/*')
+            return judge_result, int(solution_id)
 
         runtime_result = self.run_code(
-            language_config, problem_id, time_limit, memory_limit)
+            language_config, problem_id, time_limit, memory_limit, solution_id)
         judge_result['time'] = runtime_result['time']
         judge_result['result'] = runtime_result['result']
         judge_result['memory'] = runtime_result['memory']
         judge_result['error'] = runtime_result['error']
         if judge_result['result'] == OJ_RESULT.RE.value:
-            os.system(f'rm -rf {USER_CODES_FOLDER}/*')
+            os.system(f'rm -rf {solution_folder}/*')
             # judge_result['error'] = judge_result['error'].replace(USER_CODES_FOLDER, '')
             # judge_result['error'] = judge_result['error'].replace('\"', '')
             # judge_result['error'] = judge_result['error'].replace('\'', '')
-            return judge_result
+            return judge_result,  int(solution_id)
         if judge_result['result'] == OJ_RESULT.ML.value:
-            os.system(f'rm -rf {USER_CODES_FOLDER}/*')
-            return judge_result
+            os.system(f'rm -rf {solution_folder}/*')
+            return judge_result,  int(solution_id)
         if judge_result['result'] == OJ_RESULT.TL.value:
-            os.system(f'rm -rf {USER_CODES_FOLDER}/*')
-            return judge_result
+            os.system(f'rm -rf {solution_folder}/*')
+            return judge_result,  int(solution_id)
 
-        output_folder = USER_CODES_FOLDER
-        standard_output_folder = f'{DATA_PATH}/{str(problem_id)}'
-        if spj == 0:
-            if not self.compare_output(output_folder, standard_output_folder):
-                judge_result['result'] = OJ_RESULT.WA.value
-            else:
-                judge_result['result'] = OJ_RESULT.AC.value
-            os.system(f'rm -rf {USER_CODES_FOLDER}/*')
-        else:
-            if not self.compare_output_spj(output_folder, standard_output_folder):
-                judge_result['result'] = OJ_RESULT.WA.value
-            else:
-                judge_result['result'] = OJ_RESULT.AC.value
-            os.system(f'rm -rf {USER_CODES_FOLDER}/*')
-        return judge_result
+        # output_folder = USER_CODES_FOLDER
+        # standard_output_folder = f'{DATA_PATH}/{str(problem_id)}'
+        # if spj == 0:
+        #     if not self.compare_output(output_folder, standard_output_folder):
+        #         judge_result['result'] = OJ_RESULT.WA.value
+        #     else:
+        #         judge_result['result'] = OJ_RESULT.AC.value
+        #     os.system(f'rm -rf {USER_CODES_FOLDER}/*')
+        # else:
+        #     if not self.compare_output_spj(output_folder, standard_output_folder):
+        #         judge_result['result'] = OJ_RESULT.WA.value
+        #     else:
+        #         judge_result['result'] = OJ_RESULT.AC.value
+        #     os.system(f'rm -rf {USER_CODES_FOLDER}/*')
+        return judge_result,  int(solution_id)
 
     def compare_output_spj(self, output_folder, standard_output_folder):
         logger.info(standard_output_folder)
@@ -302,14 +274,22 @@ class Judger(object):
                     success_count += 1
                     break
                 if bool(out) != bool(stan):
+                    logger.debug(111111111111)
                     fail_count += 1
                     break
                 if not stan and out == '\n':
                     success_count += 1
                     break
                 if out.strip() != stan.strip():
+                    logger.debug(222222222222222222222222)
                     fail_count += 1
                     break
+            outfile.close()
+            stan_file.close()
+            outfile = open(out_file_path)
+            stan_file = open(stan_file_path)
+            logger.debug(f'out: {outfile.read()}')
+            logger.debug(f'stan_file: {stan_file.read()}')
             outfile.close()
             stan_file.close()
         if success_count == file_count:

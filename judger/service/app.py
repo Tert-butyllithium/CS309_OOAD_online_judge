@@ -4,11 +4,11 @@ from config import logger
 from config import TOKEN
 from config import DATA_PATH
 from config import TMP_PATH
+from Judge_Service import js
 import sys
 import os
 
 app = Flask(__name__)
-js = JudgeService()
 
 
 @app.route('/api/judge', methods=['POST'])

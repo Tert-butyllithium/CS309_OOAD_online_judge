@@ -14,9 +14,11 @@ import socket
 # OJ_JAVA_MEMORY_BONUS = 512
 
 
+PROCESS_NUM = 8
+
 # 当前用户组的UID，使用这个是为了避免用root启动
 SYSTEM_UID = 1000
-DOCKER_VERSION = 'judge:v4'
+DOCKER_VERSION = 'judge:v5'
 
 # 修改数据库的配置 不需要多说
 DATABASES_HOST = 'localhost'
@@ -30,7 +32,7 @@ TOKEN = '123456'
 CONFIG_PATH = os.path.abspath(os.path.dirname(__file__))
 Project_PATH = os.path.split(os.path.split(CONFIG_PATH)[0])[0]
 SERVICE_PATH = os.path.join(Project_PATH, 'judger')
-DATA_PATH = os.path.join(SERVICE_PATH, 'data')
+DATA_PATH = '/home/judge/data'
 USER_CODES_FOLDER = os.path.join(SERVICE_PATH, 'userCodes')
 TMP_PATH = os.path.join(SERVICE_PATH, 'tmp')
 RUN_CODE_PY = os.path.join(os.path.join(SERVICE_PATH, 'service'), 'Runner.py')
@@ -73,14 +75,13 @@ class LANGUAGE(Enum):
 
 class LIMIT(Enum):
     JAVA_TIME_BONUS = 2
-    JAVA_SPACE_BONUS = 512
+    JAVA_SPACE_BONUS = 1024
     PYTHON_TIME_BONUS = 2
     PYTHON_SPACE_BONUS = 512
     KT_TIME_BONUS = 2
     KT_SAPCE_BONUS = 512
-# sha256 = hashlib.sha256()
-# sha256.update(original_token.encode('utf-8'))
-# token = sha256.hexdigest()
+    
+
 
 
 def get_host_ip():

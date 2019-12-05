@@ -1,5 +1,4 @@
 import time
-
 import pymysql
 from config import logger
 from config import IP
@@ -38,7 +37,7 @@ class DB(object):
             cursor.execute('select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id))
             data = cursor.fetchone()
 
-        # database.close()
+        database.close()
         # code, language_config, problem, time, memory, spj
         res = [data[1], int(data[9]), data[3], data[30], int(data[31]), int(data[26])]
         problem_id =  data[3]
@@ -54,6 +53,7 @@ class DB(object):
         else:
             if res[1] == LANGUAGE.JAVA.value:
                 res[3] += LIMIT.JAVA_TIME_BONUS.value
+                res[4]  = res[4] * 2
                 res[4] += LIMIT.JAVA_SPACE_BONUS.value
             elif res[1] == LANGUAGE.PY2.value:
                 res[3] += LIMIT.PYTHON_TIME_BONUS.value
@@ -77,8 +77,10 @@ class DB(object):
             db=self.db
         )
         cursor = database.cursor()
-        cursor.execute('select * from solution s where s.result = 0;')
+        cursor.execute('select * from solution s where s.result = 0 or s.result = 1;')
         data = cursor.fetchall()
+        
+        database.close()
         # Only store the solution id of the tasks have not been judged
         list = []
         for i in range(0, len(data)):
