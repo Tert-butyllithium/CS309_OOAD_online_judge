@@ -62,16 +62,6 @@ class JudgeService(object):
                     pool.apply_async(self.judger.run, (task_info[0], task_info[1],
                                                             task_info[2], task_info[3],
                                                             task_info[4], task_info[5], str(solution_id),), callback=process_end)
-                    # result = self.judger.run(task_info[0], task_info[1], task_info[2],
-                    #                          task_info[3],
-                    #                          task_info[4],
-                    #                          task_info[5])
-                    # logger.info(
-                    #     'Searching end with the result \'%s\'' % result)
-                    # self.notify_backend(solution_id)
-                    # self.OJ_DB.write_DB(result, solution_id)
-                    # logger.info(
-                    #     '______________________END_____________________________')
                 elif time.time() - last_search_time >= 5:
                     list_ = self.OJ_DB.search_submission()
                     # queue_lock.acquire()
@@ -97,7 +87,6 @@ js = JudgeService()
 
 
 def process_end(param):
-    logger.debug(param)
     result, solution_id = param
     logger.info('Searching end with the result \'%s\'' % result)
     js.notify_backend(solution_id)

@@ -16,39 +16,39 @@ def new_task():
     if not js.running:
         js.run()
     _solution_id = request.json['solutionId'][0]
-    logger.debug(f'Insert task {_solution_id}')
+    logger.info(f'Insert task {_solution_id}')
     js.new_task(_solution_id)
     return {
         'result': 1,
         'info': 'solutionId: ' + str(_solution_id) + ' has been added to the task queue.'
     }
 
-@app.route('/getTestData', methods=['GET'])
-def get_test_data():
-    if not js.running:
-        res = make_response('The judger server does not run.', 403)
-        return res
-    _token = request.json['token'][0]
-    _problem_id = request.json['problem_id'][0]
-    if _problem_id == '' or _token == '':
-        res = make_response('Invalid Argument.', 400)
-    if _token != TOKEN:
-        res = make_response('Invalid Token.', 401)
-        return res
-    problem_folder = f'{DATA_PATH}/{_problem_id}'
-    zip_name = f'{TMP_PATH}/{_problem_id}/.zip'
-    command = f'zip {zip_name} -r {problem_folder}'
-    os.system(command)
-    while not os.path.exists(zip_name):
-        time.sleep(1)
-    res = make_response(send_file(zip_name), 200)
-    return res
+# @app.route('/getTestData', methods=['GET'])
+# def get_test_data():
+#     if not js.running:
+#         res = make_response('The judger server does not run.', 403)
+#         return res
+#     _token = request.json['token'][0]
+#     _problem_id = request.json['problem_id'][0]
+#     if _problem_id == '' or _token == '':
+#         res = make_response('Invalid Argument.', 400)
+#     if _token != TOKEN:
+#         res = make_response('Invalid Token.', 401)
+#         return res
+#     problem_folder = f'{DATA_PATH}/{_problem_id}'
+#     zip_name = f'{TMP_PATH}/{_problem_id}/.zip'
+#     command = f'zip {zip_name} -r {problem_folder}'
+#     os.system(command)
+#     while not os.path.exists(zip_name):
+#         time.sleep(1)
+#     res = make_response(send_file(zip_name), 200)
+#     return res
     
-@app.route('/setTestData', methods=['GET'])
-def set_test_data():
-    if not js.running:
-        res = make_response('The judger server does not run.', 403)
-        return res
+# @app.route('/setTestData', methods=['GET'])
+# def set_test_data():
+#     if not js.running:
+#         res = make_response('The judger server does not run.', 403)
+#         return res
     
 
 if __name__ == '__main__':

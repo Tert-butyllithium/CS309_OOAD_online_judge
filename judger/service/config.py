@@ -14,7 +14,7 @@ import socket
 # OJ_JAVA_MEMORY_BONUS = 512
 
 
-PROCESS_NUM = 8
+PROCESS_NUM = 12
 
 # 当前用户组的UID，使用这个是为了避免用root启动
 SYSTEM_UID = 1000
@@ -79,7 +79,7 @@ class LIMIT(Enum):
     PYTHON_TIME_BONUS = 2
     PYTHON_SPACE_BONUS = 512
     KT_TIME_BONUS = 2
-    KT_SAPCE_BONUS = 512
+    KT_SAPCE_BONUS = 1024
     
 
 
