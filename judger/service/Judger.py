@@ -71,7 +71,7 @@ class Judger(object):
             log_file.close()
             if not os.path.exists(f'{solution_folder}/Main'):
                 logger.info(f'#{solution_id}# Compile error')
-                return False, 'Compile terminate because time limit'
+                return False, compile_result.replace(file, 'Main.cpp')
 
             if compile_result and 'error:' in compile_result:
                 logger.info(f'#{solution_id}# Compile error')
@@ -103,7 +103,7 @@ class Judger(object):
             log_file = open(compile_result_log, 'r')
             compile_result = log_file.read()
             log_file.close()
-            if compile_result:
+            if compile_result and 'error:' in compile_result:
                 logger.info(f'#{solution_id}# Compile error')
                 return False, compile_result.replace(file, 'Main.kt')
             return True, ''
@@ -156,9 +156,16 @@ class Judger(object):
                 continue
             testcase_cnt += 1
         start_time = time.time()
-        while not os.path.exists(docker_result_log) and time.time() - start_time < 2 * time_limit * testcase_cnt:
+        
+        if not os.path.exists(docker_result_log):
+            result['result'] = OJ_RESULT.RE.value
+            return result
             logger.info(f"#{solution_id}# NOT EXISTS DOCKER_RESULT_LOG")
             time.sleep(1)
+
+        # while not os.path.exists(docker_result_log) and time.time() - start_time < 2 * time_limit * testcase_cnt:
+        #     logger.info(f"#{solution_id}# NOT EXISTS DOCKER_RESULT_LOG")
+        #     time.sleep(1)
         if time.time() - start_time > time_limit * testcase_cnt:
             result['result'] = OJ_RESULT.TL.value
             result['time'] = time.time() - start_time

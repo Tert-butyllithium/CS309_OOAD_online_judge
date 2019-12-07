@@ -38,44 +38,50 @@ class DB(object):
         res = [data[1], int(data[9]), data[3], data[30], int(data[31]), int(data[26])]
         problem_id =  data[3]
         logger.info(f'#{solution_id}# Search TL and ML')
-        sql = f'#{solution_id}# select * from extra_time_space where problem = {problem_id}'
-        database.ping(reconnect=True)
-        cursor = database.cursor()
-        cursor.execute(sql)
-        data = cursor.fetchone()
-        if data is not None:
-            res[3] += int(data[1])
-            res[4] += int(data[2])
-        else:
-            if res[1] == LANGUAGE.JAVA.value:
-                res[3] += LIMIT.JAVA_TIME_BONUS.value
-                res[4] = res[4] * 2
-                res[4] += LIMIT.JAVA_SPACE_BONUS.value
-            elif res[1] == LANGUAGE.PY2.value:
-                res[3] += LIMIT.PYTHON_TIME_BONUS.value
-                res[4] = res[4] * 2
-                res[4] += LIMIT.PYTHON_SPACE_BONUS.value
-            elif res[1] == LANGUAGE.PY3.value:
-                res[3] += LIMIT.PYTHON_TIME_BONUS.value
-                res[4] = res[4] * 2
-                res[4] += LIMIT.PYTHON_SPACE_BONUS.value
-            elif res[1] == LANGUAGE.KOTLIN.value:
-                res[3] += LIMIT.KT_TIME_BONUS.value
-                res[4] = res[4] * 2
-                res[4] += LIMIT.KT_SAPCE_BONUS.value
+        # sql = f'#{solution_id}# select * from extra_time_space where problem = {problem_id}'
+        # database.ping(reconnect=True)
+        # cursor = database.cursor()
+        # cursor.execute(sql)
+        # data = cursor.fetchone()
+        # if data is not None:
+        #     res[3] += int(data[1])
+        #     res[4] += int(data[2])
+        # else:
+        if res[1] == LANGUAGE.JAVA.value:
+            res[3] += LIMIT.JAVA_TIME_BONUS.value
+            res[4] = res[4] * 2
+            res[4] += LIMIT.JAVA_SPACE_BONUS.value
+        elif res[1] == LANGUAGE.PY2.value:
+            res[3] += LIMIT.PYTHON_TIME_BONUS.value
+            res[4] = res[4] * 2
+            res[4] += LIMIT.PYTHON_SPACE_BONUS.value
+        elif res[1] == LANGUAGE.PY3.value:
+            res[3] += LIMIT.PYTHON_TIME_BONUS.value
+            res[4] = res[4] * 2
+            res[4] += LIMIT.PYTHON_SPACE_BONUS.value
+        elif res[1] == LANGUAGE.KOTLIN.value:
+            res[3] += LIMIT.KT_TIME_BONUS.value
+            res[4] = res[4] * 2
+            res[4] += LIMIT.KT_SAPCE_BONUS.value
+        elif res[1] == LANGUAGE.C.value or res[1] ==LANGUAGE.CPP.value:
+            res[4] += LIMIT.CPP_SPACE_BONUS.value
         
-        database.close()
+        # database.close()
         return res #(data[1], data[9], data[3], data[30], data[31], data[26])
 
     def search_submission(self):
-        database = pymysql.connect(
-            host=self.host,
-            user=self.user,
-            password=self.pwd,
-            db=self.db
-        )
+        try:
+            database = pymysql.connect(
+                host=self.host,
+                user=self.user,
+                password=self.pwd,
+                db=self.db
+            )
+        except Exception as e:
+            logger.info(f'DATABASE SYSTEM ERROR')
+            return []
         cursor = database.cursor()
-        cursor.execute('select * from solution s where s.result = 0 or s.result = 1;')
+        cursor.execute('select * from solution s where s.result = 0 or s.result = 1 or s.result = 3;')
         data = cursor.fetchall()
         
         database.close()

@@ -37,8 +37,8 @@ def compare_output(stan_file, user_file):
     while out_data.readable() or stan_data.readable():
         out = out_data.readline()
         stan = stan_data.readline()
-        logger.debug(f'out: {out}')
-        logger.debug(f'stan: {stan}')
+        # logger.debug(f'out: {out}')
+        # logger.debug(f'stan: {stan}')
         if not out and not stan:
             return True
         if bool(out) != bool(stan):
@@ -120,7 +120,8 @@ def main(argv):
         # logger.debug(f'runner: {rst}')
         if rst['result'] == 5 :
             if rst['re_signum'] == 11:
-                res['result'] = OJ_ML
+                res['result'] = OJ_RE
+                # res['error'] = 
                 res['timeused'] = rst['timeused']
                 res['memoryused'] = rst['memoryused']
                 logger.info(f'#{solution_id}# Terminate because memory limit with the signum 11')
@@ -155,6 +156,11 @@ def main(argv):
             res['result'] = OJ_ML 
             logger.info(f'#{solution_id}# Terminate because the memory limit')
             break
+        elif (language == LANGUAGE.C.value or language == LANGUAGE.CPP.value)  and res['memoryused'] > (memory_limit - LIMIT.CPP_SPACE_BONUS.value) * 1024:
+            res['result'] == OJ_ML
+            logger.info(f'#{solution_id}# Terminate because the memory limit')
+            break
+
         # res['timeused'] = rst['timeused']
         # res['memoryused'] = rst['memoryused']
         error = open(error_file, 'r')

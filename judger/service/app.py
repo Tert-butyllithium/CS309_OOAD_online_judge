@@ -17,7 +17,7 @@ def new_task():
         js.run()
     _solution_id = request.json['solutionId'][0]
     logger.info(f'Insert task {_solution_id}')
-    js.new_task(_solution_id)
+    # js.new_task(_solution_id)
     return {
         'result': 1,
         'info': 'solutionId: ' + str(_solution_id) + ' has been added to the task queue.'

@@ -16,6 +16,8 @@ import requests
 import queue
 import os
 import time
+import logging
+import logzero
 
 # queue_lock = threading.Lock()
 
@@ -35,6 +37,8 @@ class JudgeService(object):
         # global queue_lock
         # queue_lock.acquire()
         self.task_queue.put(solution_id)
+        if len(running_task) == pro_num:
+            logger.info(f'There are {pro_num} tasks are running. Task {solution_id} will be delayed to be judged.')
         # queue_lock.release()
 
     def run(self):
@@ -43,7 +47,7 @@ class JudgeService(object):
         judging_thread.start()
 
     def judger_thread(self):
-        last_search_time = time.time()
+        # last_search_time = time.time()
         while True:
             if len(running_task) != pro_num:
 
@@ -62,7 +66,8 @@ class JudgeService(object):
                     pool.apply_async(self.judger.run, (task_info[0], task_info[1],
                                                             task_info[2], task_info[3],
                                                             task_info[4], task_info[5], str(solution_id),), callback=process_end)
-                elif time.time() - last_search_time >= 5:
+                else:
+                    # logger.info(f'## Begin to search submission')
                     list_ = self.OJ_DB.search_submission()
                     # queue_lock.acquire()
                     for i in range(0, len(list_)):
@@ -70,7 +75,7 @@ class JudgeService(object):
                             continue
                         self.task_queue.put(list_[i])
                     # queue_lock.release()
-                    last_search_time = time.time()
+                    # last_search_time = time.time()
 
     # def run_process(self):
 
