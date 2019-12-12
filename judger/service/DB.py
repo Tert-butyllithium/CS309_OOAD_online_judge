@@ -22,7 +22,8 @@ class DB(object):
             db=self.db
         )
         cursor = database.cursor()
-        sql = 'select * from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id)
+        sql = 'select sc.source, s.language, p.problem_id, p.time_limit, p.memory_limit, p.spj from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s' % str(solution_id)
+        # sql = 'select sc.solution_id, problem_id, time from source_code sc join solution s on sc.solution_id = s.solution_id join problem p on s.problem_id = p.problem_id where s.solution_id = %s;' % str(solution_id)
         logger.info(f'#{solution_id}# {sql}')
         cursor.execute(sql)
 
@@ -35,8 +36,10 @@ class DB(object):
             data = cursor.fetchone()
 
         database.close()
-        res = [data[1], int(data[9]), data[3], data[30], int(data[31]), int(data[26])]
-        problem_id =  data[3]
+        res = list(data)
+        # logger.debug(type(data))
+        # res = [data[1], int(data[9]), data[3], data[30], int(data[31]), int(data[26])]
+        # problem_id =  data[3]
         logger.info(f'#{solution_id}# Search TL and ML')
         # sql = f'#{solution_id}# select * from extra_time_space where problem = {problem_id}'
         # database.ping(reconnect=True)
@@ -65,7 +68,7 @@ class DB(object):
             res[4] += LIMIT.KT_SAPCE_BONUS.value
         elif res[1] == LANGUAGE.C.value or res[1] ==LANGUAGE.CPP.value:
             res[4] += LIMIT.CPP_SPACE_BONUS.value
-        
+
         # database.close()
         return res #(data[1], data[9], data[3], data[30], data[31], data[26])
 
@@ -81,9 +84,9 @@ class DB(object):
             logger.info(f'DATABASE SYSTEM ERROR')
             return []
         cursor = database.cursor()
-        cursor.execute('select * from solution s where s.result = 0 or s.result = 1 or s.result = 3;')
+        cursor.execute('select * from solution s where s.result = 0 or s.result = 1;')
         data = cursor.fetchall()
-        
+
         database.close()
         list = []
         for i in range(0, len(data)):

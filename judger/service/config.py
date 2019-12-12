@@ -26,7 +26,7 @@ DATABASES_USER = 'lanran'
 DATABASES_PWD = 'lanran'
 DATABASES_DB = 'jol'
 
-BACKEND_IP = '10.21.65.114:1235'
+BACKEND_IP = '192.168.2.1:1235'#'10.20.71.60:1235'
 TOKEN = '123456'
 
 CONFIG_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -81,7 +81,7 @@ class LIMIT(Enum):
     KT_TIME_BONUS = 2
     KT_SAPCE_BONUS = 1024
     CPP_SPACE_BONUS = 1024
-    
+
 
 
 
