@@ -124,7 +124,7 @@ class Judger(object):
             return compile_Kotlin(file, solution_folder)
         return True, ''
 
-    def run_code(self, language_config, problem_id, time_limit, memory_limit, solution_id):
+    def run_code(self, language_config, problem_id, time_limit, memory_limit, solution_id, spj):
         solution_folder = os.path.join(USER_CODES_FOLDER, solution_id)
         problem_folder = os.path.join(DATA_PATH, str(problem_id))
         result = {
@@ -146,7 +146,7 @@ class Judger(object):
             code_file = os.path.join(solution_folder, 'Main.py')
         elif language_config == LANGUAGE.KOTLIN.value:
             code_file = os.path.join(solution_folder, 'Main.jar')
-        docker_command = f'{prefix} python3 {RUN_CODE_PY} \'{code_file}\' \'{problem_folder}\' \'{solution_folder}\' {language_config} {time_limit} {memory_limit} \'{docker_result_log}\''
+        docker_command = f'{prefix} python3 {RUN_CODE_PY} \'{code_file}\' \'{problem_folder}\' \'{solution_folder}\' {language_config} {time_limit} {memory_limit} \'{docker_result_log}\' {spj}'
 
         logger.debug(f'#{solution_id}# DOCKER_COMMAND: {docker_command}')
         os.system(docker_command)
@@ -199,7 +199,7 @@ class Judger(object):
             return judge_result, int(solution_id)
 
         runtime_result = self.run_code(
-            language_config, problem_id, time_limit, memory_limit, solution_id)
+            language_config, problem_id, time_limit, memory_limit, solution_id, spj)
         judge_result['time'] = runtime_result['time']
         judge_result['result'] = runtime_result['result']
         judge_result['memory'] = runtime_result['memory']

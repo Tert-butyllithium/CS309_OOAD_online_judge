@@ -17,6 +17,12 @@ taskThread_end = False
 source_listener_end = False
 
 
+def exec_cmd(cmd):
+        r = os.popen(cmd)
+        text = r.read()
+        r.close()
+        return text
+
 def run_args(code_file, language, output_folder):
     args = []
     if language == LANGUAGE.C.value or language == LANGUAGE.CPP.value:
@@ -31,24 +37,47 @@ def run_args(code_file, language, output_folder):
         args = ['java', '-XX:-UseCompressedClassPointers', '-jar', f'{code_file}']
     return args
 
-def compare_output(stan_file, user_file):
-    out_data = open(user_file)
-    stan_data = open(stan_file)
-    while out_data.readable() or stan_data.readable():
-        out = out_data.readline()
-        stan = stan_data.readline()
-        # logger.debug(f'out: {out}')
-        # logger.debug(f'stan: {stan}')
-        if not out and not stan:
-            return True
-        if bool(out) != bool(stan):
+def diff(stan_file, user_file, spj):
+    def compare(stan_out, user_out):
+        out_data = open(user_out)
+        stan_data = open(stan_out)
+        while out_data.readable() or stan_data.readable():
+            out = out_data.readline()
+            stan = stan_data.readline()
+            # logger.debug(f'out: {out}')
+            # logger.debug(f'stan: {stan}')
+            if not out and not stan:
+                return True
+            if bool(out) != bool(stan):
+                return False
+            if not stan and out == '\n':
+                return True
+            if out.strip() != stan.strip():
+                return False
+        return True 
+    def compare_spj(stan_out, user_out, spj_exec):
+        logger.debug('Special Judge.....')
+        stan_in = f'{os.path.splitext(stan_out)[0]}.in'
+        command = f'{spj_exec} {stan_in} {stan_out} {user_out}'
+        logger.debug(command)
+        result = os.system(f'{spj_exec} {stan_in} {stan_out} {user_out}')
+        if int(result) != 0:
             return False
-        if not stan and out == '\n':
-            return True
-        if out.strip() != stan.strip():
-            return False
-    return True 
-
+        return True
+    if spj == 1:
+        output_folder = os.path.split(stan_file)[0]
+        spj_cpp = os.path.join(output_folder, f'spj.cpp')
+        spj_exec = os.path.splitext(spj_cpp)[0]
+        if not os.path.exists(spj_exec) and os.path.exists(spj_cpp):
+            compile_result = exec_cmd(f'g++ {spj_cpp} -O2 -o {spj_exec}')
+            if compile_result:
+                raise Exception("Compile spj.cpp error")
+        elif not os.path.exists(spj_exec) and not os.path.exists(spj_cpp):
+            raise Exception(f"spj.cpp not found in {spj_cpp}")
+        return compare_spj(stan_file, user_file, spj_exec)
+    else:
+        return compare(stan_file, user_file)
+        
 
 def main(argv):
     OJ_AC = 4
@@ -78,6 +107,7 @@ def main(argv):
     time_limit = int(argv[5])
     memory_limit = int(argv[6])
     docker_result_log = argv[7]
+    spj = int(argv[8])
     solution_id = os.path.split(output_folder)[1]
 
     res = {
@@ -178,7 +208,7 @@ def main(argv):
             logger.info(f"#{solution_id}# Terminate because Runtime error with the error: {res['error']}")
             res['result'] = OJ_RE
             break
-        if not compare_output(stan_file, out_file):
+        if not diff(stan_file, out_file, spj):
             logger.info(f'#{solution_id}# Terminate because wrong answer with the testcase being: {testcase}')
             res['result'] = OJ_WA
             break
