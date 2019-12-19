@@ -26,7 +26,9 @@ DATABASES_USER = 'lanran'
 DATABASES_PWD = 'lanran'
 DATABASES_DB = 'jol'
 
-BACKEND_IP = '192.168.2.1:1235'#'10.20.71.60:1235'
+BACKEND_ADDR = '192.168.2.1'
+BACKEND_PORT = 1235
+BACKEND_IP = f'{BACKEND_ADDR}:{BACKEND_PORT}' #'10.20.71.60:1235'
 TOKEN = '123456'
 
 CONFIG_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -89,7 +91,7 @@ def get_host_ip():
     ip = None
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(('8.8.8.8', 80))
+        s.connect((f'{BACKEND_ADDR}', BACKEND_PORT))
         ip = s.getsockname()[0]
     except socket.error as e:
         logger.error(e)
