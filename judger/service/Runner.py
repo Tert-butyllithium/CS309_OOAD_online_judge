@@ -54,12 +54,9 @@ def diff(stan_file, user_file, spj):
                 return True
             if out.strip() != stan.strip():
                 return False
-        return True 
+        return True
     def compare_spj(stan_out, user_out, spj_exec):
-        logger.debug('Special Judge.....')
         stan_in = f'{os.path.splitext(stan_out)[0]}.in'
-        command = f'{spj_exec} {stan_in} {stan_out} {user_out}'
-        logger.debug(command)
         result = os.system(f'{spj_exec} {stan_in} {stan_out} {user_out}')
         if int(result) != 0:
             return False
@@ -77,7 +74,7 @@ def diff(stan_file, user_file, spj):
         return compare_spj(stan_file, user_file, spj_exec)
     else:
         return compare(stan_file, user_file)
-        
+
 
 def main(argv):
     OJ_AC = 4
@@ -117,7 +114,7 @@ def main(argv):
         'error': ''
     }
     mle_error = 'failed; error=\'Not enough space\''
-    
+
     # r = open('/home/lumia/CS309_OOAD_online_judge/judger/tmp.file', 'w+')
     test_cases = os.listdir(input_folder)
     test_cases.sort()
@@ -128,7 +125,7 @@ def main(argv):
         base_name = os.path.splitext(testcase)[0]
         error_file = os.path.join(output_folder, f'{base_name}.err')
         out_file = os.path.join(output_folder, f'{base_name}.out')
-        stan_file = os.path.join(input_folder, f'{base_name}.out') 
+        stan_file = os.path.join(input_folder, f'{base_name}.out')
         args = run_args(code_path, language, output_folder)
         fin = open(os.path.join(input_folder, testcase))
         fout = open(out_file, 'w')
@@ -151,7 +148,7 @@ def main(argv):
         if rst['result'] == 5 :
             if rst['re_signum'] == 11:
                 res['result'] = OJ_RE
-                # res['error'] = 
+                # res['error'] =
                 res['timeused'] = rst['timeused']
                 res['memoryused'] = rst['memoryused']
                 logger.info(f'#{solution_id}# Terminate because memory limit with the signum 11')
@@ -165,7 +162,7 @@ def main(argv):
 
         res['timeused'] = max(res['timeused'], int(rst['timeused']))
         res['memoryused'] = max(res['memoryused'], int(rst['memoryused']))
-      
+
         if rst['timeused'] > time_limit * 1000:
             res['result'] = OJ_TL
             logger.info(f'#{solution_id}# Terminate because the time limit')
@@ -175,15 +172,15 @@ def main(argv):
             logger.info(f'#{solution_id}# Terminate because the memory limit')
             break
         elif language == LANGUAGE.PY2.value and rst['memoryused'] > (memory_limit - LIMIT.PYTHON_SPACE_BONUS.value) * 1024:
-            res['result'] = OJ_ML 
+            res['result'] = OJ_ML
             logger.info(f'#{solution_id}# Terminate because the memory limit')
             break
         elif language == LANGUAGE.PY3.value and rst['memoryused'] > (memory_limit - LIMIT.PYTHON_SPACE_BONUS.value) * 1024:
-            res['result'] = OJ_ML 
+            res['result'] = OJ_ML
             logger.info(f'#{solution_id}# Terminate because the memory limit')
             break
         elif language == LANGUAGE.KOTLIN.value and rst['memoryused'] > (memory_limit - LIMIT.KT_SAPCE_BONUS.value) * 1024:
-            res['result'] = OJ_ML 
+            res['result'] = OJ_ML
             logger.info(f'#{solution_id}# Terminate because the memory limit')
             break
         elif (language == LANGUAGE.C.value or language == LANGUAGE.CPP.value)  and res['memoryused'] > (memory_limit - LIMIT.CPP_SPACE_BONUS.value) * 1024:
@@ -196,7 +193,7 @@ def main(argv):
         error = open(error_file, 'r')
         res['error'] = error.read()
         error.close()
-        
+
         error = open(error_file, 'r')
         res['error'] = error.read()
         if mle_error in res['error']:

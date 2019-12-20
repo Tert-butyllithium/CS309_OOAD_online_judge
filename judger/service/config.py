@@ -21,12 +21,12 @@ SYSTEM_UID = 1000
 DOCKER_VERSION = 'judge:v5'
 
 # 修改数据库的配置 不需要多说
-DATABASES_HOST = 'localhost'
-DATABASES_USER = 'lanran'
+DATABASES_HOST = '127.0.0.1'
+DATABASES_USER = 'root'
 DATABASES_PWD = 'lanran'
 DATABASES_DB = 'jol'
 
-BACKEND_IP = '192.168.2.1:1235'#'10.20.71.60:1235'
+BACKEND_IP = '127.0.0.1:1235'#'10.20.71.60:1235'
 TOKEN = '123456'
 
 CONFIG_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -89,7 +89,7 @@ def get_host_ip():
     ip = None
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(('8.8.8.8', 80))
+        s.connect(('127.0.0.1', 80))
         ip = s.getsockname()[0]
     except socket.error as e:
         logger.error(e)
