@@ -54,6 +54,7 @@ class JudgeService(object):
                 if not self.task_queue.empty():
                     # queue_lock.acquire()
                     solution_id = self.task_queue.get()
+                    self.OJ_DB.judging(solution_id)
                     if solution_id in running_task:
                         continue
                     else:
@@ -77,16 +78,16 @@ class JudgeService(object):
                     # queue_lock.release()
                     # last_search_time = time.time()
 
-    # def run_process(self):
-
     def notify_backend(self, solution_id):
         request_url = f'http://{BACKEND_IP}/api/finishjudge'
         para = {
             'solution_id': solution_id,
             'token': TOKEN
         }
-        requests.post(request_url, json=para)
-
+        try:
+            requests.post(request_url, json=para)
+        except Exception as e:
+            logger.error(e.args)
 
 js = JudgeService()
 

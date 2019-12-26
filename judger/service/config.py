@@ -22,7 +22,7 @@ DOCKER_VERSION = 'judge:v5'
 
 # 修改数据库的配置 不需要多说
 DATABASES_HOST = '127.0.0.1'
-DATABASES_USER = 'root'
+DATABASES_USER = 'lanran'
 DATABASES_PWD = 'lanran'
 DATABASES_DB = 'jol'
 

@@ -124,3 +124,18 @@ class DB(object):
                 logger.error(f"#{solution_id}# Fail to execute command \'{sql}\' to database for : {e}")
         cursor.close()
         database.close()
+
+    def judging(self, solution_id):
+        database = pymysql.connect(
+            host=self.host,
+            user=self.user,
+            password=self.pwd,
+            db=self.db
+        )
+        cursor = database.cursor()
+        sql = f'update solution set result = {OJ_RESULT.RI.value} where solution_id = {solution_id}'
+        try:
+            cursor.execute(sql)
+        except Exception as e:
+            logger.error(f"#{solution_id}# Fail to execute command {sql} to database")
+        database.close()
